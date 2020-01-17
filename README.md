@@ -2,6 +2,10 @@
 
 A general theme for Nuxt / Netlify CMS quickstart
 
+One click deploy to Netlify  
+
+<a href="(https://app.netlify.com/start/deploy?repository=https://github.com/jbratcher/direction-theme"><img src="https://www.netlify.com/img/deploy/button.svg" alt="one click deploy to netlify" /></a>
+
 Built on top of [Nuxt Netlify CMS Starter Kit](https://github.com/jbratcher/nuxt-netlify-cms-starter-kit)
 
 ## How to use
