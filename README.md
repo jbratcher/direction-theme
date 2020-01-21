@@ -51,8 +51,10 @@ yarn generate
 
 ## Activating Netlify CMS
 
-This project comes with Netlify CMS ready to rumble, and a basic blog configuration. To use Netlify CMS:
-
+This project comes with Netlify CMS and a basic blog configuration.  
+  
+To use Netlify CMS:
+  
 ### Authenticating with Netlify Identity
 
 1. Deploy to Netlify at least once.
@@ -69,6 +71,3 @@ This project comes with Netlify CMS ready to rumble, and a basic blog configurat
 
 #### To change netlify deploy url, run localStorage.removeItem("netlifySiteURL") in the browser console.
 
-### Use Netlify CMS Dashboard
-
-Feel free to reach out [on Twitter](https://twitter.com/xdesro). Friendly feedback and advice is always welcome. Contributions doubly so.
