@@ -61,6 +61,26 @@
             <v-btn color="blue accent-3" dark nuxt rounded to="/rsvp" x-large>RSVP Now</v-btn>
           </section>
           <v-img src="/img/event-details-3.jpg" alt />
+          <section class="highlights">
+            <v-card>
+              <v-icon size="4rem">mdi-pencil</v-icon>
+              <h4>Card title</h4>
+              <div></div>
+              <p>Ut ut lobortis augue. Phasellus venenatis metus non metus congue, eget fermentum ipsum porttitor. Nunc nec mi a ligula suscipit pulvinar eu ut risus. Vivamus egestas neque vel nibh imperdiet, ac laoreet tellus imperdiet.</p>
+            </v-card>
+            <v-card>
+              <v-icon size="4rem">mdi-pencil</v-icon>
+              <h4>Card title</h4>
+              <div></div>
+              <p>Ut ut lobortis augue. Phasellus venenatis metus non metus congue, eget fermentum ipsum porttitor. Nunc nec mi a ligula suscipit pulvinar eu ut risus. Vivamus egestas neque vel nibh imperdiet, ac laoreet tellus imperdiet.</p>
+            </v-card>
+            <v-card>
+              <v-icon size="4rem">mdi-pencil</v-icon>
+              <h4>Card title</h4>
+              <div></div>
+              <p>Ut ut lobortis augue. Phasellus venenatis metus non metus congue, eget fermentum ipsum porttitor. Nunc nec mi a ligula suscipit pulvinar eu ut risus. Vivamus egestas neque vel nibh imperdiet, ac laoreet tellus imperdiet.</p>
+            </v-card>
+          </section>
         </section>
 
         <!-- Contact Section -->
@@ -259,8 +279,44 @@ main {
   }
 
   .v-image {
-    margin: 1rem auto;
+    clip-path: polygon(
+      0% 0%,
+      100% 0%,
+      100% 75%,
+      75% 75%,
+      75% 100%,
+      50% 75%,
+      0% 75%
+    );
+    margin: 2rem;
     max-width: 95vw;
+  }
+
+  .highlights {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    grid-area: cards;
+    width: 90%;
+    margin: 0 auto;
+    .v-card {
+      margin: 1rem;
+      padding: 2rem;
+      h4 {
+        font-size: 1.67rem;
+        font-weight: 900;
+        padding-bottom: 1rem;
+      }
+      div {
+        border: 0.25rem solid #ff9100;
+        width: 25%;
+        height: auto;
+      }
+      p {
+        font-size: 1.125rem;
+        margin: 1rem 0;
+      }
+    }
   }
 }
 
@@ -373,7 +429,7 @@ main {
       min-height: 0;
 
       h2 {
-        font-size: 5rem;
+        font-size: 4rem;
         font-weight: 900;
         grid-area: header;
         line-height: 1;
@@ -389,7 +445,7 @@ main {
           margin: 1rem 0;
         }
         h3 {
-          font-size: 4rem;
+          font-size: 3rem;
           font-weight: 700;
           line-height: 1;
           margin-top: 0;
@@ -402,13 +458,17 @@ main {
 
   #rsvp {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+      'txt txt img img'
+      'cards cards cards cards';
     gap: 2rem;
-    padding: 0;
+    padding: 4rem 0 2rem;
 
     section.content-container {
+      grid-area: txt;
       padding-left: 1rem;
+      padding-bottom: 0;
       h3,
       p,
       .v-btn {
@@ -426,7 +486,35 @@ main {
     }
 
     .v-image {
-      margin: 0;
+      grid-area: img;
+      margin: 1.5rem 2rem;
+    }
+
+    .highlights {
+      flex-direction: row;
+      justify-content: space-around;
+      justify-content: space-evenly;
+      grid-area: cards;
+      width: 90%;
+      margin: 0 auto;
+      .v-card {
+        margin: 1rem;
+        padding: 2rem;
+        h4 {
+          font-size: 1.67rem;
+          font-weight: 900;
+          padding-bottom: 1rem;
+        }
+        div {
+          border: 0.25rem solid #ff9100;
+          width: 25%;
+          height: auto;
+        }
+        p {
+          font-size: 1.125rem;
+          margin: 1rem 0;
+        }
+      }
     }
   }
 }
