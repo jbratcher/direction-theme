@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <!-- Header Area -->
-    <v-app-bar app elevate-on-scroll height="100px" fixed flat light tile>
+    <v-app-bar app elevate-on-scroll hide-on-scroll height="100px" flat light tile>
       <v-toolbar-title v-text="title" />
       <v-spacer class="hidden-md-and-up" />
       <v-app-bar-nav-icon class="hidden-md-and-up" color="#000" @click.stop="drawer = !drawer" />
@@ -11,8 +11,8 @@
         list-item-class="row-menu"
       />
       <v-btn
-        class="flex-0 align-self-center hidden-md-and-down"
-        color="#4125ff"
+        class="flex-0 align-self-center hidden-md-and-down cta-btn"
+        color="blue accent-3"
         dark
         nuxt
         rounded
@@ -24,7 +24,7 @@
     <v-navigation-drawer v-model="drawer" :mini-variant="miniVariant" fixed right>
       <MenuLinks :general-links="generalLinks" list-class="mobile" />
       <v-btn
-        class="flex-0 align-self-center"
+        class="flex-0 align-self-center cta-btn"
         color="#4125ff"
         dark
         nuxt
@@ -40,7 +40,7 @@
     <!-- Footer Area -->
     <v-footer>
       <ul>
-        <li v-for="(link, i) in footerLinks" :key="i + link.title">
+        <li v-for="(link, i) in generalLinks" :key="i + link.title">
           <v-btn text rounded>{{ link.title }}</v-btn>
         </li>
       </ul>
@@ -106,7 +106,8 @@ export default {
   padding: 0;
 }
 
-html {
+html,
+.v-application {
   font-family: 'Poppins', sans-serif;
   font-size: 16px;
   word-spacing: 1px;
@@ -164,6 +165,10 @@ body {
 .v-navigation-drawer__content {
   display: flex;
   flex-direction: column;
+}
+
+.cta-btn {
+  box-shadow: 0 11px 22px rgba(34, 34, 34, 0.2);
 }
 
 // card
