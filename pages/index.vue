@@ -39,9 +39,39 @@
         <!-- Benefits Section -->
         <section id="event-details" class="py-12">
           <section class="event-images">
-            <v-img src="/img/event-details-1.jpg" alt />
-            <v-img src="/img/event-details-2.jpg" alt />
-            <v-img src="/img/event-details-3.jpg" alt />
+            <v-img
+              src="/img/event-details-1.jpg"
+              alt
+              :aspect-ratio="16/9"
+              min-width="200px"
+              :width="responsiveWidth"
+              :max-width="responsiveMaxWidth"
+              min-height="112.5px"
+              height="100%"
+              max-height="30vh"
+            />
+            <v-img
+              src="/img/event-details-2.jpg"
+              alt
+              :aspect-ratio="16/9"
+              min-width="200px"
+              :width="responsiveWidth"
+              :max-width="responsiveMaxWidth"
+              min-height="112.5px"
+              height="100%"
+              max-height="30vh"
+            />
+            <v-img
+              src="/img/event-details-3.jpg"
+              alt
+              :aspect-ratio="16/9"
+              min-width="200px"
+              :width="responsiveWidth"
+              :max-width="responsiveMaxWidth"
+              min-height="112.5px"
+              height="100%"
+              max-height="30vh"
+            />
           </section>
           <v-container class="event-text">
             <h2>Event Details</h2>
@@ -105,6 +135,50 @@ export default {
         { src: 'https://identity.netlify.com/v1/netlify-identity-widget.js' }
       ]
     }
+  },
+  computed: {
+    responsiveWidth() {
+      let value = '100%'
+      switch (this.$vuetify.breakpoint.name) {
+        case 'xs':
+          value = '100%'
+          break
+        case 'sm':
+          value = '200px'
+          break
+        case 'md':
+          value = '20vw'
+          break
+        case 'lg':
+          value = '20vw'
+          break
+        case 'xl':
+          value = '20vw'
+          break
+      }
+      return value
+    },
+    responsiveMaxWidth() {
+      let value = '100%'
+      switch (this.$vuetify.breakpoint.name) {
+        case 'xs':
+          value = '95vw'
+          break
+        case 'sm':
+          value = '100%'
+          break
+        case 'md':
+          value = '100%'
+          break
+        case 'lg':
+          value = '100%'
+          break
+        case 'xl':
+          value = '100%'
+          break
+      }
+      return value
+    }
   }
 }
 </script>
@@ -150,6 +224,7 @@ main {
 // information section
 
 #information {
+  background: #fefefe;
   position: relative;
 
   & > section {
@@ -216,6 +291,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-width: 95vw;
 
     .v-image {
       margin: 1rem auto;
@@ -329,8 +405,9 @@ main {
 
     section.content-container {
       background: #fefefe;
+      clip-path: polygon(0 0, 70% 0%, 100% 50%, 70% 100%, 0 100%);
       padding: 0 2rem;
-      width: 50%;
+      width: 60%;
       min-height: 600px;
 
       p {
@@ -342,6 +419,7 @@ main {
         font-weight: 700;
         line-height: 1.2;
         margin-bottom: 4rem;
+        margin-right: 20%;
       }
 
       .v-btn {
@@ -355,7 +433,6 @@ main {
   // information section
 
   #information > section {
-    background: #fff;
     border-top-left-radius: 10rem;
     border-bottom-left-radius: 10rem;
     box-shadow: 0 11px 22px rgba(34, 34, 34, 0.2);
@@ -403,9 +480,9 @@ main {
       justify-content: center;
       position: relative;
       margin-bottom: 5rem;
-      .v-image {
-        max-width: 300px;
-      }
+      // .v-image {
+      //   width:;
+      // }
       .v-image:nth-of-type(2) {
         border: 8px solid #eee;
         position: relative;
