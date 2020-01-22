@@ -7,7 +7,7 @@
           <section class="content-container">
             <p>January, 31st, 2020 - 9:00 AM</p>
             <h1>The Intersection of Art &amp; Tech</h1>
-            <v-btn color="orange accent-3" dark nuxt rounded to="/services" x-large>Learn More</v-btn>
+            <v-btn color="orange accent-4" dark nuxt rounded to="/services" x-large>Learn More</v-btn>
           </section>
         </section>
 
@@ -78,7 +78,7 @@
             <section class="cta-text">
               <h3>The Wave of the Future</h3>
               <p>Ut ut lobortis augue. Phasellus venenatis metus non metus congue, eget fermentum ipsum porttitor. Nunc nec mi a ligula suscipit pulvinar eu ut risus. Vivamus egestas neque vel nibh imperdiet, ac laoreet tellus imperdiet. Aliquam erat volutpat. Nam orci ex, placerat quis imperdiet vel, sagittis quis neque. Donec eget interdum ante, eu facilisis turpis.</p>
-              <v-btn color="orange accent-3" dark nuxt rounded to="/services" x-large>Learn More</v-btn>
+              <v-btn color="orange accent-4" dark nuxt rounded to="/services" x-large>Learn More</v-btn>
             </section>
           </v-container>
         </section>
@@ -88,34 +88,54 @@
           <section class="content-container">
             <p>Hurry, this event is almost sold out!</p>
             <h3>Meet &amp; Greet the Local Leaders of the Tech Industry</h3>
-            <v-btn color="blue accent-3" dark nuxt rounded to="/rsvp" x-large>RSVP Now</v-btn>
+            <v-btn color="blue accent-4" dark nuxt rounded to="/rsvp" x-large>RSVP Now</v-btn>
           </section>
           <v-img src="/img/event-details-3.jpg" alt />
           <section class="highlights">
             <v-card>
-              <v-icon size="4rem">mdi-pencil</v-icon>
+              <v-icon size="4rem">mdi-earth</v-icon>
               <h4>Card title</h4>
               <div></div>
-              <p>Ut ut lobortis augue. Phasellus venenatis metus non metus congue, eget fermentum ipsum porttitor. Nunc nec mi a ligula suscipit pulvinar eu ut risus. Vivamus egestas neque vel nibh imperdiet, ac laoreet tellus imperdiet.</p>
+              <p>Ut ut lobortis augue. Phasellus venenatis metus non metus congue, eget fermentum ipsum porttitor. Nunc nec mi a ligula suscipit pulvinar eu ut risus.</p>
             </v-card>
             <v-card>
-              <v-icon size="4rem">mdi-pencil</v-icon>
+              <v-icon size="4rem">mdi-bulletin-board</v-icon>
               <h4>Card title</h4>
               <div></div>
-              <p>Ut ut lobortis augue. Phasellus venenatis metus non metus congue, eget fermentum ipsum porttitor. Nunc nec mi a ligula suscipit pulvinar eu ut risus. Vivamus egestas neque vel nibh imperdiet, ac laoreet tellus imperdiet.</p>
+              <p>Ut ut lobortis augue. Phasellus venenatis metus non metus congue, eget fermentum ipsum porttitor. Nunc nec mi a ligula suscipit pulvinar eu ut risus.</p>
             </v-card>
             <v-card>
-              <v-icon size="4rem">mdi-pencil</v-icon>
+              <v-icon size="4rem">mdi-chart-areaspline</v-icon>
               <h4>Card title</h4>
               <div></div>
-              <p>Ut ut lobortis augue. Phasellus venenatis metus non metus congue, eget fermentum ipsum porttitor. Nunc nec mi a ligula suscipit pulvinar eu ut risus. Vivamus egestas neque vel nibh imperdiet, ac laoreet tellus imperdiet.</p>
+              <p>Ut ut lobortis augue. Phasellus venenatis metus non metus congue, eget fermentum ipsum porttitor. Nunc nec mi a ligula suscipit pulvinar eu ut risus.</p>
             </v-card>
           </section>
         </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="py-12">
-          <h1 class="display-1 pl-12">Contact Section</h1>
+        <!-- Day Schedule Section -->
+        <section id="day-schedule">
+          <section class="content-container">
+            <h2>Day Schedule</h2>
+            <h3>A List of Events</h3>
+            <p>Ut ut lobortis augue. Phasellus venenatis metus non metus congue, eget fermentum ipsum porttitor.</p>
+          </section>
+          <section class="tabs-container">
+            <v-tabs v-model="tab" left vertical hide-slider>
+              <v-tab v-for="(item, i) in items" :key="i">
+                <h4>{{ item.title }}</h4>
+                <p>{{ item.datetime }}</p>
+              </v-tab>
+            </v-tabs>
+
+            <v-tabs-items v-model="tab">
+              <v-tab-item v-for="(item, i) in items" :key="i">
+                <v-card flat>
+                  <v-card-text>{{ text }}</v-card-text>
+                </v-card>
+              </v-tab-item>
+            </v-tabs-items>
+          </section>
         </section>
       </main>
     </v-flex>
@@ -136,6 +156,34 @@ export default {
       ]
     }
   },
+  data: () => ({
+    tab: null,
+    items: [
+      {
+        title: 'Day 1',
+        datetime: 'Jan 29th, 2020 (9 AM - 5 PM)',
+        events: [
+          { time: '', title: '', speaker: '', speakerTitle: '', image: '' }
+        ]
+      },
+      {
+        title: 'Day 2',
+        datetime: 'Jan 30th, 2020 (9 AM - 5 PM)',
+        events: [
+          { time: '', title: '', speaker: '', speakerTitle: '', image: '' }
+        ]
+      },
+      {
+        title: 'Day 3',
+        datetime: 'Jan 31st, 2020 (9 AM - 5 PM)',
+        events: [
+          { time: '', title: '', speaker: '', speakerTitle: '', image: '' }
+        ]
+      }
+    ],
+    text:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+  }),
   computed: {
     responsiveWidth() {
       let value = '100%'
@@ -275,7 +323,7 @@ main {
 
     .information-content section:first-of-type {
       .number {
-        color: #ff9100; // orange accent-3
+        color: #ff6d00; // orange accent-4
       }
     }
   }
@@ -378,19 +426,84 @@ main {
     .v-card {
       margin: 1rem;
       padding: 2rem;
+      transition: 0.5s all ease;
       h4 {
         font-size: 1.67rem;
         font-weight: 900;
         padding-bottom: 1rem;
+        transition: 0.5s all ease;
       }
       div {
-        border: 0.25rem solid #ff9100;
+        border: 0.25rem solid #ff6d00;
         width: 25%;
         height: auto;
+        transition: 0.5s all ease;
       }
       p {
         font-size: 1.125rem;
         margin: 1rem 0;
+        transition: 0.5s all ease;
+      }
+      &:hover {
+        background: #2962ff;
+
+        .v-icon {
+          color: #fff;
+          transition: 0.5s all ease;
+        }
+
+        h4,
+        p {
+          color: #fff;
+        }
+
+        div {
+          border-color: #fff;
+        }
+      }
+    }
+  }
+}
+
+// day list section
+
+#day-schedule {
+  .content-container {
+    padding: 4rem 2rem;
+    h2,
+    h3 {
+      line-height: 1;
+      padding: 1rem 0;
+    }
+    h2 {
+      font-size: 3rem;
+      font-weight: 900;
+    }
+    h3 {
+      font-size: 2.33rem;
+      font-weight: 700;
+    }
+    p {
+      font-size: 1.33rem;
+      padding: 1rem 0;
+    }
+  }
+  .tabs-container {
+    .v-tab {
+      clip-path: polygon(12.5% 0%, 100% 0%, 87.5% 100%, 0% 100%);
+      flex-direction: column;
+      padding: 4rem;
+      margin: 1rem auto;
+      h4 {
+        font-size: 2rem;
+        font-weight: 700;
+      }
+    }
+    .v-tab--active {
+      background: #ff6d00;
+      h4,
+      p {
+        color: #fff;
       }
     }
   }
@@ -468,7 +581,7 @@ main {
 
     .information-content section:first-of-type {
       .number {
-        color: #ff9100; // orange accent-3
+        color: #ff6d00; // orange accent-4
       }
     }
   }
