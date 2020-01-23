@@ -15,7 +15,7 @@ Built on top of [Nuxt Netlify CMS Starter Kit](https://github.com/jbratcher/nuxt
 1. Clone the repository locally and cd into the directory.
 
 ```bash
-git clone git@github.com:jbratcher/direction-theme.git
+git clone https://github.com/jbratcher/direction-theme
 
 cd nuxt-netlify-cms-starter
 ```
@@ -69,5 +69,5 @@ To use Netlify CMS:
 2. Enter the Netlify URL of your site when prompted.
 3. Login with the account you created or one of the external providers, if you enabled them.
 
-#### To change netlify deploy url, run localStorage.removeItem("netlifySiteURL") in the browser console.
+### To change netlify deploy url, run localStorage.removeItem("netlifySiteURL") in the browser console.
 

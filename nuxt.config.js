@@ -5,9 +5,6 @@ export default {
   /*
    ** Headers of the page
    */
-  /*
-   ** Headers of the page
-   */
   head: {
     htmlAttrs: {
       lang: 'en',
@@ -92,6 +89,9 @@ export default {
   /*
    ** vuetify module configuration
    ** https://github.com/nuxt-community/vuetify-module
+   **
+   ** define additional themes
+   ** colors object https://vuetifyjs.com/en/styles/colors
    */
   vuetify: {
     theme: {

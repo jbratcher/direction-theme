@@ -122,19 +122,72 @@
           </section>
           <section class="tabs-container">
             <v-tabs v-model="tab" left vertical hide-slider>
-              <v-tab v-for="(item, i) in items" :key="i">
-                <h4>{{ item.title }}</h4>
-                <p>{{ item.datetime }}</p>
+              <v-tab v-for="(day, i) in days" :key="i">
+                <h4>{{ day.title }}</h4>
+                <p>{{ day.datetime }}</p>
               </v-tab>
             </v-tabs>
 
             <v-tabs-items v-model="tab">
-              <v-tab-item v-for="(item, i) in items" :key="i">
-                <v-card flat>
-                  <v-card-text>{{ text }}</v-card-text>
+              <v-tab-item v-for="(day, i) in days" :key="i">
+                <v-card
+                  v-for="(event, i) in events.filter(event => event.dayId === day.id)"
+                  :key="i"
+                >
+                  <h4 class="time">{{ event.time }}</h4>
+                  <h3 class="title">{{ event.title }}</h3>
+                  <p class="speaker">{{ event.speaker }}</p>
+                  <p class="speaker-title">{{ event.speakerTitle }}</p>
+                  <v-avatar size="128px">
+                    <v-img
+                      :src="event.image"
+                      alt="event.title"
+                      lazy-src="https://picsum.photos/10/6"
+                    />
+                  </v-avatar>
                 </v-card>
               </v-tab-item>
             </v-tabs-items>
+          </section>
+        </section>
+
+        <!-- Prices Section -->
+        <section id="prices">
+          <section class="content-container">
+            <v-card>
+              <h4>Card title</h4>
+              <p>Card subtitle</p>
+            </v-card>
+          </section>
+        </section>
+
+        <!-- Speakers Section -->
+        <section id="speakers">
+          <section class="content-container">
+            <v-card>
+              <h4>Card title</h4>
+              <p>Card subtitle</p>
+            </v-card>
+          </section>
+        </section>
+
+        <!-- Sponsors Section -->
+        <section id="sponsors">
+          <section class="content-container">
+            <v-card>
+              <h4>Card title</h4>
+              <p>Card subtitle</p>
+            </v-card>
+          </section>
+        </section>
+
+        <!-- Blog Section -->
+        <section id="blog">
+          <section class="content-container">
+            <v-card>
+              <h4>Card title</h4>
+              <p>Card subtitle</p>
+            </v-card>
           </section>
         </section>
       </main>
@@ -157,34 +210,15 @@ export default {
     }
   },
   data: () => ({
-    tab: null,
-    items: [
-      {
-        title: 'Day 1',
-        datetime: 'Jan 29th, 2020 (9 AM - 5 PM)',
-        events: [
-          { time: '', title: '', speaker: '', speakerTitle: '', image: '' }
-        ]
-      },
-      {
-        title: 'Day 2',
-        datetime: 'Jan 30th, 2020 (9 AM - 5 PM)',
-        events: [
-          { time: '', title: '', speaker: '', speakerTitle: '', image: '' }
-        ]
-      },
-      {
-        title: 'Day 3',
-        datetime: 'Jan 31st, 2020 (9 AM - 5 PM)',
-        events: [
-          { time: '', title: '', speaker: '', speakerTitle: '', image: '' }
-        ]
-      }
-    ],
-    text:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+    tab: null
   }),
   computed: {
+    days() {
+      return this.$store.state.days
+    },
+    events() {
+      return this.$store.state.events
+    },
     responsiveWidth() {
       let value = '100%'
       switch (this.$vuetify.breakpoint.name) {
@@ -468,8 +502,9 @@ main {
 // day list section
 
 #day-schedule {
+  padding: 4rem 0;
   .content-container {
-    padding: 4rem 2rem;
+    padding: 0 2rem;
     h2,
     h3 {
       line-height: 1;
@@ -505,6 +540,40 @@ main {
       p {
         color: #fff;
       }
+    }
+    .v-tabs-items {
+      padding-bottom: 4rem;
+    }
+    .v-tabs-items .v-window-item {
+      display: flex;
+      flex-direction: column;
+
+      .v-card {
+        margin: 1rem 3rem;
+        padding: 2rem;
+
+        .time {
+          color: #ff6d00;
+          font-size: 1.33rem;
+          font-weight: 700;
+          margin-bottom: 0.5rem;
+        }
+
+        .title {
+          font-size: 1.5rem;
+          font-weight: 700;
+          margin-bottom: 0.5rem;
+        }
+
+        .speaker {
+          font-weight: 700;
+          margin-bottom: 0.5rem;
+        }
+      }
+    }
+    .v-card > *:last-child:not(.v-btn):not(.v-chip) {
+      border-bottom-left-radius: 50%;
+      border-bottom-right-radius: 50%;
     }
   }
 }
@@ -703,6 +772,57 @@ main {
         p {
           font-size: 1.125rem;
           margin: 1rem 0;
+        }
+      }
+    }
+  }
+
+  // day list section
+
+  #day-schedule {
+    .content-container {
+      padding: 4rem 2rem;
+      h2,
+      h3 {
+        line-height: 1;
+        padding: 1rem 0;
+      }
+      h2 {
+        font-size: 3rem;
+        font-weight: 900;
+      }
+      h3 {
+        font-size: 2.33rem;
+        font-weight: 700;
+      }
+      p {
+        font-size: 1.33rem;
+        padding: 1rem 0;
+      }
+    }
+    .tabs-container {
+      .v-tabs--vertical > .v-tabs-bar .v-tabs-bar__content {
+        flex-direction: row;
+      }
+      .v-tab {
+        clip-path: polygon(12.5% 0%, 100% 0%, 87.5% 100%, 0% 100%);
+        padding: 4rem;
+        margin: 1rem auto;
+        h4 {
+          font-size: 2rem;
+        }
+      }
+
+      .v-tabs-items .v-window-item {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        margin: 0 5%;
+        padding: 1rem 0;
+
+        .v-card {
+          margin: 1rem 0;
+          padding: 2rem;
         }
       }
     }
