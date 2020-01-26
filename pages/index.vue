@@ -13,7 +13,7 @@
 
         <!-- Countdown -->
         <section id="information">
-          <section class="justify-space-evenly">
+          <section>
             <p class="tagline">
               We will be
               <br />
@@ -117,8 +117,10 @@
         <section id="day-schedule">
           <section class="content-container">
             <h2>Day Schedule</h2>
-            <h3>A List of Events</h3>
-            <p>Ut ut lobortis augue. Phasellus venenatis metus non metus congue, eget fermentum ipsum porttitor.</p>
+            <section class="sub-container">
+              <h3>A List of Events</h3>
+              <p>Ut ut lobortis augue. Phasellus venenatis metus non metus congue, eget fermentum ipsum porttitor.</p>
+            </section>
           </section>
           <section class="tabs-container">
             <v-tabs v-model="tab" left vertical hide-slider>
@@ -135,10 +137,12 @@
                   :key="i"
                 >
                   <h4 class="time">{{ event.time }}</h4>
-                  <h3 class="title">{{ event.title }}</h3>
-                  <p class="speaker">{{ event.speaker }}</p>
-                  <p class="speaker-title">{{ event.speakerTitle }}</p>
-                  <v-avatar size="128px">
+                  <section>
+                    <h3 class="event-title">{{ event.title }}</h3>
+                    <p class="speaker">{{ event.speaker }}</p>
+                    <p class="speaker-title">{{ event.speakerTitle }}</p>
+                  </section>
+                  <v-avatar :size="eventAvatarSize">
                     <v-img
                       :src="event.image"
                       alt="event.title"
@@ -257,6 +261,27 @@ export default {
           break
         case 'xl':
           value = '100%'
+          break
+      }
+      return value
+    },
+    eventAvatarSize() {
+      let value = '128px'
+      switch (this.$vuetify.breakpoint.name) {
+        case 'xs':
+          value = '64px'
+          break
+        case 'sm':
+          value = '64px'
+          break
+        case 'md':
+          value = '128px'
+          break
+        case 'lg':
+          value = '128px'
+          break
+        case 'xl':
+          value = '128px'
           break
       }
       return value
@@ -513,17 +538,27 @@ main {
     h2 {
       font-size: 3rem;
       font-weight: 900;
+      margin-bottom: 1rem;
     }
-    h3 {
-      font-size: 2.33rem;
-      font-weight: 700;
-    }
-    p {
-      font-size: 1.33rem;
-      padding: 1rem 0;
+    .sub-container {
+      border-left: 0.25rem solid #ff6d00;
+      margin-left: 0.5rem;
+      padding-left: 2.5rem;
+      h3 {
+        font-size: 2.33rem;
+        font-weight: 700;
+        padding-top: 0;
+      }
+      p {
+        font-size: 1.33rem;
+        padding: 1rem 0;
+      }
     }
   }
   .tabs-container {
+    .v-tabs-bar {
+      padding-top: 2rem;
+    }
     .v-tab {
       clip-path: polygon(12.5% 0%, 100% 0%, 87.5% 100%, 0% 100%);
       flex-direction: column;
@@ -545,23 +580,21 @@ main {
       padding-bottom: 4rem;
     }
     .v-tabs-items .v-window-item {
-      display: flex;
-      flex-direction: column;
-
+      padding: 2rem 0;
       .v-card {
-        margin: 1rem 3rem;
+        margin: 0 2rem 2rem 2rem;
         padding: 2rem;
 
         .time {
           color: #ff6d00;
-          font-size: 1.33rem;
-          font-weight: 700;
+          font-size: 1.25rem;
+          font-weight: 900;
           margin-bottom: 0.5rem;
         }
 
-        .title {
-          font-size: 1.5rem;
-          font-weight: 700;
+        .event-title {
+          font-size: 1.25rem;
+          font-weight: 900;
           margin-bottom: 0.5rem;
         }
 
@@ -619,6 +652,7 @@ main {
     border-bottom-left-radius: 10rem;
     box-shadow: 0 11px 22px rgba(34, 34, 34, 0.2);
     flex-direction: row;
+    justify-content: space-evenly;
     margin: 0 0 2rem 2rem;
 
     .tagline {
@@ -662,9 +696,6 @@ main {
       justify-content: center;
       position: relative;
       margin-bottom: 5rem;
-      // .v-image {
-      //   width:;
-      // }
       .v-image:nth-of-type(2) {
         border: 8px solid #eee;
         position: relative;
@@ -751,8 +782,6 @@ main {
 
     .highlights {
       flex-direction: row;
-      justify-content: space-around;
-      justify-content: space-evenly;
       grid-area: cards;
       width: 90%;
       margin: 0 auto;
@@ -791,13 +820,20 @@ main {
         font-size: 3rem;
         font-weight: 900;
       }
-      h3 {
-        font-size: 2.33rem;
-        font-weight: 700;
-      }
-      p {
-        font-size: 1.33rem;
-        padding: 1rem 0;
+      .sub-container {
+        border-left: 0.5rem solid #ff6d00;
+        margin-left: 1rem;
+        padding-left: 5rem;
+        h3 {
+          font-size: 2.33rem;
+          font-weight: 700;
+          padding-top: 0;
+        }
+        p {
+          font-size: 1.33rem;
+          padding: 1rem 0;
+          width: 50%;
+        }
       }
     }
     .tabs-container {
@@ -812,17 +848,27 @@ main {
           font-size: 2rem;
         }
       }
-
       .v-tabs-items .v-window-item {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2rem;
-        margin: 0 5%;
-        padding: 1rem 0;
-
         .v-card {
-          margin: 1rem 0;
-          padding: 2rem;
+          display: flex;
+          align-items: center;
+
+          .section {
+            display: flex;
+            flex-direction: row;
+          }
+          .time {
+            margin-right: 10%;
+          }
+          .event-title {
+            font-size: 1.5rem;
+          }
+          .speaker {
+            font-size: 1.125rem;
+          }
+          .v-avatar {
+            margin-left: auto;
+          }
         }
       }
     }

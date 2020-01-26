@@ -177,11 +177,6 @@ body {
   word-break: break-word;
 }
 
-.justify-space-evenly {
-  justify-content: space-around;
-  justify-content: space-evenly;
-}
-
 // footer
 
 .v-footer {
