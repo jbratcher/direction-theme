@@ -7,7 +7,15 @@
           <section class="content-container">
             <p>January, 31st, 2020 - 9:00 AM</p>
             <h1>The Intersection of Art &amp; Tech</h1>
-            <v-btn color="orange accent-4" dark nuxt rounded to="/services" x-large>Learn More</v-btn>
+            <v-btn
+              color="orange accent-4"
+              dark
+              name="services"
+              nuxt
+              rounded
+              to="/services"
+              x-large
+            >Learn More</v-btn>
           </section>
         </section>
 
@@ -78,7 +86,15 @@
             <section class="cta-text">
               <h3>The Wave of the Future</h3>
               <p>Ut ut lobortis augue. Phasellus venenatis metus non metus congue, eget fermentum ipsum porttitor. Nunc nec mi a ligula suscipit pulvinar eu ut risus. Vivamus egestas neque vel nibh imperdiet, ac laoreet tellus imperdiet. Aliquam erat volutpat. Nam orci ex, placerat quis imperdiet vel, sagittis quis neque. Donec eget interdum ante, eu facilisis turpis.</p>
-              <v-btn color="orange accent-4" dark nuxt rounded to="/services" x-large>Learn More</v-btn>
+              <v-btn
+                color="orange accent-4"
+                dark
+                name="services"
+                nuxt
+                rounded
+                to="/services"
+                x-large
+              >Learn More</v-btn>
             </section>
           </v-container>
         </section>
@@ -88,9 +104,9 @@
           <section class="content-container">
             <p>Hurry, this event is almost sold out!</p>
             <h3>Meet &amp; Greet the Local Leaders of the Tech Industry</h3>
-            <v-btn color="blue accent-4" dark nuxt rounded to="/rsvp" x-large>RSVP Now</v-btn>
+            <v-btn color="blue accent-4" dark name="rsvp" nuxt rounded to="/rsvp" x-large>RSVP Now</v-btn>
           </section>
-          <v-img src="/img/event-details-3.jpg" alt />
+          <v-img src="/img/event-details-3.jpg" alt="rsvp" />
           <section class="highlights">
             <v-card>
               <v-icon size="4rem">mdi-earth</v-icon>
@@ -122,6 +138,7 @@
               <p>Ut ut lobortis augue. Phasellus venenatis metus non metus congue, eget fermentum ipsum porttitor.</p>
             </section>
           </section>
+
           <section class="tabs-container">
             <v-tabs v-model="tab" left vertical hide-slider>
               <v-tab v-for="(day, i) in days" :key="i">
@@ -145,7 +162,7 @@
                   <v-avatar :size="eventAvatarSize">
                     <v-img
                       :src="event.image"
-                      alt="event.title"
+                      :alt="event.title"
                       lazy-src="https://picsum.photos/10/6"
                     />
                   </v-avatar>
@@ -158,9 +175,110 @@
         <!-- Prices Section -->
         <section id="prices">
           <section class="content-container">
+            <h2>Prices</h2>
+            <section class="sub-container">
+              <h3>Ticket Packages</h3>
+              <p>Ut ut lobortis augue. Phasellus venenatis metus non metus congue, eget fermentum ipsum porttitor.</p>
+            </section>
+          </section>
+          <section class="packages">
             <v-card>
-              <h4>Card title</h4>
-              <p>Card subtitle</p>
+              <v-img
+                class="white--text align-end"
+                gradient="to top right, rgba(0,0,0,.5), rgba(0,0,0,.5)"
+                src="/img/event-details-1.jpg"
+                alt="package 1"
+                lazy-src="https://picsum.photos/10/6"
+              >
+                <v-icon class="white--text" size="64px">mdi-account-outline</v-icon>
+                <v-card-title>$100</v-card-title>
+              </v-img>
+              <v-btn class="ticket-type" name="package-1" text>Early Bird</v-btn>
+              <ul class="d-flex flex-column align-center">
+                <li>3 Day Pass</li>
+                <li>Free Coffee</li>
+                <li>Networking</li>
+                <li>Certificate</li>
+                <li>Swag Bag</li>
+              </ul>
+              <v-card-actions>
+                <v-btn
+                  color="orange accent-4"
+                  dark
+                  name="early-bird-ticket"
+                  nuxt
+                  rounded
+                  to="/tickets"
+                  x-large
+                >Get Tickets</v-btn>
+              </v-card-actions>
+            </v-card>
+            <v-card>
+              <v-img
+                class="white--text align-end"
+                gradient="to top right, rgba(0,0,0,.5), rgba(0,0,0,.5)"
+                src="/img/event-details-2.jpg"
+                alt="package 1"
+                lazy-src="https://picsum.photos/10/6"
+              >
+                <v-icon class="white--text" size="64px">mdi-account-group-outline</v-icon>
+                <v-card-title>$300</v-card-title>
+              </v-img>
+              <v-btn class="ticket-type" name="package-2" text>Team Package</v-btn>
+              <ul class="d-flex flex-column align-center">
+                <li>3 Day Pass</li>
+                <li>Free Coffee</li>
+                <li>Networking</li>
+                <li>Certificate</li>
+                <li>Swag Bag</li>
+                <li>Advertisment in Event Packet</li>
+                <li>Lunch &amp; Dinner</li>
+              </ul>
+              <v-card-actions>
+                <v-btn
+                  color="orange accent-4"
+                  dark
+                  name="team-ticket"
+                  nuxt
+                  rounded
+                  to="/tickets"
+                  x-large
+                >Get Tickets</v-btn>
+              </v-card-actions>
+            </v-card>
+            <v-card>
+              <v-img
+                class="white--text align-end"
+                gradient="to top right, rgba(0,0,0,.5), rgba(0,0,0,.5)"
+                src="/img/event-details-3.jpg"
+                alt="package 1"
+                lazy-src="https://picsum.photos/10/6"
+              >
+                <v-icon class="white--text" size="64px">mdi-account-outline</v-icon>
+                <v-card-title>$1000</v-card-title>
+              </v-img>
+              <v-btn class="ticket-type" name="package-1" text>VIP</v-btn>
+              <ul class="d-flex flex-column align-center">
+                <li>3 Day Pass</li>
+                <li>Free Coffee</li>
+                <li>Networking</li>
+                <li>Certificate</li>
+                <li>Swag Bag</li>
+                <li>Advertisment in Event Packet</li>
+                <li>Lunch &amp; Dinner</li>
+                <li>Sponored Listing</li>
+              </ul>
+              <v-card-actions>
+                <v-btn
+                  color="orange accent-4"
+                  dark
+                  name="vip-ticket"
+                  nuxt
+                  rounded
+                  to="/tickets"
+                  x-large
+                >Get Tickets</v-btn>
+              </v-card-actions>
             </v-card>
           </section>
         </section>
@@ -527,7 +645,8 @@ main {
 // day list section
 
 #day-schedule {
-  padding: 4rem 0;
+  margin-top: 4rem;
+  padding-top: 4rem;
   .content-container {
     padding: 0 2rem;
     h2,
@@ -607,6 +726,85 @@ main {
     .v-card > *:last-child:not(.v-btn):not(.v-chip) {
       border-bottom-left-radius: 50%;
       border-bottom-right-radius: 50%;
+    }
+  }
+}
+
+#prices {
+  padding: 4rem 0;
+  .content-container {
+    padding: 0 2rem;
+    h2,
+    h3 {
+      line-height: 1;
+      padding: 1rem 0;
+    }
+    h2 {
+      font-size: 3rem;
+      font-weight: 900;
+      margin-bottom: 1rem;
+    }
+    .sub-container {
+      border-left: 0.25rem solid #ff6d00;
+      margin-left: 0.5rem;
+      padding-left: 2.5rem;
+      h3 {
+        font-size: 2.33rem;
+        font-weight: 700;
+        padding-top: 0;
+      }
+      p {
+        font-size: 1.33rem;
+        padding: 1rem 0;
+      }
+    }
+  }
+  .packages {
+    padding: 2rem 0;
+    .v-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 90vw;
+      margin: 0 auto 2rem auto;
+      padding-bottom: 2rem;
+      position: relative;
+      .v-image {
+        max-height: 200px;
+        max-width: 350px;
+      }
+      .v-responsive__content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: auto;
+        min-width: 100%;
+        .v-card__title {
+          font-size: 2rem;
+          font-weight: 700;
+        }
+      }
+      .v-btn.ticket-type {
+        align-self: center;
+        background-color: #fff;
+        border: 1px solid #ff6d00;
+        border-radius: 1rem;
+        padding-right: 1rem;
+        padding-left: 1rem;
+        position: relative;
+        top: -1.25rem;
+        min-width: 100px;
+      }
+      ul {
+        padding: 0 0 1rem 0;
+        li {
+          margin: 0.5rem 0;
+        }
+      }
+      .v-card__actions {
+        margin-top: auto;
+      }
     }
   }
 }
@@ -809,6 +1007,7 @@ main {
   // day list section
 
   #day-schedule {
+    padding-top: 0;
     .content-container {
       padding: 4rem 2rem;
       h2,
@@ -837,6 +1036,9 @@ main {
       }
     }
     .tabs-container {
+      .v-tabs-bar {
+        padding: 2rem;
+      }
       .v-tabs--vertical > .v-tabs-bar .v-tabs-bar__content {
         flex-direction: row;
       }
@@ -849,6 +1051,7 @@ main {
         }
       }
       .v-tabs-items .v-window-item {
+        padding: 2rem 4rem;
         .v-card {
           display: flex;
           align-items: center;
@@ -871,6 +1074,13 @@ main {
           }
         }
       }
+    }
+  }
+
+  #prices {
+    .packages {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
     }
   }
 }

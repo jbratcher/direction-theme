@@ -124,6 +124,10 @@ body {
   overflow-x: hidden;
 }
 
+ul {
+  list-style-type: none;
+}
+
 // nav
 
 .v-toolbar__content {
