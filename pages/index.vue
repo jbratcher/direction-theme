@@ -286,9 +286,23 @@
         <!-- Speakers Section -->
         <section id="speakers">
           <section class="content-container">
-            <v-card>
-              <h4>Card title</h4>
-              <p>Card subtitle</p>
+            <h2>Speakers</h2>
+            <section class="sub-container">
+              <h3>Who's Speaking</h3>
+              <p>Ut ut lobortis augue. Phasellus venenatis metus non metus congue, eget fermentum ipsum porttitor.</p>
+            </section>
+          </section>
+          <section class="speakers-list">
+            <v-card v-for="(speaker, i) in speakers" :key="`${speaker.name}${i}`" flat>
+              <v-img
+                class="white--text align-end"
+                gradient="to top right, rgba(0,0,0,.5), rgba(0,0,0,.5)"
+                :src="speaker.image"
+                :alt="speaker.name"
+                lazy-src="https://picsum.photos/10/6"
+              />
+              <v-card-title>{{ speaker.name }}</v-card-title>
+              <v-card-subtitle>{{ speaker.title }}</v-card-subtitle>
             </v-card>
           </section>
         </section>
@@ -340,6 +354,9 @@ export default {
     },
     events() {
       return this.$store.state.events
+    },
+    speakers() {
+      return this.$store.state.speakers
     },
     responsiveWidth() {
       let value = '100%'
@@ -642,11 +659,11 @@ main {
   }
 }
 
-// day list section
+// prominent section heading
 
-#day-schedule {
-  margin-top: 4rem;
-  padding-top: 4rem;
+#day-schedule,
+#prices,
+#speakers {
   .content-container {
     padding: 0 2rem;
     h2,
@@ -674,6 +691,13 @@ main {
       }
     }
   }
+}
+
+// day schedule section
+
+#day-schedule {
+  margin-top: 4rem;
+  padding-top: 4rem;
   .tabs-container {
     .v-tabs-bar {
       padding-top: 2rem;
@@ -732,33 +756,6 @@ main {
 
 #prices {
   padding: 4rem 0;
-  .content-container {
-    padding: 0 2rem;
-    h2,
-    h3 {
-      line-height: 1;
-      padding: 1rem 0;
-    }
-    h2 {
-      font-size: 3rem;
-      font-weight: 900;
-      margin-bottom: 1rem;
-    }
-    .sub-container {
-      border-left: 0.25rem solid #ff6d00;
-      margin-left: 0.5rem;
-      padding-left: 2.5rem;
-      h3 {
-        font-size: 2.33rem;
-        font-weight: 700;
-        padding-top: 0;
-      }
-      p {
-        font-size: 1.33rem;
-        padding: 1rem 0;
-      }
-    }
-  }
   .packages {
     padding: 2rem 0;
     .v-card {
@@ -804,6 +801,32 @@ main {
       }
       .v-card__actions {
         margin-top: auto;
+      }
+    }
+  }
+}
+
+#speakers {
+  background: #fefefe;
+  padding: 2rem 0;
+  .speakers-list {
+    background: transparent;
+    padding: 2rem 0;
+    .v-card {
+      background: transparent;
+      margin: 2rem 0;
+      .v-image {
+        border-radius: 0.5rem;
+        margin: 0 auto;
+        max-height: 200px;
+        max-width: 350px;
+      }
+      .v-card__title {
+        padding-top: 0.25rem;
+      }
+      .v-card__title,
+      .v-card__subtitle {
+        margin-left: 1rem;
       }
     }
   }
@@ -1081,6 +1104,18 @@ main {
     .packages {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  #speakers {
+    .speakers-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      .v-card {
+        .v-image {
+          margin: 0 auto;
+        }
+      }
     }
   }
 }

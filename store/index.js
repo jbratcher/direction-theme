@@ -107,6 +107,37 @@ export const state = () => ({
       dayId: 3,
     },
   ],
+  speakers: [{
+      name: 'Speaker 1',
+      title: 'Position at Company',
+      image: 'https://i.pravatar.cc/350?img=60'
+    },
+    {
+      name: 'Speaker 2',
+      title: 'Position at Company',
+      image: 'https://i.pravatar.cc/350?img=50'
+    },
+    {
+      name: 'Speaker 3',
+      title: 'Position at Company',
+      image: 'https://i.pravatar.cc/350?img=51'
+    },
+    {
+      name: 'Speaker 4',
+      title: 'Position at Company',
+      image: 'https://i.pravatar.cc/350?img=52'
+    },
+    {
+      name: 'Speaker 5',
+      title: 'Position at Company',
+      image: 'https://i.pravatar.cc/350?img=53'
+    },
+    {
+      name: 'Speaker 6',
+      title: 'Position at Company',
+      image: 'https://i.pravatar.cc/350?img=54'
+    },
+  ],
 })
 
 export const mutations = {
