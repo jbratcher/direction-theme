@@ -1,11 +1,35 @@
 <template>
   <v-layout>
     <v-flex>
-      <main id="contact-page">
+      <main id="speakers-page">
         <!-- Main Section -->
         <section>
           <section class="content-container">
-            <h1>Contact</h1>
+            <h1>Speakers</h1>
+          </section>
+        </section>
+
+        <!-- Speakers Section -->
+        <section id="speakers">
+          <section class="content-container">
+            <h2>Speakers</h2>
+            <section class="sub-container">
+              <h3>Who's Speaking</h3>
+              <p>Ut ut lobortis augue. Phasellus venenatis metus non metus congue, eget fermentum ipsum porttitor.</p>
+            </section>
+          </section>
+          <section class="speakers-list">
+            <v-card v-for="(speaker, i) in speakers" :key="`${speaker.name}${i}`" flat>
+              <v-img
+                class="white--text align-end"
+                gradient="to top right, rgba(0,0,0,.5), rgba(0,0,0,.5)"
+                :src="speaker.image"
+                :alt="speaker.name"
+                lazy-src="https://picsum.photos/10/6"
+              />
+              <v-card-title>{{ speaker.name }}</v-card-title>
+              <v-card-subtitle>{{ speaker.title }}</v-card-subtitle>
+            </v-card>
           </section>
         </section>
       </main>
