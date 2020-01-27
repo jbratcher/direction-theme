@@ -310,19 +310,113 @@
         <!-- Sponsors Section -->
         <section id="sponsors">
           <section class="content-container">
-            <v-card>
-              <h4>Card title</h4>
-              <p>Card subtitle</p>
-            </v-card>
+            <h2>Sponors</h2>
+            <section class="sub-container">
+              <h3>An amazing bunch that deserves your attention</h3>
+            </section>
+          </section>
+          <section class="regular-sponsors">
+            <h4>Sponsors</h4>
+            <section>
+              <v-btn name="sponsor-name" href="https://coke.com" text>
+                <v-icon :size="eventAvatarSize">mdi-gitlab</v-icon>
+              </v-btn>
+              <v-btn name="sponsor-name" href="https://coke.com" text>
+                <v-icon :size="eventAvatarSize">mdi-apple</v-icon>
+              </v-btn>
+              <v-btn name="sponsor-name" href="https://coke.com" text>
+                <v-icon :size="eventAvatarSize">mdi-lightbulb</v-icon>
+              </v-btn>
+              <v-btn name="sponsor-name" href="https://coke.com" text>
+                <v-icon :size="eventAvatarSize">mdi-github-circle</v-icon>
+              </v-btn>
+              <v-btn name="sponsor-name" href="https://coke.com" text>
+                <v-icon :size="eventAvatarSize">mdi-facebook</v-icon>
+              </v-btn>
+              <v-btn name="sponsor-name" href="https://coke.com" text>
+                <v-icon :size="eventAvatarSize">mdi-twitter</v-icon>
+              </v-btn>
+            </section>
+          </section>
+          <section class="top-sponsors">
+            <h4>Top Sponsors</h4>
+            <section>
+              <v-btn name="sponsor-name" href="https://coke.com" text>
+                <v-icon :size="eventAvatarSize">mdi-github-face</v-icon>
+              </v-btn>
+              <v-btn name="sponsor-name" href="https://coke.com" text>
+                <v-icon :size="eventAvatarSize">mdi-longitude</v-icon>
+              </v-btn>
+            </section>
+          </section>
+          <section class="sponsor-apply">
+            <h4>Want to become a sponsor?</h4>
+            <v-btn
+              color="orange accent-4"
+              dark
+              name="sponsor-apply"
+              nuxt
+              rounded
+              to="/sponsor-apply"
+              x-large
+            >Sponsor</v-btn>
           </section>
         </section>
 
-        <!-- Blog Section -->
+        <!-- Location Section -->
         <section id="blog">
-          <section class="content-container">
+          <section class="location">
+            <v-img src="/img/hero.jpg" alt="venue" />
             <v-card>
-              <h4>Card title</h4>
-              <p>Card subtitle</p>
+              <v-card-title>Venue Location</v-card-title>
+              <v-card-subtitle>January 28-31st</v-card-subtitle>
+              <v-card-text>100 Main Street</v-card-text>
+              <v-card-text>Louisville, KY 40206</v-card-text>
+              <v-card-text>
+                <v-icon>mdi-map-marker</v-icon>Directions
+              </v-card-text>
+            </v-card>
+          </section>
+          <section class="content-container">
+            <h2>Blog</h2>
+            <section class="sub-container">
+              <h3>Stay tuned for updates</h3>
+              <p>Ut ut lobortis augue. Phasellus venenatis metus non metus congue, eget fermentum ipsum porttitor. Nunc nec mi a ligula suscipit pulvinar eu ut risus.</p>
+            </section>
+          </section>
+          <section class="blog-posts">
+            <v-card flat>
+              <v-img
+                class="white--text align-end"
+                src="/img/event-details-1.jpg"
+                alt="package 1"
+                lazy-src="https://picsum.photos/10/6"
+              />
+              <v-card-title>Post Title</v-card-title>
+              <v-card-text>Ut ut lobortis augue. Phasellus venenatis metus non metus congue, eget fermentum ipsum porttitor. Nunc nec mi a ligula suscipit pulvinar eu ut risus. Vivamus egestas neque vel nibh imperdiet, ac laoreet tellus imperdiet. Aliquam erat volutpat. Nam orci ex, placerat quis imperdiet vel, sagittis quis neque. Donec eget interdum ante, eu facilisis turpis</v-card-text>
+              <v-btn name="read-more" color="orange accent-4" text>Read More</v-btn>
+            </v-card>
+            <v-card flat>
+              <v-img
+                class="white--text align-end"
+                src="/img/event-details-2.jpg"
+                alt="package 1"
+                lazy-src="https://picsum.photos/10/6"
+              />
+              <v-card-title>Post Title</v-card-title>
+              <v-card-text>Ut ut lobortis augue. Phasellus venenatis metus non metus congue, eget fermentum ipsum porttitor. Nunc nec mi a ligula suscipit pulvinar eu ut risus. Vivamus egestas neque vel nibh imperdiet, ac laoreet tellus imperdiet. Aliquam erat volutpat. Nam orci ex, placerat quis imperdiet vel, sagittis quis neque. Donec eget interdum ante, eu facilisis turpis</v-card-text>
+              <v-btn name="read-more" color="orange accent-4" text>Read More</v-btn>
+            </v-card>
+            <v-card flat>
+              <v-img
+                class="white--text align-end"
+                src="/img/event-details-3.jpg"
+                alt="package 1"
+                lazy-src="https://picsum.photos/10/6"
+              />
+              <v-card-title>Post Title</v-card-title>
+              <v-card-text>Ut ut lobortis augue. Phasellus venenatis metus non metus congue, eget fermentum ipsum porttitor. Nunc nec mi a ligula suscipit pulvinar eu ut risus. Vivamus egestas neque vel nibh imperdiet, ac laoreet tellus imperdiet. Aliquam erat volutpat. Nam orci ex, placerat quis imperdiet vel, sagittis quis neque. Donec eget interdum ante, eu facilisis turpis</v-card-text>
+              <v-btn name="read-more" color="orange accent-4" text>Read More</v-btn>
             </v-card>
           </section>
         </section>
@@ -663,7 +757,9 @@ main {
 
 #day-schedule,
 #prices,
-#speakers {
+#speakers,
+#sponsors,
+#blog {
   .content-container {
     padding: 0 2rem;
     h2,
@@ -806,6 +902,8 @@ main {
   }
 }
 
+// speakers section
+
 #speakers {
   background: #fefefe;
   padding: 2rem 0;
@@ -827,6 +925,86 @@ main {
       .v-card__title,
       .v-card__subtitle {
         margin-left: 1rem;
+      }
+    }
+  }
+}
+
+// sponsors section
+
+#sponsors {
+  padding: 4rem 2rem;
+  .regular-sponsors,
+  .top-sponsors {
+    margin: 2rem 0;
+
+    h4 {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+    }
+
+    & > section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      .v-btn {
+        margin: 2rem 0;
+      }
+    }
+  }
+  .sponsor-apply {
+    h4 {
+      font-size: 1.67rem;
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+// blog section
+
+#blog {
+  background: #fefefe;
+  padding: 6rem 2rem 4rem;
+  .location {
+    position: relative;
+    .v-image {
+      max-width: 90vw;
+      max-height: 300px;
+      margin: 0 auto;
+    }
+    .v-card {
+      margin: 0 auto;
+      position: relative;
+      top: -4rem;
+      width: 70vw;
+
+      .v-card__title {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+
+      .v-card__subtitle {
+        color: #ff6d00;
+        font-size: 1.5rem;
+      }
+
+      .v-card__text {
+        padding: 0.25rem 1rem;
+      }
+
+      .v-card__text:last-child {
+        margin: 2rem 0;
+      }
+    }
+  }
+  .blog-posts {
+    padding: 4rem 0;
+    .v-card {
+      max-width: 95vw;
+      margin: 0 auto 2rem auto;
+      .v-image {
+        max-height: 200px;
+        max-width: 350px;
       }
     }
   }
@@ -1100,12 +1278,16 @@ main {
     }
   }
 
+  // prices section
+
   #prices {
     .packages {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
     }
   }
+
+  // speakers section
 
   #speakers {
     .speakers-list {
@@ -1116,6 +1298,44 @@ main {
           margin: 0 auto;
         }
       }
+    }
+  }
+
+  // sponsors section
+
+  #sponsors {
+    .regular-sponsors,
+    .top-sponsors {
+      margin: 2rem 0;
+
+      h4 {
+        font-size: 1.25rem;
+        margin-bottom: 2rem;
+      }
+
+      & > section {
+        grid-template-columns: repeat(3, 1fr);
+
+        .v-btn {
+          margin: 6rem 0;
+        }
+      }
+    }
+    .sponsor-apply {
+      h4 {
+        font-size: 1.67rem;
+        margin-bottom: 1rem;
+      }
+    }
+  }
+
+  // blog section
+
+  #blog {
+    .blog-posts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
     }
   }
 }
