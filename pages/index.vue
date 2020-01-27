@@ -897,6 +897,9 @@ main {
       }
       .v-card__actions {
         margin-top: auto;
+        .v-btn {
+          padding: 1.5rem;
+        }
       }
     }
   }
@@ -933,10 +936,11 @@ main {
 // sponsors section
 
 #sponsors {
-  padding: 4rem 2rem;
+  padding: 4rem 0;
   .regular-sponsors,
   .top-sponsors {
     margin: 2rem 0;
+    padding: 0 2rem;
 
     h4 {
       font-size: 1.25rem;
@@ -953,6 +957,7 @@ main {
     }
   }
   .sponsor-apply {
+    padding: 0 2rem;
     h4 {
       font-size: 1.67rem;
       margin-bottom: 1rem;
@@ -964,7 +969,7 @@ main {
 
 #blog {
   background: #fefefe;
-  padding: 6rem 2rem 4rem;
+  padding: 6rem 0 4rem;
   .location {
     position: relative;
     .v-image {
@@ -998,13 +1003,14 @@ main {
     }
   }
   .blog-posts {
-    padding: 4rem 0;
+    padding: 4rem 0 0;
     .v-card {
       max-width: 95vw;
-      margin: 0 auto 2rem auto;
+      margin: 0 auto 4rem auto;
       .v-image {
         max-height: 200px;
         max-width: 350px;
+        margin: 0 auto;
       }
     }
   }

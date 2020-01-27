@@ -39,6 +39,19 @@
     </v-content>
     <!-- Footer Area -->
     <v-footer>
+      <section class="content-container">
+        <h2>DirectionTheme</h2>
+        <p>A event/conference theme for Nuxt and Netlify CMS</p>
+        <section class="subscribe-form">
+          <v-text-field label="Email" outlined color="orange accent-4" clearable></v-text-field>
+          <v-btn
+            name="subscribe"
+            nuxt
+            to="/subscribe"
+            class="white--text orange accent-4"
+          >Get our Newsletter</v-btn>
+        </section>
+      </section>
       <ul>
         <li v-for="(link, i) in generalLinks" :key="i + link.title">
           <v-btn text rounded>{{ link.title }}</v-btn>
@@ -184,9 +197,32 @@ ul {
 // footer
 
 .v-footer {
+  padding: 6rem 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  .content-container {
+    margin-bottom: 4rem;
+    h2 {
+      font-size: 2.67rem;
+      font-weight: 900;
+      text-align: center;
+    }
+    p {
+      font-size: 1.5rem;
+      padding-bottom: 3rem;
+    }
+  }
+
+  .subscribe-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .v-input {
+      width: 80%;
+    }
+  }
 
   ul {
     display: flex;
