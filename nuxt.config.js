@@ -9,7 +9,7 @@ export default {
     htmlAttrs: {
       lang: 'en',
     },
-    title: 'DirectionTheme',
+    title: 'Direction',
     meta: [{
         charset: 'utf-8'
       },
@@ -100,7 +100,7 @@ export default {
         light: {
           primary: colors.blue.accent4,
           accent: colors.blue.base,
-          secondary: colors.lightBlue.darken1,
+          secondary: colors.orange.accent4,
           info: colors.blueGrey.lighten1,
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,

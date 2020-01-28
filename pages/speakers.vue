@@ -89,7 +89,7 @@ export default {
       let value = '100%'
       switch (this.$vuetify.breakpoint.name) {
         case 'xs':
-          value = '95vw'
+          value = '90vw'
           break
         case 'sm':
           value = '100%'

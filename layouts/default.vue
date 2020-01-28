@@ -1,31 +1,27 @@
 <template>
   <v-app>
     <!-- Header Area -->
-    <v-app-bar app elevate-on-scroll hide-on-scroll height="100px" flat light tile>
+    <v-app-bar app elevate-on-scroll hide-on-scroll :height="navHeight" flat light tile>
       <v-toolbar-title v-text="title" />
       <v-spacer class="hidden-md-and-up" />
       <v-app-bar-nav-icon class="hidden-md-and-up" color="#000" @click.stop="drawer = !drawer" />
-      <MenuLinks
-        :general-links="generalLinks"
-        list-class="hidden-md-and-down"
-        list-item-class="row-menu"
-      />
+      <MenuLinks :general-links="generalLinks" list-class="hidden-sm-and-down" />
       <v-btn
-        class="flex-0 align-self-center hidden-md-and-down cta-btn"
+        class="flex-0 align-self-center hidden-sm-and-down btn-box-shadow"
         color="blue accent-4"
         dark
         nuxt
         rounded
         to="/contact"
         x-large
-      >Contact Us</v-btn>
+      >Contact</v-btn>
     </v-app-bar>
     <!-- side/mobile navigation -->
     <v-navigation-drawer v-model="drawer" :mini-variant="miniVariant" fixed right>
       <MenuLinks :general-links="generalLinks" list-class="mobile" />
       <v-btn
-        class="flex-0 align-self-center cta-btn"
-        color="#4125ff"
+        class="flex-0 align-self-center btn-box-shadow"
+        color="primary"
         dark
         nuxt
         rounded
@@ -40,7 +36,7 @@
     <!-- Footer Area -->
     <v-footer>
       <section class="content-container">
-        <h2>DirectionTheme</h2>
+        <h2>Direction</h2>
         <p>A event/conference theme for Nuxt and Netlify CMS</p>
         <section class="subscribe-form">
           <v-text-field label="Email" outlined color="orange accent-4" clearable></v-text-field>
@@ -57,7 +53,7 @@
       </section>
       <ul>
         <li v-for="(link, i) in generalLinks" :key="i + link.title">
-          <v-btn text rounded>{{ link.title }}</v-btn>
+          <v-btn :href="link.to" rounded text>{{ link.title }}</v-btn>
         </li>
       </ul>
       <v-container>
@@ -96,18 +92,36 @@ export default {
           to: '/speakers'
         },
         {
-          icon: 'mdi-message',
-          title: 'Contact',
-          to: '/contact'
-        },
-        {
           icon: 'mdi-briefcase',
           title: 'More',
           to: '/more'
         }
       ],
       miniVariant: false,
-      title: 'DirectionTheme'
+      title: 'Direction'
+    }
+  },
+  computed: {
+    navHeight() {
+      let height = '100px'
+      switch (this.$vuetify.breakpoint.name) {
+        case 'xs':
+          height = '80px'
+          break
+        case 'sm':
+          height = '90px'
+          break
+        case 'md':
+          height = '100px'
+          break
+        case 'lg':
+          height = '110px'
+          break
+        case 'xl':
+          height = '120px'
+          break
+      }
+      return height
     }
   }
 }
@@ -187,7 +201,7 @@ ul {
   flex-direction: column;
 }
 
-.cta-btn {
+.btn-box-shadow {
   box-shadow: 0 11px 22px rgba(34, 34, 34, 0.2);
 }
 
@@ -207,6 +221,7 @@ ul {
 
   .content-container {
     margin-bottom: 4rem;
+    padding: 0 2rem;
     h2 {
       font-size: 2.67rem;
       font-weight: 900;
@@ -268,7 +283,7 @@ main {
 
 // hero section
 #hero {
-  padding: 2rem 0 4rem;
+  padding: 0 0 2rem;
 
   section.content-container {
     background: #eee;
@@ -367,11 +382,11 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-width: 95vw;
+    min-width: 90vw;
 
     .v-image {
       margin: 1rem auto;
-      max-width: 95vw;
+      max-width: 90vw;
     }
   }
 
@@ -441,7 +456,7 @@ main {
       0% 75%
     );
     margin: 2rem;
-    max-width: 95vw;
+    max-width: 90vw;
   }
 
   .highlights {
@@ -690,9 +705,11 @@ main {
     & > section {
       display: grid;
       grid-template-columns: 1fr 1fr;
+      justify-items: center;
 
       .v-btn {
         margin: 2rem 0;
+        max-width: min-content;
       }
     }
   }
@@ -746,7 +763,7 @@ main {
   .blog-posts {
     padding: 4rem 0 0;
     .v-card {
-      max-width: 95vw;
+      max-width: 90vw;
       margin: 0 auto 4rem auto;
       .v-image {
         max-height: 200px;
@@ -841,7 +858,7 @@ main {
 
     .information-content {
       display: flex;
-      align-items: center;
+      align-items: baseline;
 
       section {
         display: flex;
@@ -876,18 +893,21 @@ main {
       justify-content: center;
       position: relative;
       margin-bottom: 5rem;
-      .v-image:nth-of-type(2) {
-        border: 8px solid #eee;
+      .v-image {
+        border: 8px solid #fefefe;
         position: relative;
-        top: 20px;
-        left: -20px;
         max-width: 316px;
       }
+      .v-image:nth-of-type(1) {
+        left: 40px;
+      }
+      .v-image:nth-of-type(2) {
+        top: 20px;
+        left: 20px;
+      }
       .v-image:nth-of-type(3) {
-        position: relative;
         top: 40px;
         left: -20px;
-        max-width: 316px;
       }
     }
 
@@ -1096,10 +1116,8 @@ main {
 
       & > section {
         grid-template-columns: repeat(3, 1fr);
-
-        .v-btn {
-          margin: 6rem 0;
-        }
+        gap: 4rem 0;
+        justify-items: center;
       }
     }
     .sponsor-apply {

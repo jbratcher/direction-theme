@@ -189,6 +189,12 @@
                 src="/img/event-details-1.jpg"
                 alt="package 1"
                 lazy-src="https://picsum.photos/10/6"
+                min-width="200px"
+                :width="threeCardImageWidth"
+                :max-width="threeCardImageMaxWidth"
+                min-height="112.5px"
+                height="200px"
+                max-height="200px"
               >
                 <v-icon class="white--text" size="64px">mdi-account-outline</v-icon>
                 <v-card-title>$100</v-card-title>
@@ -220,6 +226,12 @@
                 src="/img/event-details-2.jpg"
                 alt="package 1"
                 lazy-src="https://picsum.photos/10/6"
+                min-width="200px"
+                :width="threeCardImageWidth"
+                :max-width="threeCardImageMaxWidth"
+                min-height="112.5px"
+                height="200px"
+                max-height="200px"
               >
                 <v-icon class="white--text" size="64px">mdi-account-group-outline</v-icon>
                 <v-card-title>$300</v-card-title>
@@ -253,6 +265,12 @@
                 src="/img/event-details-3.jpg"
                 alt="package 1"
                 lazy-src="https://picsum.photos/10/6"
+                min-width="200px"
+                :width="threeCardImageWidth"
+                :max-width="threeCardImageMaxWidth"
+                min-height="112.5px"
+                height="200px"
+                max-height="200px"
               >
                 <v-icon class="white--text" size="64px">mdi-account-outline</v-icon>
                 <v-card-title>$1000</v-card-title>
@@ -300,6 +318,12 @@
                 :src="speaker.image"
                 :alt="speaker.name"
                 lazy-src="https://picsum.photos/10/6"
+                min-width="200px"
+                :width="threeCardImageWidth"
+                :max-width="threeCardImageMaxWidth"
+                min-height="112.5px"
+                height="200px"
+                max-height="200px"
               />
               <v-card-title>{{ speaker.name }}</v-card-title>
               <v-card-subtitle>{{ speaker.title }}</v-card-subtitle>
@@ -318,22 +342,22 @@
           <section class="regular-sponsors">
             <h4>Sponsors</h4>
             <section>
-              <v-btn name="sponsor-name" href="https://coke.com" text>
+              <v-btn name="sponsor-name" href="https://coke.com" text x-large>
                 <v-icon :size="eventAvatarSize">mdi-gitlab</v-icon>
               </v-btn>
-              <v-btn name="sponsor-name" href="https://coke.com" text>
+              <v-btn name="sponsor-name" href="https://coke.com" text x-large>
                 <v-icon :size="eventAvatarSize">mdi-apple</v-icon>
               </v-btn>
-              <v-btn name="sponsor-name" href="https://coke.com" text>
+              <v-btn name="sponsor-name" href="https://coke.com" text x-large>
                 <v-icon :size="eventAvatarSize">mdi-lightbulb</v-icon>
               </v-btn>
-              <v-btn name="sponsor-name" href="https://coke.com" text>
+              <v-btn name="sponsor-name" href="https://coke.com" text x-large>
                 <v-icon :size="eventAvatarSize">mdi-github-circle</v-icon>
               </v-btn>
-              <v-btn name="sponsor-name" href="https://coke.com" text>
+              <v-btn name="sponsor-name" href="https://coke.com" text x-large>
                 <v-icon :size="eventAvatarSize">mdi-facebook</v-icon>
               </v-btn>
-              <v-btn name="sponsor-name" href="https://coke.com" text>
+              <v-btn name="sponsor-name" href="https://coke.com" text x-large>
                 <v-icon :size="eventAvatarSize">mdi-twitter</v-icon>
               </v-btn>
             </section>
@@ -341,10 +365,10 @@
           <section class="top-sponsors">
             <h4>Top Sponsors</h4>
             <section>
-              <v-btn name="sponsor-name" href="https://coke.com" text>
+              <v-btn name="sponsor-name" href="https://coke.com" text x-large>
                 <v-icon :size="eventAvatarSize">mdi-github-face</v-icon>
               </v-btn>
-              <v-btn name="sponsor-name" href="https://coke.com" text>
+              <v-btn name="sponsor-name" href="https://coke.com" text x-large>
                 <v-icon :size="eventAvatarSize">mdi-longitude</v-icon>
               </v-btn>
             </section>
@@ -391,6 +415,11 @@
                 src="/img/event-details-1.jpg"
                 alt="package 1"
                 lazy-src="https://picsum.photos/10/6"
+                :width="threeCardImageWidth"
+                :max-width="threeCardImageMaxWidth"
+                min-height="112.5px"
+                height="200px"
+                max-height="200px"
               />
               <v-card-title>Post Title</v-card-title>
               <v-card-text>Ut ut lobortis augue. Phasellus venenatis metus non metus congue, eget fermentum ipsum porttitor. Nunc nec mi a ligula suscipit pulvinar eu ut risus. Vivamus egestas neque vel nibh imperdiet, ac laoreet tellus imperdiet. Aliquam erat volutpat. Nam orci ex, placerat quis imperdiet vel, sagittis quis neque. Donec eget interdum ante, eu facilisis turpis</v-card-text>
@@ -402,6 +431,11 @@
                 src="/img/event-details-2.jpg"
                 alt="package 1"
                 lazy-src="https://picsum.photos/10/6"
+                :width="threeCardImageWidth"
+                :max-width="threeCardImageMaxWidth"
+                min-height="112.5px"
+                height="200px"
+                max-height="200px"
               />
               <v-card-title>Post Title</v-card-title>
               <v-card-text>Ut ut lobortis augue. Phasellus venenatis metus non metus congue, eget fermentum ipsum porttitor. Nunc nec mi a ligula suscipit pulvinar eu ut risus. Vivamus egestas neque vel nibh imperdiet, ac laoreet tellus imperdiet. Aliquam erat volutpat. Nam orci ex, placerat quis imperdiet vel, sagittis quis neque. Donec eget interdum ante, eu facilisis turpis</v-card-text>
@@ -413,6 +447,11 @@
                 src="/img/event-details-3.jpg"
                 alt="package 1"
                 lazy-src="https://picsum.photos/10/6"
+                :width="threeCardImageWidth"
+                :max-width="threeCardImageMaxWidth"
+                min-height="112.5px"
+                height="200px"
+                max-height="200px"
               />
               <v-card-title>Post Title</v-card-title>
               <v-card-text>Ut ut lobortis augue. Phasellus venenatis metus non metus congue, eget fermentum ipsum porttitor. Nunc nec mi a ligula suscipit pulvinar eu ut risus. Vivamus egestas neque vel nibh imperdiet, ac laoreet tellus imperdiet. Aliquam erat volutpat. Nam orci ex, placerat quis imperdiet vel, sagittis quis neque. Donec eget interdum ante, eu facilisis turpis</v-card-text>
@@ -452,6 +491,48 @@ export default {
     speakers() {
       return this.$store.state.speakers
     },
+    threeCardImageWidth() {
+      let value = '100%'
+      switch (this.$vuetify.breakpoint.name) {
+        case 'xs':
+          value = '100%'
+          break
+        case 'sm':
+          value = '175px'
+          break
+        case 'md':
+          value = '250px'
+          break
+        case 'lg':
+          value = '350px'
+          break
+        case 'xl':
+          value = '400px'
+          break
+      }
+      return value
+    },
+    threeCardImageMaxWidth() {
+      let value = '100%'
+      switch (this.$vuetify.breakpoint.name) {
+        case 'xs':
+          value = '100%'
+          break
+        case 'sm':
+          value = '175px'
+          break
+        case 'md':
+          value = '250px'
+          break
+        case 'lg':
+          value = '350px'
+          break
+        case 'xl':
+          value = '400px'
+          break
+      }
+      return value
+    },
     responsiveWidth() {
       let value = '100%'
       switch (this.$vuetify.breakpoint.name) {
@@ -459,16 +540,16 @@ export default {
           value = '100%'
           break
         case 'sm':
-          value = '200px'
+          value = '300px'
           break
         case 'md':
-          value = '20vw'
+          value = '25vw'
           break
         case 'lg':
-          value = '20vw'
+          value = '25vw'
           break
         case 'xl':
-          value = '20vw'
+          value = '25vw'
           break
       }
       return value
@@ -477,7 +558,7 @@ export default {
       let value = '100%'
       switch (this.$vuetify.breakpoint.name) {
         case 'xs':
-          value = '95vw'
+          value = '90vw'
           break
         case 'sm':
           value = '100%'

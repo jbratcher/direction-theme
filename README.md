@@ -1,4 +1,4 @@
-# Direction Theme
+# Direction
 
 A general theme for Nuxt / Netlify CMS quickstart
 
