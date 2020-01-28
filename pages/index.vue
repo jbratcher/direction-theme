@@ -48,30 +48,10 @@
         <section id="event-details" class="py-12">
           <section class="event-images">
             <v-img
-              src="/img/event-details-1.jpg"
-              alt
-              :aspect-ratio="16/9"
-              min-width="200px"
-              :width="responsiveWidth"
-              :max-width="responsiveMaxWidth"
-              min-height="112.5px"
-              height="100%"
-              max-height="30vh"
-            />
-            <v-img
-              src="/img/event-details-2.jpg"
-              alt
-              :aspect-ratio="16/9"
-              min-width="200px"
-              :width="responsiveWidth"
-              :max-width="responsiveMaxWidth"
-              min-height="112.5px"
-              height="100%"
-              max-height="30vh"
-            />
-            <v-img
-              src="/img/event-details-3.jpg"
-              alt
+              v-for="(event, i) in highlightedEvents"
+              :key="`${event,name}${i}`"
+              :src="event.image"
+              :alt="event.name"
               :aspect-ratio="16/9"
               min-width="200px"
               :width="responsiveWidth"
@@ -141,17 +121,17 @@
 
           <section class="tabs-container">
             <v-tabs v-model="tab" left vertical hide-slider>
-              <v-tab v-for="(day, i) in days" :key="i">
+              <v-tab v-for="(day, i) in days" :key="`${day.datetime}${i}`">
                 <h4>{{ day.title }}</h4>
                 <p>{{ day.datetime }}</p>
               </v-tab>
             </v-tabs>
 
             <v-tabs-items v-model="tab">
-              <v-tab-item v-for="(day, i) in days" :key="i">
+              <v-tab-item v-for="(day, i) in days" :key="`${day.title}${i}`">
                 <v-card
                   v-for="(event, i) in events.filter(event => event.dayId === day.id)"
-                  :key="i"
+                  :key="`${event.name}${i}`"
                 >
                   <h4 class="time">{{ event.time }}</h4>
                   <section>
@@ -342,34 +322,28 @@
           <section class="regular-sponsors">
             <h4>Sponsors</h4>
             <section>
-              <v-btn name="sponsor-name" href="https://coke.com" text x-large>
-                <v-icon :size="eventAvatarSize">mdi-gitlab</v-icon>
-              </v-btn>
-              <v-btn name="sponsor-name" href="https://coke.com" text x-large>
-                <v-icon :size="eventAvatarSize">mdi-apple</v-icon>
-              </v-btn>
-              <v-btn name="sponsor-name" href="https://coke.com" text x-large>
-                <v-icon :size="eventAvatarSize">mdi-lightbulb</v-icon>
-              </v-btn>
-              <v-btn name="sponsor-name" href="https://coke.com" text x-large>
-                <v-icon :size="eventAvatarSize">mdi-github-circle</v-icon>
-              </v-btn>
-              <v-btn name="sponsor-name" href="https://coke.com" text x-large>
-                <v-icon :size="eventAvatarSize">mdi-facebook</v-icon>
-              </v-btn>
-              <v-btn name="sponsor-name" href="https://coke.com" text x-large>
-                <v-icon :size="eventAvatarSize">mdi-twitter</v-icon>
+              <v-btn
+                v-for="(sponsor, i) in regularSponsors"
+                :key="`${sponsor.name}${i}`"
+                :href="sponsor.to"
+                text
+                x-large
+              >
+                <v-icon :size="eventAvatarSize">{{ sponsor.icon }}</v-icon>
               </v-btn>
             </section>
           </section>
           <section class="top-sponsors">
             <h4>Top Sponsors</h4>
             <section>
-              <v-btn name="sponsor-name" href="https://coke.com" text x-large>
-                <v-icon :size="eventAvatarSize">mdi-github-face</v-icon>
-              </v-btn>
-              <v-btn name="sponsor-name" href="https://coke.com" text x-large>
-                <v-icon :size="eventAvatarSize">mdi-longitude</v-icon>
+              <v-btn
+                v-for="(sponsor, i) in topSponsors"
+                :key="`${sponsor.name}${i}`"
+                :href="sponsor.to"
+                text
+                x-large
+              >
+                <v-icon :size="eventAvatarSize">{{ sponsor.icon }}</v-icon>
               </v-btn>
             </section>
           </section>
@@ -409,11 +383,11 @@
             </section>
           </section>
           <section class="blog-posts">
-            <v-card flat>
+            <v-card v-for="(post, i) in posts" :key="`${post.title}${i}`" flat>
               <v-img
                 class="white--text align-end"
-                src="/img/event-details-1.jpg"
-                alt="package 1"
+                :src="post.image"
+                :alt="post.title"
                 lazy-src="https://picsum.photos/10/6"
                 :width="threeCardImageWidth"
                 :max-width="threeCardImageMaxWidth"
@@ -421,41 +395,14 @@
                 height="200px"
                 max-height="200px"
               />
-              <v-card-title>Post Title</v-card-title>
-              <v-card-text>Ut ut lobortis augue. Phasellus venenatis metus non metus congue, eget fermentum ipsum porttitor. Nunc nec mi a ligula suscipit pulvinar eu ut risus. Vivamus egestas neque vel nibh imperdiet, ac laoreet tellus imperdiet. Aliquam erat volutpat. Nam orci ex, placerat quis imperdiet vel, sagittis quis neque. Donec eget interdum ante, eu facilisis turpis</v-card-text>
-              <v-btn name="read-more" color="orange accent-4" text>Read More</v-btn>
-            </v-card>
-            <v-card flat>
-              <v-img
-                class="white--text align-end"
-                src="/img/event-details-2.jpg"
-                alt="package 1"
-                lazy-src="https://picsum.photos/10/6"
-                :width="threeCardImageWidth"
-                :max-width="threeCardImageMaxWidth"
-                min-height="112.5px"
-                height="200px"
-                max-height="200px"
-              />
-              <v-card-title>Post Title</v-card-title>
-              <v-card-text>Ut ut lobortis augue. Phasellus venenatis metus non metus congue, eget fermentum ipsum porttitor. Nunc nec mi a ligula suscipit pulvinar eu ut risus. Vivamus egestas neque vel nibh imperdiet, ac laoreet tellus imperdiet. Aliquam erat volutpat. Nam orci ex, placerat quis imperdiet vel, sagittis quis neque. Donec eget interdum ante, eu facilisis turpis</v-card-text>
-              <v-btn name="read-more" color="orange accent-4" text>Read More</v-btn>
-            </v-card>
-            <v-card flat>
-              <v-img
-                class="white--text align-end"
-                src="/img/event-details-3.jpg"
-                alt="package 1"
-                lazy-src="https://picsum.photos/10/6"
-                :width="threeCardImageWidth"
-                :max-width="threeCardImageMaxWidth"
-                min-height="112.5px"
-                height="200px"
-                max-height="200px"
-              />
-              <v-card-title>Post Title</v-card-title>
-              <v-card-text>Ut ut lobortis augue. Phasellus venenatis metus non metus congue, eget fermentum ipsum porttitor. Nunc nec mi a ligula suscipit pulvinar eu ut risus. Vivamus egestas neque vel nibh imperdiet, ac laoreet tellus imperdiet. Aliquam erat volutpat. Nam orci ex, placerat quis imperdiet vel, sagittis quis neque. Donec eget interdum ante, eu facilisis turpis</v-card-text>
-              <v-btn name="read-more" color="orange accent-4" text>Read More</v-btn>
+              <v-card-title>{{ post.title }}</v-card-title>
+              <v-card-text>{{ post.body.substring(0, 120) + "..." }}</v-card-text>
+              <v-btn
+                :name="post.title"
+                :href="`/posts/${post.id}`"
+                color="orange accent-4"
+                text
+              >Read More</v-btn>
             </v-card>
           </section>
         </section>
@@ -482,14 +429,29 @@ export default {
     tab: null
   }),
   computed: {
+    posts() {
+      return this.$store.state.blogPosts
+    },
     days() {
       return this.$store.state.days
     },
     events() {
       return this.$store.state.events
     },
+    highlightedEvents() {
+      return this.$store.state.events.slice().filter(event => event.hightlight)
+    },
     speakers() {
       return this.$store.state.speakers
+    },
+    sponsors() {
+      return this.$store.state.sponsors
+    },
+    regularSponsors() {
+      return this.$store.state.sponsors.slice().filter(sponsor => !sponsor.top)
+    },
+    topSponsors() {
+      return this.$store.state.sponsors.slice().filter(sponsor => sponsor.top)
     },
     threeCardImageWidth() {
       let value = '100%'

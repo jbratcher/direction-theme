@@ -1,5 +1,23 @@
 export const state = () => ({
-  blogPosts: [],
+  blogPosts: [{
+      id: 1,
+      title: 'Post 1',
+      body: 'Ut ut lobortis augue. Phasellus venenatis metus non metus congue, eget fermentum ipsum porttitor. Nunc nec mi a ligula suscipit pulvinar eu ut risus. Vivamus egestas neque vel nibh imperdiet, ac laoreet tellus imperdiet. Aliquam erat volutpat. Nam orci ex, placerat quis imperdiet vel, sagittis quis neque. Donec eget interdum ante, eu facilisis turpis',
+      image: '/img/event-details-1.jpg'
+    },
+    {
+      id: 2,
+      title: 'Post 2',
+      body: 'Ut ut lobortis augue. Phasellus venenatis metus non metus congue, eget fermentum ipsum porttitor. Nunc nec mi a ligula suscipit pulvinar eu ut risus. Vivamus egestas neque vel nibh imperdiet, ac laoreet tellus imperdiet. Aliquam erat volutpat. Nam orci ex, placerat quis imperdiet vel, sagittis quis neque. Donec eget interdum ante, eu facilisis turpis',
+      image: '/img/event-details-2.jpg'
+    },
+    {
+      id: 3,
+      title: 'Post 3',
+      body: 'Ut ut lobortis augue. Phasellus venenatis metus non metus congue, eget fermentum ipsum porttitor. Nunc nec mi a ligula suscipit pulvinar eu ut risus. Vivamus egestas neque vel nibh imperdiet, ac laoreet tellus imperdiet. Aliquam erat volutpat. Nam orci ex, placerat quis imperdiet vel, sagittis quis neque. Donec eget interdum ante, eu facilisis turpis',
+      image: '/img/event-details-3.jpg'
+    },
+  ],
   days: [{
       id: 1,
       title: 'Day 1',
@@ -24,6 +42,7 @@ export const state = () => ({
       speaker: 'Speaker 1',
       speakerTitle: 'CEO of Crux.io',
       image: 'https://picsum.photos/id/144/300/300',
+      hightlight: true,
       dayId: 1,
     },
     {
@@ -34,6 +53,7 @@ export const state = () => ({
       speaker: 'Speaker 2',
       speakerTitle: 'CTO Lorem Enterprises',
       image: 'https://picsum.photos/id/145/300/300',
+      hightlight: true,
       dayId: 1,
     },
     {
@@ -44,6 +64,7 @@ export const state = () => ({
       speaker: 'Speaker 3',
       speakerTitle: 'Ralph Tekgai',
       image: 'https://picsum.photos/id/146/300/300',
+      hightlight: true,
       dayId: 1,
     },
     {
@@ -54,6 +75,7 @@ export const state = () => ({
       speaker: 'Speaker 4',
       speakerTitle: 'CEO of Crux.io',
       image: 'https://picsum.photos/id/147/300/300',
+      hightlight: false,
       dayId: 2,
     },
     {
@@ -64,6 +86,7 @@ export const state = () => ({
       speaker: 'Speaker 5',
       speakerTitle: 'CTO Lorem Enterprises',
       image: 'https://picsum.photos/id/154/300/300',
+      hightlight: false,
       dayId: 2,
     },
     {
@@ -74,6 +97,7 @@ export const state = () => ({
       speaker: 'Speaker 6',
       speakerTitle: 'Ralph Tekgai',
       image: 'https://picsum.photos/id/149/300/300',
+      hightlight: false,
       dayId: 2,
     },
     {
@@ -84,6 +108,7 @@ export const state = () => ({
       speaker: 'Speaker 7',
       speakerTitle: 'CEO of Crux.io',
       image: 'https://picsum.photos/id/153/300/300',
+      hightlight: false,
       dayId: 3,
     },
     {
@@ -94,6 +119,7 @@ export const state = () => ({
       speaker: 'Speaker 8',
       speakerTitle: 'CTO Lorem Enterprises',
       image: 'https://picsum.photos/id/151/300/300',
+      hightlight: false,
       dayId: 3,
     },
     {
@@ -104,6 +130,7 @@ export const state = () => ({
       speaker: 'Speaker 9',
       speakerTitle: 'Ralph Tekgai',
       image: 'https://picsum.photos/id/152/300/300',
+      hightlight: false,
       dayId: 3,
     },
   ],
@@ -136,6 +163,55 @@ export const state = () => ({
       name: 'Speaker 6',
       title: 'Position at Company',
       image: 'https://i.pravatar.cc/350?img=54'
+    },
+  ],
+  sponsors: [{
+      name: 'Github',
+      icon: 'mdi-github-cirlce',
+      to: 'https://www.github.com',
+      top: false
+    },
+    {
+      name: 'Gitlab',
+      icon: 'mdi-gitlab',
+      to: 'https://www.gitlab.com',
+      top: false
+    },
+    {
+      name: 'Apple',
+      icon: 'mdi-apple',
+      to: 'https://www.apple.com',
+      top: false
+    },
+    {
+      name: 'Facebook',
+      icon: 'mdi-facebook',
+      to: 'https://www.facebook.com',
+      top: false
+    },
+    {
+      name: 'Lightbulb',
+      icon: 'mdi-lightbulb',
+      to: 'https://www.lightbulb.com',
+      top: false
+    },
+    {
+      name: 'Github Alt',
+      icon: 'mdi-github-face',
+      to: 'https://www.githubalt.com',
+      top: false
+    },
+    {
+      name: 'Twitter',
+      icon: 'mdi-twitter',
+      to: 'https://www.twitter.com',
+      top: true
+    },
+    {
+      name: 'Global Systems',
+      icon: 'mdi-globe',
+      to: 'https://www.globalsystems.com',
+      top: true
     },
   ],
 })

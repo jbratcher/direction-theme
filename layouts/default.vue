@@ -158,6 +158,12 @@ ul {
   list-style-type: none;
 }
 
+// classes
+
+.v-image {
+  object-fit: cover;
+}
+
 // nav
 
 .v-toolbar__content {
@@ -315,7 +321,6 @@ main {
 // information section
 
 #information {
-  background: #fefefe;
   position: relative;
 
   & > section {
@@ -695,7 +700,7 @@ main {
   .regular-sponsors,
   .top-sponsors {
     margin: 2rem 0;
-    padding: 0 2rem;
+    padding: 2rem;
 
     h4 {
       font-size: 1.25rem;
@@ -712,6 +717,9 @@ main {
         max-width: min-content;
       }
     }
+  }
+  .top-sponsors {
+    padding-bottom: 6rem;
   }
   .sponsor-apply {
     padding: 0 2rem;
@@ -761,7 +769,7 @@ main {
     }
   }
   .blog-posts {
-    padding: 4rem 0 0;
+    padding: 4rem 2rem 0;
     .v-card {
       max-width: 90vw;
       margin: 0 auto 4rem auto;
