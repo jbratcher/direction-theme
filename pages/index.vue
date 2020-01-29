@@ -10,10 +10,10 @@
             <v-btn
               color="orange accent-4"
               dark
-              name="services"
+              name="about"
               nuxt
               rounded
-              to="/services"
+              to="/about"
               x-large
             >Learn More</v-btn>
           </section>
@@ -49,7 +49,7 @@
           <section class="event-images">
             <v-img
               v-for="(event, i) in highlightedEvents"
-              :key="`${event,name}${i}`"
+              :key="`${event.name}${i}`"
               :src="event.image"
               :alt="event.name"
               :aspect-ratio="16/9"
@@ -69,10 +69,10 @@
               <v-btn
                 color="orange accent-4"
                 dark
-                name="services"
+                name="about"
                 nuxt
                 rounded
-                to="/services"
+                to="/about"
                 x-large
               >Learn More</v-btn>
             </section>
@@ -162,12 +162,13 @@
             </section>
           </section>
           <section class="packages">
-            <v-card>
+            <!-- package is a reserved keyword -->
+            <v-card v-for="(pkg, i) in packages" :key="`${pkg}${i}`">
               <v-img
                 class="white--text align-end"
                 gradient="to top right, rgba(0,0,0,.5), rgba(0,0,0,.5)"
-                src="/img/event-details-1.jpg"
-                alt="package 1"
+                :src="pkg.image"
+                :alt="pkg.name"
                 lazy-src="https://picsum.photos/10/6"
                 min-width="200px"
                 :width="threeCardImageWidth"
@@ -176,101 +177,18 @@
                 height="200px"
                 max-height="200px"
               >
-                <v-icon class="white--text" size="64px">mdi-account-outline</v-icon>
-                <v-card-title>$100</v-card-title>
+                <v-icon class="white--text" size="64px">{{ pkg.icon }}</v-icon>
+                <v-card-title>{{ pkg.price }}</v-card-title>
               </v-img>
-              <v-btn class="ticket-type" name="package-1" text>Early Bird</v-btn>
+              <v-btn class="ticket-type" :name="pkg.name" text>Early Bird</v-btn>
               <ul class="d-flex flex-column align-center">
-                <li>3 Day Pass</li>
-                <li>Free Coffee</li>
-                <li>Networking</li>
-                <li>Certificate</li>
-                <li>Swag Bag</li>
+                <li v-for="(feature, i) in pkg.features" :key="`${feature}${i}`">{{ feature }}</li>
               </ul>
               <v-card-actions>
                 <v-btn
                   color="orange accent-4"
                   dark
-                  name="early-bird-ticket"
-                  nuxt
-                  rounded
-                  to="/tickets"
-                  x-large
-                >Get Tickets</v-btn>
-              </v-card-actions>
-            </v-card>
-            <v-card>
-              <v-img
-                class="white--text align-end"
-                gradient="to top right, rgba(0,0,0,.5), rgba(0,0,0,.5)"
-                src="/img/event-details-2.jpg"
-                alt="package 1"
-                lazy-src="https://picsum.photos/10/6"
-                min-width="200px"
-                :width="threeCardImageWidth"
-                :max-width="threeCardImageMaxWidth"
-                min-height="112.5px"
-                height="200px"
-                max-height="200px"
-              >
-                <v-icon class="white--text" size="64px">mdi-account-group-outline</v-icon>
-                <v-card-title>$300</v-card-title>
-              </v-img>
-              <v-btn class="ticket-type" name="package-2" text>Team Package</v-btn>
-              <ul class="d-flex flex-column align-center">
-                <li>3 Day Pass</li>
-                <li>Free Coffee</li>
-                <li>Networking</li>
-                <li>Certificate</li>
-                <li>Swag Bag</li>
-                <li>Advertisment in Event Packet</li>
-                <li>Lunch &amp; Dinner</li>
-              </ul>
-              <v-card-actions>
-                <v-btn
-                  color="orange accent-4"
-                  dark
-                  name="team-ticket"
-                  nuxt
-                  rounded
-                  to="/tickets"
-                  x-large
-                >Get Tickets</v-btn>
-              </v-card-actions>
-            </v-card>
-            <v-card>
-              <v-img
-                class="white--text align-end"
-                gradient="to top right, rgba(0,0,0,.5), rgba(0,0,0,.5)"
-                src="/img/event-details-3.jpg"
-                alt="package 1"
-                lazy-src="https://picsum.photos/10/6"
-                min-width="200px"
-                :width="threeCardImageWidth"
-                :max-width="threeCardImageMaxWidth"
-                min-height="112.5px"
-                height="200px"
-                max-height="200px"
-              >
-                <v-icon class="white--text" size="64px">mdi-account-outline</v-icon>
-                <v-card-title>$1000</v-card-title>
-              </v-img>
-              <v-btn class="ticket-type" name="package-1" text>VIP</v-btn>
-              <ul class="d-flex flex-column align-center">
-                <li>3 Day Pass</li>
-                <li>Free Coffee</li>
-                <li>Networking</li>
-                <li>Certificate</li>
-                <li>Swag Bag</li>
-                <li>Advertisment in Event Packet</li>
-                <li>Lunch &amp; Dinner</li>
-                <li>Sponored Listing</li>
-              </ul>
-              <v-card-actions>
-                <v-btn
-                  color="orange accent-4"
-                  dark
-                  name="vip-ticket"
+                  :name="pkg.name"
                   nuxt
                   rounded
                   to="/tickets"
@@ -412,12 +330,7 @@
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-
 export default {
-  components: {
-    Logo
-  },
   head() {
     return {
       script: [
@@ -429,9 +342,6 @@ export default {
     tab: null
   }),
   computed: {
-    posts() {
-      return this.$store.state.blogPosts
-    },
     days() {
       return this.$store.state.days
     },
@@ -440,6 +350,12 @@ export default {
     },
     highlightedEvents() {
       return this.$store.state.events.slice().filter(event => event.hightlight)
+    },
+    packages() {
+      return this.$store.state.packages
+    },
+    posts() {
+      return this.$store.state.blogPosts
     },
     speakers() {
       return this.$store.state.speakers
@@ -453,44 +369,23 @@ export default {
     topSponsors() {
       return this.$store.state.sponsors.slice().filter(sponsor => sponsor.top)
     },
-    threeCardImageWidth() {
-      let value = '100%'
+    eventAvatarSize() {
+      let value = '128px'
       switch (this.$vuetify.breakpoint.name) {
         case 'xs':
-          value = '100%'
+          value = '64px'
           break
         case 'sm':
-          value = '175px'
+          value = '64px'
           break
         case 'md':
-          value = '250px'
+          value = '128px'
           break
         case 'lg':
-          value = '350px'
+          value = '128px'
           break
         case 'xl':
-          value = '400px'
-          break
-      }
-      return value
-    },
-    threeCardImageMaxWidth() {
-      let value = '100%'
-      switch (this.$vuetify.breakpoint.name) {
-        case 'xs':
-          value = '100%'
-          break
-        case 'sm':
-          value = '175px'
-          break
-        case 'md':
-          value = '250px'
-          break
-        case 'lg':
-          value = '350px'
-          break
-        case 'xl':
-          value = '400px'
+          value = '128px'
           break
       }
       return value
@@ -537,23 +432,44 @@ export default {
       }
       return value
     },
-    eventAvatarSize() {
-      let value = '128px'
+    threeCardImageWidth() {
+      let value = '100%'
       switch (this.$vuetify.breakpoint.name) {
         case 'xs':
-          value = '64px'
+          value = '100%'
           break
         case 'sm':
-          value = '64px'
+          value = '175px'
           break
         case 'md':
-          value = '128px'
+          value = '250px'
           break
         case 'lg':
-          value = '128px'
+          value = '350px'
           break
         case 'xl':
-          value = '128px'
+          value = '400px'
+          break
+      }
+      return value
+    },
+    threeCardImageMaxWidth() {
+      let value = '100%'
+      switch (this.$vuetify.breakpoint.name) {
+        case 'xs':
+          value = '100%'
+          break
+        case 'sm':
+          value = '175px'
+          break
+        case 'md':
+          value = '250px'
+          break
+        case 'lg':
+          value = '350px'
+          break
+        case 'xl':
+          value = '400px'
           break
       }
       return value

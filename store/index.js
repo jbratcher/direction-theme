@@ -134,6 +134,28 @@ export const state = () => ({
       dayId: 3,
     },
   ],
+  packages: [{
+      name: 'Individual',
+      price: '$100',
+      icon: 'mdi-account',
+      image: '/img/event-details-1.jpg',
+      features: ['3 day pass', 'Free Coffe', 'Networking', 'Certificate', 'Swag Bag']
+    },
+    {
+      name: 'VIP',
+      price: '$300',
+      icon: 'mdi-account-plus',
+      image: '/img/event-details-2.jpg',
+      features: ['3 day pass', 'Free Coffe', 'Networking', 'Certificate', 'Swag Bag', 'Advertisment in Event Packet', 'Lunch & Dinner', 'Sponsored Listing']
+    },
+    {
+      name: 'Team',
+      price: '$1000',
+      icon: 'mdi-account',
+      image: '/img/event-details-3.jpg',
+      features: ['3 day pass', 'Free Coffe', 'Networking', 'Certificate', 'Swag Bag', 'Advertisment in Event Packet', 'Lunch & Dinner']
+    },
+  ],
   speakers: [{
       name: 'Speaker 1',
       title: 'Position at Company',
@@ -167,7 +189,7 @@ export const state = () => ({
   ],
   sponsors: [{
       name: 'Github',
-      icon: 'mdi-github-cirlce',
+      icon: 'mdi-github-circle',
       to: 'https://www.github.com',
       top: false
     },
@@ -209,7 +231,7 @@ export const state = () => ({
     },
     {
       name: 'Global Systems',
-      icon: 'mdi-globe',
+      icon: 'mdi-earth',
       to: 'https://www.globalsystems.com',
       top: true
     },

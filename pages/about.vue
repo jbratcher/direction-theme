@@ -13,30 +13,10 @@
         <section id="event-details" class="py-12">
           <section class="event-images">
             <v-img
-              src="/img/event-details-1.jpg"
-              alt
-              :aspect-ratio="16/9"
-              min-width="200px"
-              :width="responsiveWidth"
-              :max-width="responsiveMaxWidth"
-              min-height="112.5px"
-              height="100%"
-              max-height="30vh"
-            />
-            <v-img
-              src="/img/event-details-2.jpg"
-              alt
-              :aspect-ratio="16/9"
-              min-width="200px"
-              :width="responsiveWidth"
-              :max-width="responsiveMaxWidth"
-              min-height="112.5px"
-              height="100%"
-              max-height="30vh"
-            />
-            <v-img
-              src="/img/event-details-3.jpg"
-              alt
+              v-for="(event, i) in highlightedEvents"
+              :key="`${event.name}${i}`"
+              :src="event.image"
+              :alt="event.name"
               :aspect-ratio="16/9"
               min-width="200px"
               :width="responsiveWidth"
@@ -124,6 +104,12 @@
                 :src="speaker.image"
                 :alt="speaker.name"
                 lazy-src="https://picsum.photos/10/6"
+                min-width="200px"
+                :width="threeCardImageWidth"
+                :max-width="threeCardImageMaxWidth"
+                min-height="112.5px"
+                height="200px"
+                max-height="200px"
               />
               <v-card-title>{{ speaker.name }}</v-card-title>
               <v-card-subtitle>{{ speaker.title }}</v-card-subtitle>
@@ -142,34 +128,28 @@
           <section class="regular-sponsors">
             <h4>Sponsors</h4>
             <section>
-              <v-btn name="sponsor-name" href="https://coke.com" text>
-                <v-icon :size="eventAvatarSize">mdi-gitlab</v-icon>
-              </v-btn>
-              <v-btn name="sponsor-name" href="https://coke.com" text>
-                <v-icon :size="eventAvatarSize">mdi-apple</v-icon>
-              </v-btn>
-              <v-btn name="sponsor-name" href="https://coke.com" text>
-                <v-icon :size="eventAvatarSize">mdi-lightbulb</v-icon>
-              </v-btn>
-              <v-btn name="sponsor-name" href="https://coke.com" text>
-                <v-icon :size="eventAvatarSize">mdi-github-circle</v-icon>
-              </v-btn>
-              <v-btn name="sponsor-name" href="https://coke.com" text>
-                <v-icon :size="eventAvatarSize">mdi-facebook</v-icon>
-              </v-btn>
-              <v-btn name="sponsor-name" href="https://coke.com" text>
-                <v-icon :size="eventAvatarSize">mdi-twitter</v-icon>
+              <v-btn
+                v-for="(sponsor, i) in regularSponsors"
+                :key="`${sponsor.name}${i}`"
+                :href="sponsor.to"
+                text
+                x-large
+              >
+                <v-icon :size="eventAvatarSize">{{ sponsor.icon }}</v-icon>
               </v-btn>
             </section>
           </section>
           <section class="top-sponsors">
             <h4>Top Sponsors</h4>
             <section>
-              <v-btn name="sponsor-name" href="https://coke.com" text>
-                <v-icon :size="eventAvatarSize">mdi-github-face</v-icon>
-              </v-btn>
-              <v-btn name="sponsor-name" href="https://coke.com" text>
-                <v-icon :size="eventAvatarSize">mdi-longitude</v-icon>
+              <v-btn
+                v-for="(sponsor, i) in topSponsors"
+                :key="`${sponsor.name}${i}`"
+                :href="sponsor.to"
+                text
+                x-large
+              >
+                <v-icon :size="eventAvatarSize">{{ sponsor.icon }}</v-icon>
               </v-btn>
             </section>
           </section>
@@ -208,12 +188,7 @@
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-
 export default {
-  components: {
-    Logo
-  },
   head() {
     return {
       script: [
@@ -231,8 +206,41 @@ export default {
     events() {
       return this.$store.state.events
     },
+    highlightedEvents() {
+      return this.$store.state.events.slice().filter(event => event.hightlight)
+    },
     speakers() {
       return this.$store.state.speakers
+    },
+    sponsors() {
+      return this.$store.state.sponsors
+    },
+    regularSponsors() {
+      return this.$store.state.sponsors.slice().filter(sponsor => !sponsor.top)
+    },
+    topSponsors() {
+      return this.$store.state.sponsors.slice().filter(sponsor => sponsor.top)
+    },
+    eventAvatarSize() {
+      let value = '128px'
+      switch (this.$vuetify.breakpoint.name) {
+        case 'xs':
+          value = '64px'
+          break
+        case 'sm':
+          value = '64px'
+          break
+        case 'md':
+          value = '128px'
+          break
+        case 'lg':
+          value = '128px'
+          break
+        case 'xl':
+          value = '128px'
+          break
+      }
+      return value
     },
     responsiveWidth() {
       let value = '100%'
@@ -276,23 +284,44 @@ export default {
       }
       return value
     },
-    eventAvatarSize() {
-      let value = '128px'
+    threeCardImageWidth() {
+      let value = '100%'
       switch (this.$vuetify.breakpoint.name) {
         case 'xs':
-          value = '64px'
+          value = '100%'
           break
         case 'sm':
-          value = '64px'
+          value = '175px'
           break
         case 'md':
-          value = '128px'
+          value = '250px'
           break
         case 'lg':
-          value = '128px'
+          value = '350px'
           break
         case 'xl':
-          value = '128px'
+          value = '400px'
+          break
+      }
+      return value
+    },
+    threeCardImageMaxWidth() {
+      let value = '100%'
+      switch (this.$vuetify.breakpoint.name) {
+        case 'xs':
+          value = '100%'
+          break
+        case 'sm':
+          value = '175px'
+          break
+        case 'md':
+          value = '250px'
+          break
+        case 'lg':
+          value = '350px'
+          break
+        case 'xl':
+          value = '400px'
           break
       }
       return value

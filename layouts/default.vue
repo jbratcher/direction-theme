@@ -228,6 +228,7 @@ ul {
   .content-container {
     margin-bottom: 4rem;
     padding: 0 2rem;
+    text-align: center;
     h2 {
       font-size: 2.67rem;
       font-weight: 900;
@@ -796,6 +797,8 @@ main {
       rgba(41, 98, 255, 0.5)
     ),
     url('/img/event-details-1.jpg');
+  background-size: cover;
+  background-position: center center;
   display: flex;
   flex-direction: column;
   padding: 4rem 0;

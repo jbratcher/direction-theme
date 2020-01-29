@@ -26,6 +26,12 @@
                 :src="speaker.image"
                 :alt="speaker.name"
                 lazy-src="https://picsum.photos/10/6"
+                min-width="200px"
+                :width="threeCardImageWidth"
+                :max-width="threeCardImageMaxWidth"
+                min-height="112.5px"
+                height="200px"
+                max-height="200px"
               />
               <v-card-title>{{ speaker.name }}</v-card-title>
               <v-card-subtitle>{{ speaker.title }}</v-card-subtitle>
@@ -38,12 +44,7 @@
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-
 export default {
-  components: {
-    Logo
-  },
   head() {
     return {
       script: [
@@ -51,78 +52,48 @@ export default {
       ]
     }
   },
-  data: () => ({
-    tab: null
-  }),
   computed: {
-    days() {
-      return this.$store.state.days
-    },
-    events() {
-      return this.$store.state.events
-    },
     speakers() {
       return this.$store.state.speakers
     },
-    responsiveWidth() {
+    threeCardImageWidththreeCardImageWidth() {
       let value = '100%'
       switch (this.$vuetify.breakpoint.name) {
         case 'xs':
           value = '100%'
           break
         case 'sm':
-          value = '200px'
+          value = '175px'
           break
         case 'md':
-          value = '20vw'
+          value = '250px'
           break
         case 'lg':
-          value = '20vw'
+          value = '350px'
           break
         case 'xl':
-          value = '20vw'
+          value = '400px'
           break
       }
       return value
     },
-    responsiveMaxWidth() {
+    threeCardImageMaxWidth() {
       let value = '100%'
       switch (this.$vuetify.breakpoint.name) {
         case 'xs':
-          value = '90vw'
+          value = '100%'
           break
         case 'sm':
-          value = '100%'
+          value = '175px'
           break
         case 'md':
-          value = '100%'
+          value = '250px'
           break
         case 'lg':
-          value = '100%'
+          value = '350px'
           break
         case 'xl':
-          value = '100%'
-          break
-      }
-      return value
-    },
-    eventAvatarSize() {
-      let value = '128px'
-      switch (this.$vuetify.breakpoint.name) {
-        case 'xs':
-          value = '64px'
-          break
-        case 'sm':
-          value = '64px'
-          break
-        case 'md':
-          value = '128px'
-          break
-        case 'lg':
-          value = '128px'
-          break
-        case 'xl':
-          value = '128px'
+          value = '400px'
           break
       }
       return value
