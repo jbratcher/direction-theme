@@ -18,6 +18,21 @@
         <v-list-item-title v-text="item.title" />
       </v-list-item-content>
     </v-list-item>
+
+    <v-menu open-on-hover offset-x>
+      <template v-slot:activator="{ on }">
+        <v-btn class="ma-auto" v-on="on" text>
+          <v-icon class="mr-1">mdi-briefcase</v-icon>More
+        </v-btn>
+      </template>
+
+      <v-list class="d-flex flex-column">
+        <v-list-item v-for="(page, i) in pages" :key="`${page.name}${i}`" :to="page.to">
+          <v-icon class="mr-1">{{ page.icon }}</v-icon>
+          <v-list-item-title>{{ page.name }}</v-list-item-title>
+        </v-list-item>
+      </v-list>
+    </v-menu>
   </v-list>
 </template>
 
@@ -41,7 +56,21 @@ export default {
       type: String,
       default: ''
     }
-  }
+  },
+  data: () => ({
+    pages: [
+      {
+        name: 'blog',
+        icon: 'mdi-post',
+        to: '/blog'
+      },
+      {
+        name: 'RSVP',
+        icon: 'mdi-ticket',
+        to: '/rsvp'
+      }
+    ]
+  })
 }
 </script>
 
@@ -53,5 +82,9 @@ export default {
 
 .mobile.v-list .v-list-item {
   margin: 1rem 0;
+}
+
+.ma-auto {
+  margin: auto;
 }
 </style>

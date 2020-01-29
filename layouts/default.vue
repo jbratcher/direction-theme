@@ -2,7 +2,7 @@
   <v-app>
     <!-- Header Area -->
     <v-app-bar app elevate-on-scroll hide-on-scroll :height="navHeight" flat light tile>
-      <v-toolbar-title v-text="title" />
+      <v-btn class="brand" name="brand" href="/" text>{{ title }}</v-btn>
       <v-spacer class="hidden-md-and-up" />
       <v-app-bar-nav-icon class="hidden-md-and-up" color="#000" @click.stop="drawer = !drawer" />
       <MenuLinks :general-links="generalLinks" list-class="hidden-sm-and-down" />
@@ -90,11 +90,6 @@ export default {
           icon: 'mdi-account-group',
           title: 'Speakers',
           to: '/speakers'
-        },
-        {
-          icon: 'mdi-briefcase',
-          title: 'More',
-          to: '/more'
         }
       ],
       miniVariant: false,
@@ -168,11 +163,10 @@ ul {
 
 .v-toolbar__content {
   margin: 0 0.5rem;
-}
-
-.v-toolbar__title {
-  font-size: 2rem;
-  font-weight: 900;
+  .v-btn.brand {
+    font-size: 2rem;
+    font-weight: 900;
+  }
 }
 
 .v-list {
