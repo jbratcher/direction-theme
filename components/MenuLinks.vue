@@ -60,7 +60,7 @@ export default {
   data: () => ({
     pages: [
       {
-        name: 'blog',
+        name: 'Blog',
         icon: 'mdi-post',
         to: '/blog'
       },

@@ -105,27 +105,6 @@ export default {
           break
       }
       return value
-    },
-    eventAvatarSize() {
-      let value = '128px'
-      switch (this.$vuetify.breakpoint.name) {
-        case 'xs':
-          value = '64px'
-          break
-        case 'sm':
-          value = '64px'
-          break
-        case 'md':
-          value = '128px'
-          break
-        case 'lg':
-          value = '128px'
-          break
-        case 'xl':
-          value = '128px'
-          break
-      }
-      return value
     }
   }
 }

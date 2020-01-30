@@ -44,7 +44,10 @@
 </template>
 
 <script>
+import { imageSizesMixin } from '../mixins/imageSizes.js'
+
 export default {
+  mixins: [imageSizesMixin],
   head() {
     return {
       script: [
@@ -55,48 +58,6 @@ export default {
   computed: {
     speakers() {
       return this.$store.state.speakers
-    },
-    threeCardImageWidththreeCardImageWidth() {
-      let value = '100%'
-      switch (this.$vuetify.breakpoint.name) {
-        case 'xs':
-          value = '100%'
-          break
-        case 'sm':
-          value = '175px'
-          break
-        case 'md':
-          value = '250px'
-          break
-        case 'lg':
-          value = '350px'
-          break
-        case 'xl':
-          value = '400px'
-          break
-      }
-      return value
-    },
-    threeCardImageMaxWidth() {
-      let value = '100%'
-      switch (this.$vuetify.breakpoint.name) {
-        case 'xs':
-          value = '100%'
-          break
-        case 'sm':
-          value = '175px'
-          break
-        case 'md':
-          value = '250px'
-          break
-        case 'lg':
-          value = '350px'
-          break
-        case 'xl':
-          value = '400px'
-          break
-      }
-      return value
     }
   }
 }

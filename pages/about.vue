@@ -188,7 +188,10 @@
 </template>
 
 <script>
+import { imageSizesMixin } from '../mixins/imageSizes.js'
+
 export default {
+  mixins: [imageSizesMixin],
   head() {
     return {
       script: [
@@ -212,119 +215,11 @@ export default {
     speakers() {
       return this.$store.state.speakers
     },
-    sponsors() {
-      return this.$store.state.sponsors
-    },
     regularSponsors() {
       return this.$store.state.sponsors.slice().filter(sponsor => !sponsor.top)
     },
     topSponsors() {
       return this.$store.state.sponsors.slice().filter(sponsor => sponsor.top)
-    },
-    eventAvatarSize() {
-      let value = '128px'
-      switch (this.$vuetify.breakpoint.name) {
-        case 'xs':
-          value = '64px'
-          break
-        case 'sm':
-          value = '64px'
-          break
-        case 'md':
-          value = '128px'
-          break
-        case 'lg':
-          value = '128px'
-          break
-        case 'xl':
-          value = '128px'
-          break
-      }
-      return value
-    },
-    responsiveWidth() {
-      let value = '100%'
-      switch (this.$vuetify.breakpoint.name) {
-        case 'xs':
-          value = '100%'
-          break
-        case 'sm':
-          value = '200px'
-          break
-        case 'md':
-          value = '20vw'
-          break
-        case 'lg':
-          value = '20vw'
-          break
-        case 'xl':
-          value = '20vw'
-          break
-      }
-      return value
-    },
-    responsiveMaxWidth() {
-      let value = '100%'
-      switch (this.$vuetify.breakpoint.name) {
-        case 'xs':
-          value = '90vw'
-          break
-        case 'sm':
-          value = '100%'
-          break
-        case 'md':
-          value = '100%'
-          break
-        case 'lg':
-          value = '100%'
-          break
-        case 'xl':
-          value = '100%'
-          break
-      }
-      return value
-    },
-    threeCardImageWidth() {
-      let value = '100%'
-      switch (this.$vuetify.breakpoint.name) {
-        case 'xs':
-          value = '100%'
-          break
-        case 'sm':
-          value = '175px'
-          break
-        case 'md':
-          value = '250px'
-          break
-        case 'lg':
-          value = '350px'
-          break
-        case 'xl':
-          value = '400px'
-          break
-      }
-      return value
-    },
-    threeCardImageMaxWidth() {
-      let value = '100%'
-      switch (this.$vuetify.breakpoint.name) {
-        case 'xs':
-          value = '100%'
-          break
-        case 'sm':
-          value = '175px'
-          break
-        case 'md':
-          value = '250px'
-          break
-        case 'lg':
-          value = '350px'
-          break
-        case 'xl':
-          value = '400px'
-          break
-      }
-      return value
     }
   }
 }
