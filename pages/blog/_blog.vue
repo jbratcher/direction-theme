@@ -1,7 +1,7 @@
 <template>
   <v-layout>
     <v-col>
-      <v-sheet class="ma-0" color="primary lighten-2" dark tile>
+      <v-sheet class="ma-0" color="primary" dark tile>
         <h1 class="headline pa-2" display="headline">Blog > {{ blogPost.title }}</h1>
       </v-sheet>
       <article>

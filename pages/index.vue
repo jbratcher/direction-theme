@@ -317,7 +317,8 @@
               <v-card-text>{{ post.body.substring(0, 120) + "..." }}</v-card-text>
               <v-btn
                 :name="post.title"
-                :href="`/posts/${post.id}`"
+                nuxt
+                :to="`blog/${post.slug}`"
                 color="orange accent-4"
                 text
               >Read More</v-btn>

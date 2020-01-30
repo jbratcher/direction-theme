@@ -1,23 +1,5 @@
 export const state = () => ({
-  blogPosts: [{
-      id: 1,
-      title: 'Post 1',
-      body: 'Ut ut lobortis augue. Phasellus venenatis metus non metus congue, eget fermentum ipsum porttitor. Nunc nec mi a ligula suscipit pulvinar eu ut risus. Vivamus egestas neque vel nibh imperdiet, ac laoreet tellus imperdiet. Aliquam erat volutpat. Nam orci ex, placerat quis imperdiet vel, sagittis quis neque. Donec eget interdum ante, eu facilisis turpis',
-      image: '/img/event-details-1.jpg'
-    },
-    {
-      id: 2,
-      title: 'Post 2',
-      body: 'Ut ut lobortis augue. Phasellus venenatis metus non metus congue, eget fermentum ipsum porttitor. Nunc nec mi a ligula suscipit pulvinar eu ut risus. Vivamus egestas neque vel nibh imperdiet, ac laoreet tellus imperdiet. Aliquam erat volutpat. Nam orci ex, placerat quis imperdiet vel, sagittis quis neque. Donec eget interdum ante, eu facilisis turpis',
-      image: '/img/event-details-2.jpg'
-    },
-    {
-      id: 3,
-      title: 'Post 3',
-      body: 'Ut ut lobortis augue. Phasellus venenatis metus non metus congue, eget fermentum ipsum porttitor. Nunc nec mi a ligula suscipit pulvinar eu ut risus. Vivamus egestas neque vel nibh imperdiet, ac laoreet tellus imperdiet. Aliquam erat volutpat. Nam orci ex, placerat quis imperdiet vel, sagittis quis neque. Donec eget interdum ante, eu facilisis turpis',
-      image: '/img/event-details-3.jpg'
-    },
-  ],
+  blogPosts: [],
   days: [{
       id: 1,
       title: 'Day 1',
@@ -239,8 +221,8 @@ export const state = () => ({
 })
 
 export const mutations = {
-  setBlogPosts(state, list) {
-    state.blogPosts = list
+  setBlogPosts(state, posts) {
+    state.blogPosts = posts
   }
 }
 
