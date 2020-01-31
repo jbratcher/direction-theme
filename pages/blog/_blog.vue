@@ -5,11 +5,13 @@
         <h1 class="headline pa-2" display="headline">Blog > {{ blogPost.title }}</h1>
       </v-sheet>
       <article>
-        <v-card class="d-flex flex-column align-center mx-auto">
+        <v-card tile class="d-flex flex-column align-center mx-auto">
           <v-img
-            src="https://picsum.photos/1280/920"
-            lazy-src="https://picsum.photos/1280/920"
-            width="1280"
+            class="align-end"
+            :src="blogPost.hero"
+            :alt="blogPost.title"
+            lazy-src="https://picsum.photos/10/6"
+            width="100%"
             max-height="300"
           />
           <v-card-title class="display-1">{{blogPost.title}}</v-card-title>

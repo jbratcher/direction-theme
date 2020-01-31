@@ -3,12 +3,19 @@
     <v-flex>
       <main>
         <v-sheet class="ma-0" color="primary" dark tile>
-          <h1 class="headline pa-2" display="headline">Blog&nbsp;></h1>
+          <h1>Blog&nbsp;></h1>
         </v-sheet>
         <v-list>
           <v-list-item three-line v-for="(post, i) in posts" :key="`${post.title}${i}`">
             <v-card class="d-flex flex-column">
-              <v-img :src="post.image" lazy-src="https://picsum.photos/300/240" max-height="200px" />
+              <v-img
+                :src="post.thumbnail"
+                :alt="post.title"
+                lazy-src="https://picsum.photos/10/6"
+                width="100%"
+                height="300px"
+                max-height="300px"
+              />
               <v-card-title class="display-1">{{post.title.substring(0, 70)}}</v-card-title>
               <v-card-subtitle class="subtitle-1">{{post.description.substring(0, 80)}}</v-card-subtitle>
               <v-card-text>{{post.body.substring(0, 144) + '...'}}</v-card-text>
@@ -27,7 +34,9 @@
   </v-layout>
 </template>
 <script>
+import { imageSizesMixin } from '../../mixins/imageSizes.js'
 export default {
+  mixins: [imageSizesMixin],
   computed: {
     posts() {
       return this.$store.state.blogPosts
@@ -37,9 +46,17 @@ export default {
 </script>
 <style lang="scss">
 main {
-  .v-list {
+  & > .v-sheet {
+    padding: 2rem 3rem;
+    h1 {
+      font-size: 2rem;
+    }
+  }
+
+  & > .v-list {
     display: flex;
     flex-direction: column;
+    padding: 2rem;
 
     .v-list-item {
       margin-bottom: 2rem;
@@ -53,11 +70,15 @@ main {
       align-items: flex-start;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      grid-template-rows: auto;
-      gap: 2rem;
+      gap: 1rem;
 
       .v-list-item {
         margin-bottom: 0;
+
+        // prevent image from overflowing card
+        .v-card {
+          max-width: calc(48.5vw - 2rem); // is this too 'hard-coded'?
+        }
       }
     }
   }

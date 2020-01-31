@@ -10,7 +10,7 @@
         </section>
 
         <!-- Benefits Section -->
-        <section id="event-details" class="py-12">
+        <v-container id="event-details" class="py-12">
           <section class="event-images">
             <v-img
               v-for="(event, i) in highlightedEvents"
@@ -42,10 +42,10 @@
               >Learn More</v-btn>
             </section>
           </v-container>
-        </section>
+        </v-container>
 
         <!-- Day Schedule Section -->
-        <section id="day-schedule">
+        <v-container id="day-schedule">
           <section class="content-container">
             <h2>Day Schedule</h2>
             <section class="sub-container">
@@ -85,10 +85,10 @@
               </v-tab-item>
             </v-tabs-items>
           </section>
-        </section>
+        </v-container>
 
         <!-- Speakers Section -->
-        <section id="speakers">
+        <v-container id="speakers">
           <section class="content-container">
             <h2>Speakers</h2>
             <section class="sub-container">
@@ -115,10 +115,10 @@
               <v-card-subtitle>{{ speaker.title }}</v-card-subtitle>
             </v-card>
           </section>
-        </section>
+        </v-container>
 
         <!-- Sponsors Section -->
-        <section id="sponsors">
+        <v-container id="sponsors">
           <section class="content-container">
             <h2>Sponors</h2>
             <section class="sub-container">
@@ -165,10 +165,10 @@
               x-large
             >Sponsor</v-btn>
           </section>
-        </section>
+        </v-container>
 
         <!-- Location Section -->
-        <section id="blog">
+        <v-container id="blog">
           <section class="location">
             <v-img src="/img/hero.jpg" alt="venue" />
             <v-card elevation="24">
@@ -181,7 +181,7 @@
               </v-card-text>
             </v-card>
           </section>
-        </section>
+        </v-container>
       </main>
     </v-flex>
   </v-layout>

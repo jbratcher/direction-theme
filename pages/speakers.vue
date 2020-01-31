@@ -10,7 +10,7 @@
         </section>
 
         <!-- Speakers Section -->
-        <section id="speakers">
+        <v-container id="speakers">
           <section class="content-container">
             <h2>Speakers</h2>
             <section class="sub-container">
@@ -37,7 +37,7 @@
               <v-card-subtitle>{{ speaker.title }}</v-card-subtitle>
             </v-card>
           </section>
-        </section>
+        </v-container>
       </main>
     </v-flex>
   </v-layout>

@@ -262,7 +262,7 @@ ul {
 
   .v-toolbar__content {
     justify-content: space-between;
-    margin: 0 2rem;
+    margin: 0 0.75rem;
   }
 
   .v-list {
@@ -273,12 +273,6 @@ ul {
     .v-list-item__title {
       font-size: 0.875rem;
     }
-  }
-}
-
-main {
-  .container {
-    min-height: 100vh;
   }
 }
 
@@ -372,6 +366,37 @@ main {
   }
 }
 
+// prominent section heading
+
+main > .container {
+  .content-container {
+    h2,
+    h3 {
+      line-height: 1;
+      padding: 1rem 0;
+    }
+    h2 {
+      font-size: 3rem;
+      font-weight: 900;
+      margin-bottom: 1rem;
+    }
+    .sub-container {
+      border-left: 0.25rem solid #ff6d00;
+      margin-left: 0.5rem;
+      padding-left: 2.5rem;
+      h3 {
+        font-size: 2.33rem;
+        font-weight: 700;
+        padding-top: 0;
+      }
+      p {
+        font-size: 1.33rem;
+        padding: 1rem 0;
+      }
+    }
+  }
+}
+
 // event details section
 #event-details {
   display: flex;
@@ -425,7 +450,7 @@ main {
 #rsvp {
   display: flex;
   flex-direction: column;
-  padding: 3rem 0;
+  padding: 3rem;
 
   section.content-container {
     padding-bottom: 1rem;
@@ -508,49 +533,14 @@ main {
   }
 }
 
-// prominent section heading
-
-#day-schedule,
-#prices,
-#speakers,
-#sponsors,
-#blog {
-  .content-container {
-    padding: 0 2rem;
-    h2,
-    h3 {
-      line-height: 1;
-      padding: 1rem 0;
-    }
-    h2 {
-      font-size: 3rem;
-      font-weight: 900;
-      margin-bottom: 1rem;
-    }
-    .sub-container {
-      border-left: 0.25rem solid #ff6d00;
-      margin-left: 0.5rem;
-      padding-left: 2.5rem;
-      h3 {
-        font-size: 2.33rem;
-        font-weight: 700;
-        padding-top: 0;
-      }
-      p {
-        font-size: 1.33rem;
-        padding: 1rem 0;
-      }
-    }
-  }
-}
-
 // day schedule section
 
 #day-schedule {
-  margin-top: 4rem;
-  padding-top: 4rem;
+  padding: 4rem 3rem;
   .tabs-container {
+    background: #fafafa;
     .v-tabs-bar {
+      background: #fafafa;
       padding-top: 2rem;
     }
     .v-tab {
@@ -571,7 +561,7 @@ main {
       }
     }
     .v-tabs-items {
-      padding-bottom: 4rem;
+      background: #fafafa;
     }
     .v-tabs-items .v-window-item {
       padding: 2rem 0;
@@ -606,7 +596,7 @@ main {
 }
 
 #prices {
-  padding: 4rem 0;
+  padding: 4rem 3rem;
   .packages {
     padding: 2rem 0;
     .v-card {
@@ -664,7 +654,7 @@ main {
 
 #speakers {
   background: #fefefe;
-  padding: 2rem 0;
+  padding: 2rem 3rem;
   .speakers-list {
     background: transparent;
     padding: 2rem 0;
@@ -691,7 +681,7 @@ main {
 // sponsors section
 
 #sponsors {
-  padding: 4rem 0;
+  padding: 4rem 3rem;
   .regular-sponsors,
   .top-sponsors {
     margin: 2rem 0;
@@ -729,7 +719,7 @@ main {
 
 #blog {
   background: #fefefe;
-  padding: 6rem 0 4rem;
+  padding: 6rem 3rem 4rem;
   .location {
     position: relative;
     .v-image {
@@ -823,7 +813,7 @@ main {
     section.content-container {
       background: #fefefe;
       clip-path: polygon(0 0, 70% 0%, 100% 50%, 70% 100%, 0 100%);
-      padding: 0 2rem;
+      padding: 0 3rem;
       width: 60%;
       min-height: 600px;
 
@@ -889,6 +879,10 @@ main {
         color: #ff6d00; // orange accent-4
       }
     }
+  }
+
+  main > .container {
+    padding: 4rem 3rem;
   }
 
   // event details section
@@ -958,11 +952,10 @@ main {
       'txt txt img img'
       'cards cards cards cards';
     gap: 2rem;
-    padding: 4rem 0 2rem;
+    padding: 4rem 3rem 2rem;
 
     section.content-container {
       grid-area: txt;
-      padding-left: 1rem;
       padding-bottom: 0;
       h3,
       p,
@@ -1014,34 +1007,6 @@ main {
   // day list section
 
   #day-schedule {
-    padding-top: 0;
-    .content-container {
-      padding: 4rem 2rem;
-      h2,
-      h3 {
-        line-height: 1;
-        padding: 1rem 0;
-      }
-      h2 {
-        font-size: 3rem;
-        font-weight: 900;
-      }
-      .sub-container {
-        border-left: 0.5rem solid #ff6d00;
-        margin-left: 1rem;
-        padding-left: 5rem;
-        h3 {
-          font-size: 2.33rem;
-          font-weight: 700;
-          padding-top: 0;
-        }
-        p {
-          font-size: 1.33rem;
-          padding: 1rem 0;
-          width: 50%;
-        }
-      }
-    }
     .tabs-container {
       .v-tabs-bar {
         padding: 2rem;
@@ -1136,7 +1101,7 @@ main {
   // blog section
 
   #blog {
-    padding: 4rem 0;
+    padding: 4rem 3rem;
     .location {
       max-height: 350px;
       .v-card {
