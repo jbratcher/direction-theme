@@ -1,10 +1,19 @@
 <template>
   <v-app>
     <!-- Header Area -->
-    <v-app-bar app elevate-on-scroll hide-on-scroll :height="navHeight" flat light tile>
-      <v-btn class="brand" name="brand" href="/" text>{{ title }}</v-btn>
+    <v-app-bar
+      app
+      elevate-on-scroll
+      flat
+      :height="navHeight"
+      hide-on-scroll
+      light
+      scroll-threshold="200"
+      tile
+    >
+      <v-btn class="brand" name="brand" href="/" text>{{ appTitle }}</v-btn>
       <v-spacer class="hidden-md-and-up" />
-      <v-app-bar-nav-icon class="hidden-md-and-up" color="#000" @click.stop="drawer = !drawer" />
+      <v-app-bar-nav-icon class="hidden-md-and-up" @click.stop="drawer = !drawer" />
       <MenuLinks :general-links="generalLinks" list-class="hidden-sm-and-down" />
       <v-btn
         class="flex-0 align-self-center hidden-sm-and-down btn-box-shadow"
@@ -20,7 +29,7 @@
     <v-navigation-drawer v-model="drawer" :mini-variant="miniVariant" fixed right>
       <MenuLinks :general-links="generalLinks" list-class="mobile" />
       <v-btn
-        class="flex-0 align-self-center btn-box-shadow"
+        class="flex-0 align-self-center btn-box-shadow mt-12"
         color="primary"
         dark
         nuxt
@@ -36,8 +45,8 @@
     <!-- Footer Area -->
     <v-footer>
       <section class="content-container">
-        <h2>Direction</h2>
-        <p>A event/conference theme for Nuxt and Netlify CMS</p>
+        <h2>{{ appTitle }}</h2>
+        <p>{{ appDescription }}</p>
         <section class="subscribe-form">
           <v-text-field label="Email" outlined color="orange accent-4" clearable></v-text-field>
           <v-btn
@@ -57,8 +66,8 @@
         </li>
       </ul>
       <v-container>
-        {{ new Date().getFullYear() }} —
-        <strong>{{title}}</strong>
+        {{ new Date().getFullYear() }}&nbsp;—&nbsp;
+        <strong>{{appTitle}}</strong>
       </v-container>
     </v-footer>
   </v-app>
@@ -73,6 +82,8 @@ export default {
   },
   data() {
     return {
+      appTitle: process.env.title,
+      appDescription: process.env.description,
       drawer: false,
       fixed: false,
       generalLinks: [
@@ -92,8 +103,7 @@ export default {
           to: '/speakers'
         }
       ],
-      miniVariant: false,
-      title: 'Direction'
+      miniVariant: false
     }
   },
   computed: {
@@ -161,11 +171,16 @@ ul {
 
 // nav
 
+.v-toolbar--prominent .v-toolbar__content {
+  align-items: center;
+}
+
 .v-toolbar__content {
   margin: 0 0.5rem;
   .v-btn.brand {
     font-size: 2rem;
     font-weight: 900;
+    padding-left: 0;
   }
 }
 
@@ -263,6 +278,9 @@ ul {
   .v-toolbar__content {
     justify-content: space-between;
     margin: 0 0.75rem;
+    .v-btn.brand {
+      padding-left: 1rem;
+    }
   }
 
   .v-list {
@@ -285,7 +303,7 @@ ul {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 2rem 1rem;
+    padding: 2rem 1.5rem;
 
     p {
       color: #333;
@@ -450,7 +468,7 @@ main > .container {
 #rsvp {
   display: flex;
   flex-direction: column;
-  padding: 3rem;
+  padding: 3rem 0;
 
   section.content-container {
     padding-bottom: 1rem;
@@ -536,7 +554,7 @@ main > .container {
 // day schedule section
 
 #day-schedule {
-  padding: 4rem 3rem;
+  padding: 4rem 1.5rem;
   .tabs-container {
     background: #fafafa;
     .v-tabs-bar {
@@ -596,7 +614,7 @@ main > .container {
 }
 
 #prices {
-  padding: 4rem 3rem;
+  padding: 4rem 1.5rem;
   .packages {
     padding: 2rem 0;
     .v-card {
@@ -654,7 +672,7 @@ main > .container {
 
 #speakers {
   background: #fefefe;
-  padding: 2rem 3rem;
+  padding: 2rem 1.5rem;
   .speakers-list {
     background: transparent;
     padding: 2rem 0;
@@ -681,7 +699,7 @@ main > .container {
 // sponsors section
 
 #sponsors {
-  padding: 4rem 3rem;
+  padding: 4rem 1.5rem;
   .regular-sponsors,
   .top-sponsors {
     margin: 2rem 0;
@@ -719,7 +737,7 @@ main > .container {
 
 #blog {
   background: #fefefe;
-  padding: 6rem 3rem 4rem;
+  padding: 6rem 1.5rem 4rem;
   .location {
     position: relative;
     .v-image {
@@ -754,7 +772,7 @@ main > .container {
     }
   }
   .blog-posts {
-    padding: 4rem 2rem 0;
+    padding: 4rem 0 0;
     .v-card {
       max-width: 90vw;
       margin: 0 auto 4rem auto;
@@ -1007,6 +1025,7 @@ main > .container {
   // day list section
 
   #day-schedule {
+    padding: 4rem 3rem;
     .tabs-container {
       .v-tabs-bar {
         padding: 2rem;
@@ -1052,6 +1071,7 @@ main > .container {
   // prices section
 
   #prices {
+    padding: 4rem 3rem;
     .packages {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -1061,6 +1081,7 @@ main > .container {
   // speakers section
 
   #speakers {
+    padding: 2rem 3rem;
     .speakers-list {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -1075,6 +1096,7 @@ main > .container {
   // sponsors section
 
   #sponsors {
+    padding: 4rem 3rem;
     .regular-sponsors,
     .top-sponsors {
       margin: 2rem 0;

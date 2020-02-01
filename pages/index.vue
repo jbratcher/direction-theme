@@ -52,6 +52,7 @@
               :key="`${event.name}${i}`"
               :src="event.image"
               :alt="event.name"
+              lazy-src="https://picsum.photos/10/6"
               :aspect-ratio="16/9"
               min-width="200px"
               :width="responsiveWidth"
@@ -86,7 +87,7 @@
             <h3>Meet &amp; Greet the Local Leaders of the Tech Industry</h3>
             <v-btn color="blue accent-4" dark name="rsvp" nuxt rounded to="/rsvp" x-large>RSVP Now</v-btn>
           </section>
-          <v-img src="/img/event-details-3.jpg" alt="rsvp" />
+          <v-img src="/img/event-details-3.jpg" lazy-src="https://picsum.photos/10/6" alt="rsvp" />
           <section class="highlights">
             <v-card>
               <v-icon size="4rem">mdi-earth</v-icon>
@@ -282,7 +283,7 @@
         <!-- Location Section -->
         <v-container id="blog">
           <section class="location">
-            <v-img src="/img/hero.jpg" alt="venue" />
+            <v-img src="/img/hero.jpg" lazy-src="https://picsum.photos/10/6" alt="venue" />
             <v-card>
               <v-card-title>Venue Location</v-card-title>
               <v-card-subtitle>January 28-31st</v-card-subtitle>

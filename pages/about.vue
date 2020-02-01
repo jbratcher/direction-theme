@@ -17,6 +17,7 @@
               :key="`${event.name}${i}`"
               :src="event.image"
               :alt="event.name"
+              lazy-src="https://picsum.photos/10/6"
               :aspect-ratio="16/9"
               min-width="200px"
               :width="responsiveWidth"
@@ -170,7 +171,7 @@
         <!-- Location Section -->
         <v-container id="blog">
           <section class="location">
-            <v-img src="/img/hero.jpg" alt="venue" />
+            <v-img src="/img/hero.jpg" lazy-src="https://picsum.photos/10/6" alt="venue" />
             <v-card elevation="24">
               <v-card-title>Venue Location</v-card-title>
               <v-card-subtitle>January 28-31st</v-card-subtitle>

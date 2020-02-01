@@ -1,7 +1,7 @@
 {
   "name": "direction",
   "version": "1.0.0",
-  "description": "Nuxt, Vuetify, Netlify CMS Theme",
+  "description": "A event/conference theme for Nuxt and Netlify CMS",
   "author": "Jeremy Bratcher",
   "private": true,
   "scripts": {

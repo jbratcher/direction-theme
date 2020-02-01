@@ -1,7 +1,7 @@
 /* eslint-disable */
 <template>
   <!-- Links Wrapper -->
-  <v-list :class="listClass" rounded>
+  <v-list :class="`${listClass} py-0`" rounded>
     <!-- General links -->
     <v-list-item
       v-for="(item, i) in generalLinks"
@@ -21,7 +21,7 @@
 
     <v-menu open-on-hover offset-x>
       <template v-slot:activator="{ on }">
-        <v-btn class="ma-auto" v-on="on" text>
+        <v-btn class="more-button" v-on="on" text>
           <v-icon class="mr-1">mdi-briefcase</v-icon>More
         </v-btn>
       </template>
@@ -84,7 +84,18 @@ export default {
   margin: 1rem 0;
 }
 
-.ma-auto {
-  margin: auto;
+.more-button {
+  margin: 1rem auto 0 0;
+
+  .v-btn__content {
+    font-size: 1.33rem;
+    font-weight: 700;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .more-button {
+    margin: auto;
+  }
 }
 </style>

@@ -1,6 +1,10 @@
 import colors from 'vuetify/es5/util/colors'
 
 export default {
+  env: {
+    title: process.env.npm_package_name.charAt(0).toUpperCase() + process.env.npm_package_name.slice(1) || '',
+    description: process.env.npm_package_description || '',
+  },
   mode: 'universal',
   /*
    ** Headers of the page
@@ -9,7 +13,8 @@ export default {
     htmlAttrs: {
       lang: 'en',
     },
-    title: 'Direction',
+    // capitialize package name for title display
+    title: process.env.npm_package_name.charAt(0).toUpperCase() + process.env.npm_package_name.slice(1) || '',
     meta: [{
         charset: 'utf-8'
       },

@@ -1,6 +1,6 @@
 # Direction
 
-An event theme for Nuxt / Netlify CMS quickstart
+A event/conference theme for Nuxt and Netlify CMS quickstart
 
 One click deploy to Netlify  
 
