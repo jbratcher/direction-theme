@@ -1,11 +1,11 @@
 <template>
   <v-layout>
-    <v-col>
+    <v-col class="ma-0 pa-0">
       <v-sheet class="ma-0" color="primary" dark tile>
-        <h1 class="headline pa-2" display="headline">Blog > {{ blogPost.title }}</h1>
+        <h1 display="headline">Blog > {{ blogPost.title }}</h1>
       </v-sheet>
       <article>
-        <v-card tile class="d-flex flex-column align-center mx-auto">
+        <v-card class="d-flex flex-column align-center mx-auto pb-12" flat tile>
           <v-img
             class="align-end"
             :src="blogPost.hero"
@@ -14,8 +14,8 @@
             width="100%"
             max-height="300"
           />
-          <v-card-title class="display-1">{{blogPost.title}}</v-card-title>
-          <v-card-subtitle class="subtitle-1">{{blogPost.description}}</v-card-subtitle>
+          <v-card-title>{{blogPost.title}}</v-card-title>
+          <v-card-subtitle>{{blogPost.description}}</v-card-subtitle>
           <v-card-text v-html="$md.render(blogPost.body)"></v-card-text>
         </v-card>
       </article>
@@ -34,8 +34,36 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.col {
-  margin: 0;
-  padding: 0;
+h1 {
+  font-size: 2rem;
+  padding: 1rem 3rem;
+}
+
+.v-card__title {
+  font-size: 2rem;
+  margin: 2rem 0 1rem;
+}
+
+.v-card__subtitle {
+  font-size: 1.25rem;
+  margin: 1rem 0 2rem;
+}
+
+.v-card__text {
+  padding: 0 5vw;
+}
+
+@media screen and (min-width: 768px) {
+  .v-card__title {
+    font-size: 3rem;
+  }
+
+  .v-card__subtitle {
+    font-size: 1.67rem;
+  }
+
+  .v-card__text {
+    padding: 0 20vw;
+  }
 }
 </style>

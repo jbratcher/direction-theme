@@ -5,9 +5,56 @@
         <!-- Main Section -->
         <section>
           <section class="content-container">
-            <h1>Speakers</h1>
+            <h1>RSVP</h1>
           </section>
         </section>
+
+        <!-- Prices Section -->
+        <v-container id="prices">
+          <section class="content-container">
+            <h2>Prices</h2>
+            <section class="sub-container">
+              <h3>Ticket Packages</h3>
+              <p>Ut ut lobortis augue. Phasellus venenatis metus non metus congue, eget fermentum ipsum porttitor.</p>
+            </section>
+          </section>
+          <section class="packages">
+            <!-- package is a reserved keyword -->
+            <v-card v-for="(pkg, i) in packages" :key="`${pkg}${i}`">
+              <v-img
+                class="white--text align-end"
+                gradient="to top right, rgba(0,0,0,.5), rgba(0,0,0,.5)"
+                :src="pkg.image"
+                :alt="pkg.name"
+                lazy-src="https://picsum.photos/10/6"
+                min-width="200px"
+                :width="threeCardImageWidth"
+                :max-width="threeCardImageMaxWidth"
+                min-height="112.5px"
+                height="200px"
+                max-height="200px"
+              >
+                <v-icon class="white--text" size="64px">{{ pkg.icon }}</v-icon>
+                <v-card-title>{{ pkg.price }}</v-card-title>
+              </v-img>
+              <v-btn class="ticket-type" :name="pkg.name" text>Early Bird</v-btn>
+              <ul class="d-flex flex-column align-center">
+                <li v-for="(feature, i) in pkg.features" :key="`${feature}${i}`">{{ feature }}</li>
+              </ul>
+              <v-card-actions>
+                <v-btn
+                  color="orange accent-4"
+                  dark
+                  :name="pkg.name"
+                  nuxt
+                  rounded
+                  to="/tickets"
+                  x-large
+                >Get Tickets</v-btn>
+              </v-card-actions>
+            </v-card>
+          </section>
+        </v-container>
 
         <!-- Speakers Section -->
         <section id="speakers">
@@ -38,12 +85,10 @@
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
+import { imageSizesMixin } from '../mixins/imageSizes.js'
 
 export default {
-  components: {
-    Logo
-  },
+  mixins: [imageSizesMixin],
   head() {
     return {
       script: [
@@ -61,50 +106,11 @@ export default {
     events() {
       return this.$store.state.events
     },
+    packages() {
+      return this.$store.state.packages
+    },
     speakers() {
       return this.$store.state.speakers
-    },
-    responsiveWidth() {
-      let value = '100%'
-      switch (this.$vuetify.breakpoint.name) {
-        case 'xs':
-          value = '100%'
-          break
-        case 'sm':
-          value = '200px'
-          break
-        case 'md':
-          value = '20vw'
-          break
-        case 'lg':
-          value = '20vw'
-          break
-        case 'xl':
-          value = '20vw'
-          break
-      }
-      return value
-    },
-    responsiveMaxWidth() {
-      let value = '100%'
-      switch (this.$vuetify.breakpoint.name) {
-        case 'xs':
-          value = '90vw'
-          break
-        case 'sm':
-          value = '100%'
-          break
-        case 'md':
-          value = '100%'
-          break
-        case 'lg':
-          value = '100%'
-          break
-        case 'xl':
-          value = '100%'
-          break
-      }
-      return value
     }
   }
 }

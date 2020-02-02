@@ -96,6 +96,10 @@ export default {
 @media screen and (min-width: 768px) {
   .more-button {
     margin: auto;
+    .v-btn__content {
+      font-size: 0.875rem;
+      font-weight: 700;
+    }
   }
 }
 </style>

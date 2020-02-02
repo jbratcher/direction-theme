@@ -671,7 +671,6 @@ main > .container {
 // speakers section
 
 #speakers {
-  background: #fefefe;
   padding: 2rem 1.5rem;
   .speakers-list {
     background: transparent;
@@ -736,7 +735,6 @@ main > .container {
 // blog section
 
 #blog {
-  background: #fefefe;
   padding: 6rem 1.5rem 4rem;
   .location {
     position: relative;
@@ -911,7 +909,7 @@ main > .container {
       position: relative;
       margin-bottom: 5rem;
       .v-image {
-        border: 8px solid #fefefe;
+        border: 8px solid #fafafa;
         position: relative;
         max-width: 316px;
       }

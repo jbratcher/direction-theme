@@ -12,7 +12,7 @@
                 :src="post.thumbnail"
                 :alt="post.title"
                 lazy-src="https://picsum.photos/10/6"
-                width="100%"
+                max-width="100%"
                 height="300px"
                 max-height="300px"
               />
@@ -20,7 +20,7 @@
               <v-card-subtitle class="subtitle-1">{{post.description.substring(0, 80)}}</v-card-subtitle>
               <v-card-text>{{post.body.substring(0, 144) + '...'}}</v-card-text>
               <v-btn
-                class="ml-3 mb-12"
+                class="mt-auto mb-12 ml-3"
                 max-width="120px"
                 color="primary"
                 nuxt
@@ -66,18 +66,20 @@ main {
 
 @media screen and (min-width: 768px) {
   main {
-    .v-list {
+    & > .v-list {
       align-items: flex-start;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1rem;
+      gap: 2rem 1rem;
 
       .v-list-item {
         margin-bottom: 0;
+        min-height: stretch;
 
         // prevent image from overflowing card
         .v-card {
-          max-width: calc(48.5vw - 2rem); // is this too 'hard-coded'?
+          min-height: stretch;
+          max-width: calc(47.5vw - 4rem); // is this too 'hard-coded'?
         }
       }
     }
