@@ -1,8 +1,12 @@
 import colors from 'vuetify/es5/util/colors'
+import * as strUtil from './utils/str-utils.js'
+
+// format package name for title display
+const title = strUtil.titleCase(process.env.npm_package_name.replace(/-/g, " "));
 
 export default {
   env: {
-    title: process.env.npm_package_name.charAt(0).toUpperCase() + process.env.npm_package_name.slice(1) || '',
+    title: title || '',
     description: process.env.npm_package_description || '',
   },
   mode: 'universal',
@@ -14,7 +18,7 @@ export default {
       lang: 'en',
     },
     // capitialize package name for title display
-    title: process.env.npm_package_name.charAt(0).toUpperCase() + process.env.npm_package_name.slice(1) || '',
+    title: title || '',
     meta: [{
         charset: 'utf-8'
       },
