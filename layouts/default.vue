@@ -11,7 +11,7 @@
       scroll-threshold="200"
       tile
     >
-      <v-btn class="brand" name="brand" href="/" text>{{ appTitle }}</v-btn>
+      <v-btn class="brand" name="brand" href="/" text>{{ formattedAppTitle }}</v-btn>
       <v-spacer class="hidden-md-and-up" />
       <v-app-bar-nav-icon class="hidden-md-and-up" @click.stop="drawer = !drawer" />
       <MenuLinks :general-links="generalLinks" list-class="hidden-sm-and-down" />
@@ -107,6 +107,13 @@ export default {
     }
   },
   computed: {
+    formattedAppTitle() {
+      if (this.appTitle.length > 10) {
+        return this.appTitle.substring(0, 10) + '...'
+      } else {
+        return this.appTitle
+      }
+    },
     navHeight() {
       let height = '100px'
       switch (this.$vuetify.breakpoint.name) {
