@@ -27,17 +27,17 @@
               <br />
               <span>seeing you soon!</span>
             </p>
-            <section class="information-content">
+            <section class="information-content" v-intersect="onIntersect">
               <section>
-                <p class="number">2,793</p>
+                <p class="number animated-counter" data-target="2793">0</p>
                 <p class="label">Attendees</p>
               </section>
               <section>
-                <p class="number">33</p>
+                <p class="number" data-target="33">33</p>
                 <p class="label">Tech Talks</p>
               </section>
               <section>
-                <p class="number">3</p>
+                <p class="number" data-target="3">3</p>
                 <p class="label">Days</p>
               </section>
             </section>
@@ -343,6 +343,7 @@ export default {
     }
   },
   data: () => ({
+    isIntersecting: false,
     tab: null
   }),
   computed: {
@@ -369,6 +370,38 @@ export default {
     },
     topSponsors() {
       return this.$store.state.sponsors.slice().filter(sponsor => sponsor.top)
+    }
+  },
+  methods: {
+    animatedCounter(elementClass, speed) {
+      const counters = document.querySelectorAll(elementClass)
+      counters.forEach(counter => {
+        const updateCount = () => {
+          const target = +counter.getAttribute('data-target')
+          const count = +counter.innerText
+          // Lower inc to slow and higher to slow
+          const inc = target / speed
+          if (count < target) {
+            counter.innerText = Math.ceil(count + inc)
+            setTimeout(updateCount, 1)
+          } else {
+            counter.innerText = target
+          }
+        }
+        updateCount()
+      })
+    },
+    // v-intersect vuetify (intersection observer)
+    onIntersect(entries, observer) {
+      this.isIntersecting = entries[0].isIntersecting
+    }
+  },
+  watch: {
+    // watch for element tagged with v-intersect to scroll into view
+    isIntersecting: function(value) {
+      if (value) {
+        setTimeout(this.animatedCounter('.animated-counter', 200), 500)
+      }
     }
   }
 }
