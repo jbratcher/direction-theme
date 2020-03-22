@@ -2,6 +2,7 @@
   <v-app>
     <!-- Header Area -->
     <v-app-bar
+      class="justify-space-between"
       app
       elevate-on-scroll
       flat
@@ -11,12 +12,20 @@
       scroll-threshold="200"
       tile
     >
-      <v-btn class="brand" name="brand" href="/" text>{{ formattedAppTitle }}</v-btn>
+      <v-btn
+        :class="{'display-1 font-weight-bold': $breakpoint.mdAndUp, 'headline': $breakpoint.smAndDown}"
+        name="brand"
+        href="/"
+        text
+      >{{ formattedAppTitle }}</v-btn>
       <v-spacer class="hidden-md-and-up" />
       <v-app-bar-nav-icon class="hidden-md-and-up" @click.stop="drawer = !drawer" />
-      <MenuLinks :general-links="generalLinks" list-class="hidden-sm-and-down" />
+      <MenuLinks
+        :general-links="generalLinks"
+        list-class="hidden-sm-and-down d-md-flex mx-auto py-0"
+      />
       <v-btn
-        class="flex-0 align-self-center hidden-sm-and-down btn-box-shadow"
+        class="flex-0 align-self-center hidden-sm-and-down elevation-10"
         color="blue accent-4"
         dark
         nuxt
@@ -26,10 +35,16 @@
       >Contact</v-btn>
     </v-app-bar>
     <!-- side/mobile navigation -->
-    <v-navigation-drawer v-model="drawer" :mini-variant="miniVariant" fixed right>
+    <v-navigation-drawer
+      class="align-center"
+      v-model="drawer"
+      :mini-variant="miniVariant"
+      fixed
+      right
+    >
       <MenuLinks :general-links="generalLinks" list-class="mobile" />
       <v-btn
-        class="flex-0 align-self-center btn-box-shadow mt-12"
+        class="flex-0 align-self-center elevation-10 mt-12"
         color="primary"
         dark
         nuxt
@@ -43,12 +58,16 @@
       <nuxt />
     </v-content>
     <!-- Footer Area -->
-    <v-footer>
-      <section class="content-container">
-        <h2>{{ appTitle }}</h2>
-        <p>{{ appDescription }}</p>
-        <section class="subscribe-form">
-          <v-text-field label="Email" outlined color="orange accent-4" clearable></v-text-field>
+    <v-footer class="d-flex flex-column align-center py-12">
+      <section class="mb-8 px-6 text-center">
+        <h2
+          :class="{'display-3 font-weight-bold mb-3': $breakpoint.mdAndUp, 'display-1 font-weight-bold mb-3': $breakpoint.smAndDown}"
+        >{{ appTitle }}</h2>
+        <p
+          :class="{'headline mb-12': $breakpoint.mdAndUp, 'title font-weight-regular mb-12': $breakpoint.smAndDown}"
+        >{{ appDescription }}</p>
+        <section class="d-flex flex-column align-center">
+          <v-text-field label="Email" color="orange accent-4" clearable outlined></v-text-field>
           <v-btn
             color="white--text orange accent-4"
             dark
@@ -60,14 +79,16 @@
           >Get our Newsletter</v-btn>
         </section>
       </section>
-      <ul>
+      <ul class="d-flex justify-center">
         <li v-for="(link, i) in generalLinks" :key="i + link.title">
           <v-btn :href="link.to" rounded text>{{ link.title }}</v-btn>
         </li>
       </ul>
-      <v-container>
-        {{ new Date().getFullYear() }}&nbsp;—&nbsp;
-        <strong>{{appTitle}}</strong>
+      <v-container class="text-center">
+        <p>
+          {{ new Date().getFullYear() }}&nbsp;—&nbsp;
+          <strong>{{appTitle}}</strong>
+        </p>
       </v-container>
     </v-footer>
   </v-app>
@@ -152,6 +173,7 @@ html,
 .v-application {
   font-family: 'Poppins', sans-serif;
   font-size: 16px;
+  word-break: keep-all;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
@@ -172,6 +194,11 @@ ul {
 
 // classes
 
+.justify-space-evenly {
+  justify-content: space-around;
+  justify-content: space-evenly;
+}
+
 .v-image {
   object-fit: cover;
 }
@@ -182,290 +209,24 @@ ul {
   align-items: center;
 }
 
-.v-toolbar__content {
-  margin: 0 0.5rem;
-  .v-btn.brand {
-    font-size: 2rem;
-    font-weight: 900;
-    padding-left: 0;
-  }
-}
-
-.v-list {
-  display: flex;
-
-  .v-list-item {
-    flex: 0;
-    margin: 0 0.5rem;
-    padding: 0 0.875rem;
-  }
-
-  .v-list-item__title {
-    font-size: 1.33rem;
-    font-weight: 700;
-    text-transform: uppercase;
-  }
-}
-
-.v-toolbar__content .v-btn.v-btn--icon.v-size--default {
-  height: 3.75rem;
-  width: 3.75rem;
-}
-
-.v-btn--icon.v-size--default .v-icon {
-  font-size: 3rem;
-  height: 3rem;
-  width: 3rem;
-}
-
-.v-navigation-drawer__content {
-  display: flex;
-  flex-direction: column;
-}
-
-.btn-box-shadow {
-  box-shadow: 0 11px 22px rgba(34, 34, 34, 0.2);
-}
-
-// card
-
-.v-card__title {
-  word-break: break-word;
-}
-
-// footer
-
-.v-footer {
-  padding: 6rem 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  .content-container {
-    margin-bottom: 4rem;
-    padding: 0 2rem;
-    text-align: center;
-    h2 {
-      font-size: 2.67rem;
-      font-weight: 900;
-      text-align: center;
-    }
-    p {
-      font-size: 1.5rem;
-      padding-bottom: 3rem;
-    }
-  }
-
-  .subscribe-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    .v-input {
-      width: 80%;
-    }
-  }
-
-  ul {
-    display: flex;
-    justify-content: center;
-    list-style-type: none;
-    padding: 1rem 0;
-  }
-
-  .container {
-    display: flex;
-    justify-content: center;
-    padding: 1rem 0;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  // nav
-
-  .v-toolbar__content {
-    justify-content: space-between;
-    margin: 0 0.75rem;
-    .v-btn.brand {
-      padding-left: 1rem;
-    }
-  }
-
-  .v-list {
-    .v-list-item {
-      margin: 0 0.25rem;
-    }
-
-    .v-list-item__title {
-      font-size: 0.875rem;
-    }
-  }
-}
-
-// hero section
-#hero {
-  padding: 0 0 2rem;
-
-  section.content-container {
-    background: #eee;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 2rem 1.5rem;
-
-    p {
-      color: #333;
-      font-size: 1.33rem;
-    }
-
-    h1 {
-      font-size: 3rem;
-      font-weight: 700;
-      line-height: 1.2;
-      margin-bottom: 4rem;
-    }
-
-    .v-btn {
-      box-shadow: 0 11px 22px rgba(34, 34, 34, 0.2);
-      max-width: 180px;
-      text-transform: capitalize;
-    }
-  }
-}
-
 // information section
 
 #information {
   position: relative;
 
   & > section {
-    background: #fff;
     border-top-left-radius: 10rem;
     border-bottom-left-radius: 10rem;
-    box-shadow: 0 11px 22px rgba(34, 34, 34, 0.2);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0 0 2rem 2rem;
     position: relative;
-    top: -2rem;
-
-    .tagline {
-      font-size: 3rem;
-      line-height: 1;
-      margin: 4rem 0 0 4rem;
-
-      span {
-        font-weight: 300;
-      }
-    }
-
-    .information-content {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      padding: 2rem;
-
-      section {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 1rem;
-
-        .number {
-          font-size: 2.75rem;
-          font-weight: 800;
-          line-height: 2.75rem;
-        }
-
-        .label {
-          text-transform: capitalize;
-        }
-      }
-    }
-
-    .information-content section:first-of-type {
-      .number {
-        color: #ff6d00; // orange accent-4
-      }
-    }
-  }
-}
-
-// prominent section heading
-
-main > .container {
-  .content-container {
-    h2,
-    h3 {
-      line-height: 1;
-      padding: 1rem 0;
-    }
-    h2 {
-      font-size: 3rem;
-      font-weight: 900;
-      margin-bottom: 1rem;
-    }
-    .sub-container {
-      border-left: 0.25rem solid #ff6d00;
-      margin-left: 0.5rem;
-      padding-left: 2.5rem;
-      h3 {
-        font-size: 2.33rem;
-        font-weight: 700;
-        padding-top: 0;
-      }
-      p {
-        font-size: 1.33rem;
-        padding: 1rem 0;
-      }
-    }
+    top: -1.5rem;
   }
 }
 
 // event details section
 #event-details {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
   .event-images {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-width: 90vw;
-
     .v-image {
       margin: 1rem auto;
-      max-width: 90vw;
-    }
-  }
-
-  .event-text.container {
-    display: flex;
-    flex-direction: column;
-    min-height: 0;
-
-    h2 {
-      font-size: 3rem;
-      font-weight: 900;
-      grid-area: header;
-      line-height: 1;
-      padding: 1rem 0 2rem;
-    }
-
-    .cta-text {
-      grid-area: text;
-      h3,
-      p,
-      .v-btn {
-        margin: 1rem 0;
-      }
-      h3 {
-        font-size: 2.33rem;
-        font-weight: 700;
-        line-height: 1;
-        margin-top: 0;
-      }
     }
   }
 }
@@ -833,74 +594,12 @@ main > .container {
     background-size: 50% 100%;
     padding: 0;
 
-    section.content-container {
+    .content-clip {
       background: #fefefe;
       clip-path: polygon(0 0, 70% 0%, 100% 50%, 70% 100%, 0 100%);
       padding: 0 3rem;
       width: 60%;
       min-height: 600px;
-
-      p {
-        font-size: 1.33rem;
-      }
-
-      h1 {
-        font-size: 4rem;
-        font-weight: 700;
-        line-height: 1.2;
-        margin-bottom: 4rem;
-        margin-right: 20%;
-      }
-
-      .v-btn {
-        box-shadow: 0 11px 22px rgba(34, 34, 34, 0.2);
-        max-width: 180px;
-        text-transform: capitalize;
-      }
-    }
-  }
-
-  // information section
-
-  #information > section {
-    border-top-left-radius: 10rem;
-    border-bottom-left-radius: 10rem;
-    box-shadow: 0 11px 22px rgba(34, 34, 34, 0.2);
-    flex-direction: row;
-    justify-content: space-evenly;
-    margin: 0 0 2rem 2rem;
-
-    .tagline {
-      margin: 0;
-    }
-
-    .information-content {
-      display: flex;
-      align-items: baseline;
-
-      section {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: 0 2rem;
-        padding: 2rem 0;
-
-        .number {
-          font-size: 2.75rem;
-          font-weight: 800;
-          line-height: 2.75rem;
-        }
-
-        .label {
-          text-transform: capitalize;
-        }
-      }
-    }
-
-    .information-content section:first-of-type {
-      .number {
-        color: #ff6d00; // orange accent-4
-      }
     }
   }
 
@@ -911,8 +610,6 @@ main > .container {
   // event details section
   #event-details {
     .event-images {
-      flex-direction: row;
-      justify-content: center;
       position: relative;
       margin-bottom: 5rem;
       .v-image {
@@ -930,38 +627,6 @@ main > .container {
       .v-image:nth-of-type(3) {
         top: 40px;
         left: -20px;
-      }
-    }
-
-    .event-text.container {
-      display: grid;
-      grid-template-columns: 2fr 3fr;
-      grid-template-areas: 'header text';
-      gap: 2rem;
-      min-height: 0;
-
-      h2 {
-        font-size: 4rem;
-        font-weight: 900;
-        grid-area: header;
-        line-height: 1;
-        padding: 0 4rem;
-        justify-self: center;
-      }
-
-      .cta-text {
-        grid-area: text;
-        h3,
-        p,
-        .v-btn {
-          margin: 1rem 0;
-        }
-        h3 {
-          font-size: 3rem;
-          font-weight: 700;
-          line-height: 1;
-          margin-top: 0;
-        }
       }
     }
   }

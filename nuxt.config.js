@@ -71,7 +71,7 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: ["~/plugins/breakpoint"],
   /*
    ** Nuxt.js dev-modules
    */
@@ -103,6 +103,8 @@ export default {
    ** colors object https://vuetifyjs.com/en/styles/colors
    */
   vuetify: {
+    treeShake: true,
+    customVariables: ['~/assets/variables.scss'],
     theme: {
       light: true,
       themes: {

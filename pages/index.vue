@@ -3,17 +3,28 @@
     <v-flex>
       <main>
         <!-- Hero Section -->
-        <section id="hero">
-          <section class="content-container">
-            <p>January, 31st, 2020 - 9:00 AM</p>
-            <h1>The Intersection of Art &amp; Tech</h1>
+        <section
+          id="hero"
+          :class="{'mb-6': $breakpoint.mdAndUp, 'my-12 py-12': $breakpoint.smAndDown}"
+        >
+          <section
+            :class="{'content-clip d-flex flex-column justify-center pl-8 pr-12': $breakpoint.mdAndUp, 'content-clip d-flex flex-column text-center px-8': $breakpoint.smAndDown}"
+          >
+            <p
+              :class="{'headline font-weight-regular': $breakpoint.mdAndUp, 'title': $breakpoint.smAndDown}"
+            >January, 31st, 2020 - 9:00 AM</p>
+            <h1
+              :class="{'display-3 font-weight-bold mb-6': $breakpoint.mdAndUp, 'display-1 font-weight-bold mb-6': $breakpoint.smAndDown}"
+            >The Intersection of Art &amp; Tech</h1>
             <v-btn
+              :class="{'flex-0 elevaton-10 text-uppercase': $breakpoint.mdAndUp, 'flex-0 elevaton-10 text-uppercase align-self-center': $breakpoint.smAndDown}"
               color="orange accent-4"
               dark
               name="about"
               nuxt
               rounded
               to="/about"
+              width="12.5rem"
               x-large
             >Learn More</v-btn>
           </section>
@@ -21,32 +32,40 @@
 
         <!-- Information Section -->
         <section id="information">
-          <section>
-            <p class="tagline">
+          <section
+            class="elevation-10 d-flex flex-column flex-md-row justify-space-evenly ml-6 mb-6"
+          >
+            <p
+              :class="{'display-2 font-weight-regular ml-12 align-self-center': $breakpoint.mdAndUp, 'display-1 font-weight-regular mt-6 pt-12 align-self-center': $breakpoint.smAndDown}"
+            >
               We will be
-              <br />
-              <span>seeing you soon!</span>
+              <br />seeing you soon!
             </p>
-            <section class="information-content" v-intersect="onIntersect">
-              <section>
-                <p class="number animated-counter" data-target="2793">0</p>
-                <p class="label">Attendees</p>
+            <section class="d-flex flex-wrap pa-12" v-intersect="onIntersect">
+              <section class="d-flex flex-column pa-6">
+                <p
+                  class="display-1 font-weight-bold orange--text accent-4 animated-counter"
+                  data-target="2793"
+                >0</p>
+                <p class="text-uppercase">Attendees</p>
               </section>
-              <section>
-                <p class="number" data-target="33">33</p>
-                <p class="label">Tech Talks</p>
+              <section class="d-flex flex-column pa-6">
+                <p class="display-1 font-weight-bold" data-target="33">33</p>
+                <p class="text-uppercase">Tech Talks</p>
               </section>
-              <section>
-                <p class="number" data-target="3">3</p>
-                <p class="label">Days</p>
+              <section class="d-flex flex-column pa-6">
+                <p class="display-1 font-weight-bold" data-target="3">3</p>
+                <p class="text-uppercase">Days</p>
               </section>
             </section>
           </section>
         </section>
 
         <!-- Benefits Section -->
-        <v-container id="event-details">
-          <section class="event-images">
+        <v-container id="event-details" class="d-flex flex-column align-center">
+          <section
+            class="d-flex flex-column align-center flex-md-row justify-md-center event-images"
+          >
             <v-img
               v-for="(event, i) in highlightedEvents"
               :key="`${event.name}${i}`"
@@ -62,21 +81,27 @@
               max-height="30vh"
             />
           </section>
-          <v-container class="event-text">
-            <h2>Event Details</h2>
-            <section class="cta-text">
-              <h3>The Wave of the Future</h3>
-              <p>Ut ut lobortis augue. Phasellus venenatis metus non metus congue, eget fermentum ipsum porttitor. Nunc nec mi a ligula suscipit pulvinar eu ut risus. Vivamus egestas neque vel nibh imperdiet, ac laoreet tellus imperdiet. Aliquam erat volutpat. Nam orci ex, placerat quis imperdiet vel, sagittis quis neque. Donec eget interdum ante, eu facilisis turpis.</p>
-              <v-btn
-                color="orange accent-4"
-                dark
-                name="about"
-                nuxt
-                rounded
-                to="/about"
-                x-large
-              >Learn More</v-btn>
-            </section>
+          <v-container>
+            <v-row>
+              <v-col class="col-12 col-md-6">
+                <h2 class="display-2 font-weight-bold mb-3">Event Details</h2>
+              </v-col>
+              <v-col class="col-12 col-md-6">
+                <h3 class="display-1 font-weight-bold mb-3">The Wave of the Future</h3>
+                <p
+                  class="mb-6"
+                >Ut ut lobortis augue. Phasellus venenatis metus non metus congue, eget fermentum ipsum porttitor. Nunc nec mi a ligula suscipit pulvinar eu ut risus. Vivamus egestas neque vel nibh imperdiet, ac laoreet tellus imperdiet. Aliquam erat volutpat. Nam orci ex, placerat quis imperdiet vel, sagittis quis neque. Donec eget interdum ante, eu facilisis turpis.</p>
+                <v-btn
+                  color="orange accent-4"
+                  dark
+                  name="about"
+                  nuxt
+                  rounded
+                  to="/about"
+                  x-large
+                >Learn More</v-btn>
+              </v-col>
+            </v-row>
           </v-container>
         </v-container>
 
@@ -84,7 +109,9 @@
         <v-container id="rsvp">
           <section class="content-container">
             <p>Hurry, this event is almost sold out!</p>
-            <h3>Meet &amp; Greet the Local Leaders of the Tech Industry</h3>
+            <h3
+              class="display-1 font-weight-bold"
+            >Meet &amp; Greet the Local Leaders of the Tech Industry</h3>
             <v-btn color="blue accent-4" dark name="rsvp" nuxt rounded to="/rsvp" x-large>RSVP Now</v-btn>
           </section>
           <v-img src="/img/event-details-3.jpg" lazy-src="https://picsum.photos/10/6" alt="rsvp" />
@@ -113,9 +140,9 @@
         <!-- Day Schedule Section -->
         <v-container id="day-schedule">
           <section class="content-container">
-            <h2>Day Schedule</h2>
-            <section class="sub-container">
-              <h3>A List of Events</h3>
+            <h2 class="display-2 font-weight-bold mb-3">Day Schedule</h2>
+            <section>
+              <h3 class="display-1 font-weight-bold">A List of Events</h3>
               <p>Ut ut lobortis augue. Phasellus venenatis metus non metus congue, eget fermentum ipsum porttitor.</p>
             </section>
           </section>
@@ -156,9 +183,9 @@
         <!-- Prices Section -->
         <v-container id="prices">
           <section class="content-container">
-            <h2>Prices</h2>
-            <section class="sub-container">
-              <h3>Ticket Packages</h3>
+            <h2 class="display-2 font-weight-bold mb-3">Prices</h2>
+            <section>
+              <h3 class="display-1 font-weight-bold">Ticket Packages</h3>
               <p>Ut ut lobortis augue. Phasellus venenatis metus non metus congue, eget fermentum ipsum porttitor.</p>
             </section>
           </section>
@@ -203,9 +230,9 @@
         <!-- Speakers Section -->
         <v-container id="speakers">
           <section class="content-container">
-            <h2>Speakers</h2>
-            <section class="sub-container">
-              <h3>Who's Speaking</h3>
+            <h2 class="display-2 font-weight-bold mb-3">Speakers</h2>
+            <section>
+              <h3 class="display-1 font-weight-bold">Who's Speaking</h3>
               <p>Ut ut lobortis augue. Phasellus venenatis metus non metus congue, eget fermentum ipsum porttitor.</p>
             </section>
           </section>
@@ -233,9 +260,9 @@
         <!-- Sponsors Section -->
         <v-container id="sponsors">
           <section class="content-container">
-            <h2>Sponors</h2>
-            <section class="sub-container">
-              <h3>An amazing bunch that deserves your attention</h3>
+            <h2 class="display-2 font-weight-bold mb-3">Sponors</h2>
+            <section>
+              <h3 class="display-1 font-weight-bold">An amazing bunch that deserves your attention</h3>
             </section>
           </section>
           <section class="regular-sponsors">
@@ -295,9 +322,9 @@
             </v-card>
           </section>
           <section class="content-container">
-            <h2>Blog</h2>
-            <section class="sub-container">
-              <h3>Stay tuned for updates</h3>
+            <h2 class="display-2 font-weight-bold mb-3">Blog</h2>
+            <section>
+              <h3 class="display-1 font-weight-bold">Stay tuned for updates</h3>
               <p>Ut ut lobortis augue. Phasellus venenatis metus non metus congue, eget fermentum ipsum porttitor. Nunc nec mi a ligula suscipit pulvinar eu ut risus.</p>
             </section>
           </section>
@@ -379,10 +406,10 @@ export default {
         const updateCount = () => {
           const target = +counter.getAttribute('data-target')
           const count = +counter.innerText
-          // Lower inc to slow and higher to slow
-          const inc = target / speed
+          // Lower increment to slow and higher to slow
+          const increment = target / speed
           if (count < target) {
-            counter.innerText = Math.ceil(count + inc)
+            counter.innerText = Math.ceil(count + increment)
             setTimeout(updateCount, 1)
           } else {
             counter.innerText = target
