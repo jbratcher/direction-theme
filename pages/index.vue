@@ -69,13 +69,14 @@
             <v-img
               v-for="(event, i) in highlightedEvents"
               :key="`${event.name}${i}`"
+              class="my-3"
               :src="event.image"
               :alt="event.name"
               lazy-src="https://picsum.photos/10/6"
               :aspect-ratio="16/9"
               min-width="200px"
-              :width="responsiveWidth"
-              :max-width="responsiveMaxWidth"
+              :width="$breakpoint.smAndDown ? '90vw' : '370px'"
+              :max-width="$breakpoint.smAndDown ? '90vw' : '100%'"
               min-height="112.5px"
               height="100%"
               max-height="30vh"
@@ -107,34 +108,84 @@
 
         <!-- Rsvp Section -->
         <v-container id="rsvp">
-          <section class="content-container">
-            <p>Hurry, this event is almost sold out!</p>
-            <h3
-              class="display-1 font-weight-bold"
-            >Meet &amp; Greet the Local Leaders of the Tech Industry</h3>
-            <v-btn color="blue accent-4" dark name="rsvp" nuxt rounded to="/rsvp" x-large>RSVP Now</v-btn>
-          </section>
-          <v-img src="/img/event-details-3.jpg" lazy-src="https://picsum.photos/10/6" alt="rsvp" />
-          <section class="highlights">
-            <v-card>
-              <v-icon size="4rem">mdi-earth</v-icon>
-              <h4>Card title</h4>
-              <div></div>
-              <p>Ut ut lobortis augue. Phasellus venenatis metus non metus congue, eget fermentum ipsum porttitor. Nunc nec mi a ligula suscipit pulvinar eu ut risus.</p>
-            </v-card>
-            <v-card>
-              <v-icon size="4rem">mdi-bulletin-board</v-icon>
-              <h4>Card title</h4>
-              <div></div>
-              <p>Ut ut lobortis augue. Phasellus venenatis metus non metus congue, eget fermentum ipsum porttitor. Nunc nec mi a ligula suscipit pulvinar eu ut risus.</p>
-            </v-card>
-            <v-card>
-              <v-icon size="4rem">mdi-chart-areaspline</v-icon>
-              <h4>Card title</h4>
-              <div></div>
-              <p>Ut ut lobortis augue. Phasellus venenatis metus non metus congue, eget fermentum ipsum porttitor. Nunc nec mi a ligula suscipit pulvinar eu ut risus.</p>
-            </v-card>
-          </section>
+          <v-row class="px-3">
+            <v-col class="col-12 col-md-6 mb-12">
+              <p>Hurry, this event is almost sold out!</p>
+              <h3
+                class="display-1 font-weight-bold mb-6"
+              >Meet &amp; Greet the Local Leaders of the Tech Industry</h3>
+              <v-btn color="blue accent-4" dark name="rsvp" nuxt rounded to="/rsvp" x-large>RSVP Now</v-btn>
+            </v-col>
+            <v-col class="col-12 col-md-6 mb-12">
+              <v-img
+                src="/img/event-details-3.jpg"
+                lazy-src="https://picsum.photos/10/6"
+                alt="rsvp"
+              />
+            </v-col>
+          </v-row>
+          <v-container class="d-flex flex-column flex-md-row">
+            <v-hover v-slot:default="{ hover }" close-delay="200" open-delay="200">
+              <v-card
+                :class="{'d-flex flex-column pa-6 mx-6': $breakpoint.mdAndUp, 'd-flex flex-column pa-6 mx-0 mb-12': $breakpoint.smAndDown, 'white--text blue accent-4 elevation-24': hover}"
+              >
+                <v-icon
+                  :class="{'align-self-start': !hover, 'align-self-start white--text': hover}"
+                  size="4rem"
+                >mdi-earth</v-icon>
+                <h4 class="display-1 font-weight-bold mt-6 mb-3">Card title</h4>
+                <v-sheet
+                  width="4rem"
+                  height="0.5rem"
+                  :color="hover ? 'white' : 'orange accent-4'"
+                  tile
+                ></v-sheet>
+                <p
+                  class="my-6"
+                >Ut ut lobortis augue. Phasellus venenatis metus non metus congue, eget fermentum ipsum porttitor. Nunc nec mi a ligula suscipit pulvinar eu ut risus.</p>
+              </v-card>
+            </v-hover>
+            <v-hover v-slot:default="{ hover }" close-delay="200" open-delay="200">
+              <v-card
+                :class="{'d-flex flex-column pa-6 mx-6': $breakpoint.mdAndUp, 'd-flex flex-column pa-6 mx-0 mb-12': $breakpoint.smAndDown, 'white--text blue accent-4 elevation-24': hover}"
+              >
+                <v-icon
+                  :class="{'align-self-start': !hover, 'align-self-start white--text': hover}"
+                  size="4rem"
+                >mdi-bulletin-board</v-icon>
+                <h4 class="display-1 font-weight-bold mt-6 mb-3">Card title</h4>
+                <v-sheet
+                  width="4rem"
+                  height="0.5rem"
+                  :color="hover ? 'white' : 'orange accent-4'"
+                  tile
+                ></v-sheet>
+                <p
+                  class="my-6"
+                >Ut ut lobortis augue. Phasellus venenatis metus non metus congue, eget fermentum ipsum porttitor. Nunc nec mi a ligula suscipit pulvinar eu ut risus.</p>
+              </v-card>
+            </v-hover>
+            <v-hover v-slot:default="{ hover }" close-delay="200" open-delay="200">
+              <v-card
+                :class="{'d-flex flex-column pa-6 mx-6': $breakpoint.mdAndUp, 'd-flex flex-column pa-6 mx-0 mb-12': $breakpoint.smAndDown, 'white--text blue accent-4 elevation-24': hover}"
+              >
+                <v-icon
+                  :class="{'align-self-start': !hover, 'align-self-start white--text': hover}"
+                  size="4rem"
+                >mdi-chart-areaspline</v-icon>
+                <h4 class="display-1 font-weight-bold mt-6 mb-3">Card title</h4>
+                <v-sheet
+                  width="4rem"
+                  height="0.5rem"
+                  :color="hover ? 'white' : 'orange accent-4'"
+                  tile
+                ></v-sheet>
+                <p
+                  class="my-6"
+                >Ut ut lobortis augue. Phasellus venenatis metus non metus congue, eget fermentum ipsum porttitor. Nunc nec mi a ligula suscipit pulvinar eu ut risus.</p>
+              </v-card>
+            </v-hover>
+          </v-container>
         </v-container>
 
         <!-- Day Schedule Section -->
@@ -160,20 +211,33 @@
                 <v-card
                   v-for="(event, i) in events.filter(event => event.dayId === day.id)"
                   :key="`${event.name}${i}`"
+                  class="d-flex mb-12"
                 >
-                  <h4 class="time">{{ event.time }}</h4>
-                  <section>
-                    <h3 class="event-title">{{ event.title }}</h3>
-                    <p class="speaker">{{ event.speaker }}</p>
-                    <p class="speaker-title">{{ event.speakerTitle }}</p>
-                  </section>
-                  <v-avatar :size="eventAvatarSize">
-                    <v-img
-                      :src="event.image"
-                      :alt="event.title"
-                      lazy-src="https://picsum.photos/10/6"
-                    />
-                  </v-avatar>
+                  <v-container>
+                    <v-row class="pa-3">
+                      <v-col class="col-12 col-md-2">
+                        <h4
+                          :class="{'headline font-weight-bold orange--text accent-4  align-self-center': $breakpoint.mdAndUp, 'headline font-weight-bold orange--text accent-4 align-self-center': $breakpoint.smAndDown}"
+                        >{{ event.time }}</h4>
+                      </v-col>
+                      <v-col class="col-12 col-md-8">
+                        <h3 class="headline font-weight-bold">{{ event.title }}</h3>
+                        <p class="title mb-0">{{ event.speaker }}</p>
+                        <p class="subtitle-1">{{ event.speakerTitle }}</p>
+                      </v-col>
+                      <v-col
+                        :class="{'col-12 col-md-2 ml-auto': $breakpoint.mdAndUp, 'col-12 col-md-3': $breakpoint.smAndDown}"
+                      >
+                        <v-avatar :size="$breakpoint.mdAndUp ? '128px' : '64px'">
+                          <v-img
+                            :src="event.image"
+                            :alt="event.title"
+                            lazy-src="https://picsum.photos/10/6"
+                          />
+                        </v-avatar>
+                      </v-col>
+                    </v-row>
+                  </v-container>
                 </v-card>
               </v-tab-item>
             </v-tabs-items>
@@ -275,7 +339,7 @@
                 text
                 x-large
               >
-                <v-icon :size="eventAvatarSize">{{ sponsor.icon }}</v-icon>
+                <v-icon :size="$breakpoint.mdAndUp ? '128px' : '64px'">{{ sponsor.icon }}</v-icon>
               </v-btn>
             </section>
           </section>
@@ -289,7 +353,7 @@
                 text
                 x-large
               >
-                <v-icon :size="eventAvatarSize">{{ sponsor.icon }}</v-icon>
+                <v-icon :size="$breakpoint.mdAndUp ? '128px' : '64px'">{{ sponsor.icon }}</v-icon>
               </v-btn>
             </section>
           </section>

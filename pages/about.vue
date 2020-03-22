@@ -20,8 +20,8 @@
               lazy-src="https://picsum.photos/10/6"
               :aspect-ratio="16/9"
               min-width="200px"
-              :width="responsiveWidth"
-              :max-width="responsiveMaxWidth"
+              :width="$breakpoint.smAndDown ? '90vw' : '370px'"
+              :max-width="$breakpoint.smAndDown ? '90vw' : '100%'"
               min-height="112.5px"
               height="100%"
               max-height="30vh"
@@ -75,7 +75,7 @@
                     <p class="speaker">{{ event.speaker }}</p>
                     <p class="speaker-title">{{ event.speakerTitle }}</p>
                   </section>
-                  <v-avatar :size="eventAvatarSize">
+                  <v-avatar :size="$breakpoint.mdAndUp ? '128px' : '64px'">
                     <v-img
                       :src="event.image"
                       :alt="event.title"
@@ -136,7 +136,7 @@
                 text
                 x-large
               >
-                <v-icon :size="eventAvatarSize">{{ sponsor.icon }}</v-icon>
+                <v-icon :size="$breakpoint.mdAndUp ? '128px' : '64px'">{{ sponsor.icon }}</v-icon>
               </v-btn>
             </section>
           </section>
@@ -150,7 +150,7 @@
                 text
                 x-large
               >
-                <v-icon :size="eventAvatarSize">{{ sponsor.icon }}</v-icon>
+                <v-icon :size="$breakpoint.mdAndUp ? '128px' : '64px'">{{ sponsor.icon }}</v-icon>
               </v-btn>
             </section>
           </section>

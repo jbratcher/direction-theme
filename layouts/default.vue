@@ -222,40 +222,9 @@ ul {
   }
 }
 
-// event details section
-#event-details {
-  .event-images {
-    .v-image {
-      margin: 1rem auto;
-    }
-  }
-}
-
 // RSVP section
 
 #rsvp {
-  display: flex;
-  flex-direction: column;
-  padding: 3rem 0;
-
-  section.content-container {
-    padding-bottom: 1rem;
-    h3,
-    p,
-    .v-btn {
-      margin: 1rem;
-    }
-    h3 {
-      font-size: 3rem;
-      font-weight: 700;
-      line-height: 1;
-      margin-top: 0;
-    }
-    p {
-      font-size: 1.25rem;
-    }
-  }
-
   .v-image {
     clip-path: polygon(
       0% 0%,
@@ -266,56 +235,6 @@ ul {
       50% 75%,
       0% 75%
     );
-    margin: 2rem;
-    max-width: 90vw;
-  }
-
-  .highlights {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    grid-area: cards;
-    width: 90%;
-    margin: 0 auto;
-    .v-card {
-      margin: 1rem;
-      padding: 2rem;
-      transition: 0.5s all ease;
-      h4 {
-        font-size: 1.67rem;
-        font-weight: 900;
-        padding-bottom: 1rem;
-        transition: 0.5s all ease;
-      }
-      div {
-        border: 0.25rem solid #ff6d00;
-        width: 25%;
-        height: auto;
-        transition: 0.5s all ease;
-      }
-      p {
-        font-size: 1.125rem;
-        margin: 1rem 0;
-        transition: 0.5s all ease;
-      }
-      &:hover {
-        background: #2962ff;
-
-        .v-icon {
-          color: #fff;
-          transition: 0.5s all ease;
-        }
-
-        h4,
-        p {
-          color: #fff;
-        }
-
-        div {
-          border-color: #fff;
-        }
-      }
-    }
   }
 }
 
@@ -351,28 +270,6 @@ ul {
     }
     .v-tabs-items .v-window-item {
       padding: 2rem 0;
-      .v-card {
-        margin: 0 2rem 2rem 2rem;
-        padding: 2rem;
-
-        .time {
-          color: #ff6d00;
-          font-size: 1.25rem;
-          font-weight: 900;
-          margin-bottom: 0.5rem;
-        }
-
-        .event-title {
-          font-size: 1.25rem;
-          font-weight: 900;
-          margin-bottom: 0.5rem;
-        }
-
-        .speaker {
-          font-weight: 700;
-          margin-bottom: 0.5rem;
-        }
-      }
     }
     .v-card > *:last-child:not(.v-btn):not(.v-chip) {
       border-bottom-left-radius: 50%;
@@ -615,7 +512,6 @@ ul {
       .v-image {
         border: 8px solid #fafafa;
         position: relative;
-        max-width: 316px;
       }
       .v-image:nth-of-type(1) {
         left: 40px;
@@ -627,67 +523,6 @@ ul {
       .v-image:nth-of-type(3) {
         top: 40px;
         left: -20px;
-      }
-    }
-  }
-
-  // RSVP section
-
-  #rsvp {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-areas:
-      'txt txt img img'
-      'cards cards cards cards';
-    gap: 2rem;
-    padding: 4rem 3rem 2rem;
-
-    section.content-container {
-      grid-area: txt;
-      padding-bottom: 0;
-      h3,
-      p,
-      .v-btn {
-        margin: 1rem;
-      }
-      h3 {
-        font-size: 3rem;
-        font-weight: 700;
-        line-height: 1;
-        margin-top: 0;
-      }
-      p {
-        font-size: 1.25rem;
-      }
-    }
-
-    .v-image {
-      grid-area: img;
-      margin: 1.5rem 2rem;
-    }
-
-    .highlights {
-      flex-direction: row;
-      grid-area: cards;
-      width: 90%;
-      margin: 0 auto;
-      .v-card {
-        margin: 1rem;
-        padding: 2rem;
-        h4 {
-          font-size: 1.67rem;
-          font-weight: 900;
-          padding-bottom: 1rem;
-        }
-        div {
-          border: 0.25rem solid #ff9100;
-          width: 25%;
-          height: auto;
-        }
-        p {
-          font-size: 1.125rem;
-          margin: 1rem 0;
-        }
       }
     }
   }
@@ -713,27 +548,6 @@ ul {
       }
       .v-tabs-items .v-window-item {
         padding: 2rem 4rem;
-        .v-card {
-          display: flex;
-          align-items: center;
-
-          .section {
-            display: flex;
-            flex-direction: row;
-          }
-          .time {
-            margin-right: 10%;
-          }
-          .event-title {
-            font-size: 1.5rem;
-          }
-          .speaker {
-            font-size: 1.125rem;
-          }
-          .v-avatar {
-            margin-left: auto;
-          }
-        }
       }
     }
   }
