@@ -171,7 +171,7 @@ export const state = () => ({
   ],
   sponsors: [{
       name: 'Github',
-      icon: 'mdi-github-circle',
+      icon: 'mdi-github',
       to: 'https://www.github.com',
       top: false
     },

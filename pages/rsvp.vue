@@ -1,87 +1,122 @@
 <template>
-  <v-layout>
-    <v-flex>
-      <main id="rsvp-page">
-        <!-- Main Section -->
-        <section>
-          <section class="content-container">
-            <h1>RSVP</h1>
-          </section>
-        </section>
+  <v-container class="pa-0" fluid>
+    <v-row>
+      <v-col>
+        <main id="rsvp-page">
+          <!-- Main Section -->
+          <v-container fluid>
+            <v-container class="content-container">
+              <h1
+                :class="{'display-3 font-weight-bold': $breakpoint.mdAndUp, 'display-1 font-weight-bold': $breakpoint.smAndDown}"
+              >RSVP</h1>
+            </v-container>
+          </v-container>
 
-        <!-- Prices Section -->
-        <v-container id="prices">
-          <section class="content-container">
-            <h2>Prices</h2>
-            <section class="sub-container">
-              <h3>Ticket Packages</h3>
-              <p>Ut ut lobortis augue. Phasellus venenatis metus non metus congue, eget fermentum ipsum porttitor.</p>
-            </section>
-          </section>
-          <section class="packages">
-            <!-- package is a reserved keyword -->
-            <v-card v-for="(pkg, i) in packages" :key="`${pkg}${i}`">
-              <v-img
-                class="white--text align-end"
-                gradient="to top right, rgba(0,0,0,.5), rgba(0,0,0,.5)"
-                :src="pkg.image"
-                :alt="pkg.name"
-                lazy-src="https://picsum.photos/10/6"
-                min-width="200px"
-                :width="threeCardImageWidth"
-                :max-width="threeCardImageMaxWidth"
-                min-height="112.5px"
-                height="200px"
-                max-height="200px"
-              >
-                <v-icon class="white--text" size="64px">{{ pkg.icon }}</v-icon>
-                <v-card-title>{{ pkg.price }}</v-card-title>
-              </v-img>
-              <v-btn class="ticket-type" :name="pkg.name" text>Early Bird</v-btn>
-              <ul class="d-flex flex-column align-center">
-                <li v-for="(feature, i) in pkg.features" :key="`${feature}${i}`">{{ feature }}</li>
-              </ul>
-              <v-card-actions>
-                <v-btn
-                  color="orange accent-4"
-                  dark
-                  :name="pkg.name"
-                  nuxt
-                  rounded
-                  to="/tickets"
-                  x-large
-                >Get Tickets</v-btn>
-              </v-card-actions>
-            </v-card>
-          </section>
-        </v-container>
+          <!-- Prices Section -->
+          <v-container id="prices">
+            <v-container>
+              <h2
+                :class="{'display-2 font-weight-bold mb-6': $breakpoint.mdAndUp, 'display-1 font-weight-bold mb-3': $breakpoint.smAndDown}"
+              >Prices</h2>
+              <v-container class="bl-3-orange-accent-4 pt-0 pl-9 pb-3">
+                <h3
+                  :class="{'display-1 font-weight-bold': $breakpoint.mdAndUp, 'headline font-weight-bold': $breakpoint.smAndDown}"
+                >Ticket Packages</h3>
+                <p>Ut ut lobortis augue. Phasellus venenatis metus non metus congue, eget fermentum ipsum porttitor.</p>
+              </v-container>
+            </v-container>
+            <v-container class="packages">
+              <v-row>
+                <v-col v-for="(pkg, i) in packages" :key="`${pkg}${i}`" class="col-12 col-md-4">
+                  <!-- package is a reserved keyword -->
+                  <v-card class="d-flex flex-column align-center" height="100%">
+                    <v-img
+                      class="align-end white--text"
+                      gradient="to top right, rgba(0,0,0,.5), rgba(0,0,0,.5)"
+                      :src="pkg.image"
+                      :alt="pkg.name"
+                      lazy-src="https://picsum.photos/10/6"
+                      min-width="200px"
+                      :width="threeCardImageWidth"
+                      :max-width="threeCardImageMaxWidth"
+                      min-height="112.5px"
+                      height="200px"
+                      max-height="200px"
+                    >
+                      <v-icon class="white--text" size="64px">{{ pkg.icon }}</v-icon>
+                      <v-card-title class="display-1 font-weight-bold">{{ pkg.price }}</v-card-title>
+                    </v-img>
+                    <v-btn :name="pkg.name" rounded text>Early Bird</v-btn>
+                    <ul class="d-flex flex-column align-center mb-12 pl-0">
+                      <li
+                        v-for="(feature, i) in pkg.features"
+                        :key="`${feature}${i}`"
+                        class="py-2"
+                      >{{ feature }}</li>
+                    </ul>
+                    <v-card-actions class="mt-auto">
+                      <v-btn
+                        class="px-6"
+                        color="orange accent-4"
+                        dark
+                        :name="pkg.name"
+                        nuxt
+                        rounded
+                        to="/tickets"
+                        x-large
+                      >Get Tickets</v-btn>
+                    </v-card-actions>
+                  </v-card>
+                </v-col>
+              </v-row>
+            </v-container>
+          </v-container>
 
-        <!-- Speakers Section -->
-        <section id="speakers">
-          <section class="content-container">
-            <h2>Speakers</h2>
-            <section class="sub-container">
-              <h3>Who's Speaking</h3>
-              <p>Ut ut lobortis augue. Phasellus venenatis metus non metus congue, eget fermentum ipsum porttitor.</p>
-            </section>
-          </section>
-          <section class="speakers-list">
-            <v-card v-for="(speaker, i) in speakers" :key="`${speaker.name}${i}`" flat>
-              <v-img
-                class="white--text align-end"
-                gradient="to top right, rgba(0,0,0,.5), rgba(0,0,0,.5)"
-                :src="speaker.image"
-                :alt="speaker.name"
-                lazy-src="https://picsum.photos/10/6"
-              />
-              <v-card-title>{{ speaker.name }}</v-card-title>
-              <v-card-subtitle>{{ speaker.title }}</v-card-subtitle>
-            </v-card>
-          </section>
-        </section>
-      </main>
-    </v-flex>
-  </v-layout>
+          <!-- Speakers Section -->
+          <v-container id="speakers" class="py-12 px-9">
+            <v-container>
+              <h2
+                :class="{'display-2 font-weight-bold mb-6': $breakpoint.mdAndUp, 'display-1 font-weight-bold mb-3': $breakpoint.smAndDown}"
+              >Speakers</h2>
+              <v-container class="bl-3-orange-accent-4 pt-0 pl-9 pb-3">
+                <h3
+                  :class="{'display-1 font-weight-bold': $breakpoint.mdAndUp, 'headline font-weight-bold': $breakpoint.smAndDown}"
+                >Who's Speaking</h3>
+                <p>Ut ut lobortis augue. Phasellus venenatis metus non metus congue, eget fermentum ipsum porttitor.</p>
+              </v-container>
+            </v-container>
+            <v-container class="speakers-list py-12">
+              <v-row>
+                <v-col
+                  v-for="(speaker, i) in speakers"
+                  :key="`${speaker.name}${i}`"
+                  class="col-12 col-md-4"
+                >
+                  <v-card class="my-12" color="transparent" flat>
+                    <v-img
+                      class="align-end mx-auto white--text"
+                      gradient="to top right, rgba(0,0,0,.5), rgba(0,0,0,.5)"
+                      :src="speaker.image"
+                      :alt="speaker.name"
+                      lazy-src="https://picsum.photos/10/6"
+                      min-width="200px"
+                      :width="threeCardImageWidth"
+                      :max-width="threeCardImageMaxWidth"
+                      min-height="112.5px"
+                      height="200px"
+                      max-height="200px"
+                    />
+                    <v-card-title class="ml-3 pt-1">{{ speaker.name }}</v-card-title>
+                    <v-card-subtitle class="ml-3">{{ speaker.title }}</v-card-subtitle>
+                  </v-card>
+                </v-col>
+              </v-row>
+            </v-container>
+          </v-container>
+        </main>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>

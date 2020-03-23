@@ -1,26 +1,28 @@
 <template>
-  <v-layout>
-    <v-col class="ma-0 pa-0">
-      <v-sheet class="ma-0" color="primary" dark tile>
-        <h1 display="headline">Blog > {{ blogPost.title }}</h1>
-      </v-sheet>
-      <article>
-        <v-card class="d-flex flex-column align-center mx-auto pb-12" flat tile>
-          <v-img
-            class="align-end"
-            :src="blogPost.hero"
-            :alt="blogPost.title"
-            lazy-src="https://picsum.photos/10/6"
-            width="100%"
-            max-height="300"
-          />
-          <v-card-title>{{blogPost.title}}</v-card-title>
-          <v-card-subtitle>{{blogPost.description}}</v-card-subtitle>
-          <v-card-text v-html="$md.render(blogPost.body)"></v-card-text>
-        </v-card>
-      </article>
-    </v-col>
-  </v-layout>
+  <v-container class="pa-0" fluid>
+    <v-row>
+      <v-col class="ma-0 pa-0">
+        <v-sheet class="ma-0" color="primary" dark tile>
+          <h1 display="headline">Blog > {{ blogPost.title }}</h1>
+        </v-sheet>
+        <article>
+          <v-card class="d-flex flex-column align-center mx-auto pb-12" flat tile>
+            <v-img
+              class="align-end"
+              :src="blogPost.hero"
+              :alt="blogPost.title"
+              lazy-src="https://picsum.photos/10/6"
+              width="100%"
+              max-height="300"
+            />
+            <v-card-title>{{blogPost.title}}</v-card-title>
+            <v-card-subtitle>{{blogPost.description}}</v-card-subtitle>
+            <v-card-text v-html="$md.render(blogPost.body)"></v-card-text>
+          </v-card>
+        </article>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 <script>
 export default {

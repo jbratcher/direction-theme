@@ -1,50 +1,70 @@
 <template>
-  <v-layout>
-    <v-flex>
-      <main id="contact-page">
-        <!-- Main Section -->
-        <section>
-          <section class="content-container">
-            <h1>Contact</h1>
-          </section>
-        </section>
+  <v-container class="pa-0" fluid>
+    <v-row>
+      <v-col>
+        <main id="contact-page">
+          <!-- Main Section -->
+          <v-container fluid>
+            <v-container class="content-container">
+              <h1
+                :class="{'display-3 font-weight-bold': $breakpoint.mdAndUp, 'display-1 font-weight-bold': $breakpoint.smAndDown}"
+              >Contact</h1>
+            </v-container>
+          </v-container>
 
-        <h2>Have a question?</h2>
-        <p>Send us a message!</p>
+          <v-container>
+            <v-row>
+              <v-col class="col-12 col-md-6 mx-auto">
+                <h2
+                  :class="{'display-2': $breakpoint.mdAndUp, 'display-1': $breakpoint.smAndDown}"
+                >Have a question?</h2>
+                <p
+                  :class="{'headline': $breakpoint.mdAndUp, 'title': $breakpoint.smAndDown}"
+                >Send us a message!</p>
 
-        <v-form
-          id="contact-form"
-          ref="form"
-          v-model="valid"
-          name="contact"
-          method="post"
-          value="contactform"
-          data-netlify="true"
-          data-netlify-honeypot="bot-field"
-          lazy-validation
-        >
-          <input type="hidden" name="form-name" value="contact" />
-          <v-text-field v-model="name" :rules="nameRules" label="Name" name="name" required></v-text-field>
-          <v-text-field v-model="email" :rules="emailRules" label="E-mail" name="email" required></v-text-field>
-          <v-textarea
-            v-model="message"
-            :rules="messageRules"
-            label="Your Message"
-            name="message"
-            required
-          ></v-textarea>
-          <v-btn class="mr-4" name="reset" color="info" @click="reset">Reset</v-btn>
-          <v-btn
-            type="submit"
-            name="submit"
-            :disabled="!valid"
-            color="secondary"
-            class="mr-4"
-          >Submit</v-btn>
-        </v-form>
-      </main>
-    </v-flex>
-  </v-layout>
+                <v-form
+                  id="contact-form"
+                  ref="form"
+                  v-model="valid"
+                  name="contact"
+                  method="post"
+                  value="contactform"
+                  data-netlify="true"
+                  data-netlify-honeypot="bot-field"
+                  lazy-validation
+                >
+                  <input type="hidden" name="form-name" value="contact" />
+                  <v-text-field v-model="name" :rules="nameRules" label="Name" name="name" required></v-text-field>
+                  <v-text-field
+                    v-model="email"
+                    :rules="emailRules"
+                    label="E-mail"
+                    name="email"
+                    required
+                  ></v-text-field>
+                  <v-textarea
+                    v-model="message"
+                    :rules="messageRules"
+                    label="Your Message"
+                    name="message"
+                    required
+                  ></v-textarea>
+                  <v-btn class="mr-4" name="reset" color="info" @click="reset">Reset</v-btn>
+                  <v-btn
+                    type="submit"
+                    name="submit"
+                    :disabled="!valid"
+                    color="secondary"
+                    class="mr-4"
+                  >Submit</v-btn>
+                </v-form>
+              </v-col>
+            </v-row>
+          </v-container>
+        </main>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
@@ -90,33 +110,4 @@ export default {
 </script>
 
 <style lang="scss">
-#contact-page {
-  text-align: center;
-  & > section {
-    margin-bottom: 4rem;
-  }
-  h2 {
-    font-size: 2rem;
-  }
-  p {
-    font-size: 1.5rem;
-  }
-  .v-form {
-    max-width: 75vw;
-    margin: 0 auto;
-    padding: 2rem 0;
-    text-align: right;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  #contact-page {
-    & > section {
-      margin-bottom: 4rem;
-    }
-    .v-form {
-      max-width: 50vw;
-    }
-  }
-}
 </style>

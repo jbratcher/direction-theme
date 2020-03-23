@@ -58,37 +58,43 @@
       <nuxt />
     </v-content>
     <!-- Footer Area -->
-    <v-footer class="d-flex flex-column align-center py-12">
-      <section class="mb-8 px-6 text-center">
-        <h2
-          :class="{'display-3 font-weight-bold mb-3': $breakpoint.mdAndUp, 'display-1 font-weight-bold mb-3': $breakpoint.smAndDown}"
-        >{{ appTitle }}</h2>
-        <p
-          :class="{'headline mb-12': $breakpoint.mdAndUp, 'title font-weight-regular mb-12': $breakpoint.smAndDown}"
-        >{{ appDescription }}</p>
-        <section class="d-flex flex-column align-center">
-          <v-text-field label="Email" color="orange accent-4" clearable outlined></v-text-field>
-          <v-btn
-            color="white--text orange accent-4"
-            dark
-            name="sponsor-apply"
-            nuxt
-            rounded
-            to="/sponsor-apply"
-            x-large
-          >Get our Newsletter</v-btn>
-        </section>
-      </section>
-      <ul class="d-flex justify-center">
-        <li v-for="(link, i) in generalLinks" :key="i + link.title">
-          <v-btn :href="link.to" rounded text>{{ link.title }}</v-btn>
-        </li>
-      </ul>
-      <v-container class="text-center">
-        <p>
-          {{ new Date().getFullYear() }}&nbsp;—&nbsp;
-          <strong>{{appTitle}}</strong>
-        </p>
+    <v-footer class="py-12">
+      <v-container>
+        <v-row>
+          <v-col>
+            <v-container class="mb-8 px-6 text-center">
+              <h2
+                :class="{'display-3 font-weight-bold mb-3': $breakpoint.mdAndUp, 'display-1 font-weight-bold mb-3': $breakpoint.smAndDown}"
+              >{{ appTitle }}</h2>
+              <p
+                :class="{'headline mb-12': $breakpoint.mdAndUp, 'title font-weight-regular mb-12': $breakpoint.smAndDown}"
+              >{{ appDescription }}</p>
+              <v-container class="d-flex flex-column align-center">
+                <v-text-field label="Email" color="orange accent-4" clearable outlined></v-text-field>
+                <v-btn
+                  color="white--text orange accent-4"
+                  dark
+                  name="sponsor-apply"
+                  nuxt
+                  rounded
+                  to="/sponsor-apply"
+                  x-large
+                >Get our Newsletter</v-btn>
+              </v-container>
+            </v-container>
+            <ul class="d-flex justify-center">
+              <li v-for="(link, i) in footerLinks" :key="i + link.title">
+                <v-btn :href="link.to" rounded text>{{ link.title }}</v-btn>
+              </li>
+            </ul>
+            <v-container class="text-center">
+              <p>
+                {{ new Date().getFullYear() }}&nbsp;—&nbsp;
+                <strong>{{appTitle}}</strong>
+              </p>
+            </v-container>
+          </v-col>
+        </v-row>
       </v-container>
     </v-footer>
   </v-app>
@@ -122,6 +128,38 @@ export default {
           icon: 'mdi-account-group',
           title: 'Speakers',
           to: '/speakers'
+        }
+      ],
+      footerLinks: [
+        {
+          icon: 'mdi-home',
+          title: 'Home',
+          to: '/'
+        },
+        {
+          icon: 'mdi-information',
+          title: 'About',
+          to: '/about'
+        },
+        {
+          icon: 'mdi-account-group',
+          title: 'Speakers',
+          to: '/speakers'
+        },
+        {
+          icon: 'mdi-post',
+          title: 'Blog',
+          to: '/blog'
+        },
+        {
+          icon: 'mdi-ticket',
+          title: 'RSVP',
+          to: '/rsvp'
+        },
+        {
+          icon: 'mdi-contact',
+          title: 'contact',
+          to: '/contact'
         }
       ],
       miniVariant: false
@@ -199,6 +237,12 @@ ul {
   justify-content: space-evenly;
 }
 
+.bl-3-orange-accent-4 {
+  border-left: 0.25rem solid #ff6d00;
+}
+
+// components
+
 .v-image {
   object-fit: cover;
 }
@@ -250,13 +294,6 @@ ul {
     }
     .v-tab {
       clip-path: polygon(12.5% 0%, 100% 0%, 87.5% 100%, 0% 100%);
-      flex-direction: column;
-      padding: 4rem;
-      margin: 1rem auto;
-      h4 {
-        font-size: 2rem;
-        font-weight: 700;
-      }
     }
     .v-tab--active {
       background: #ff6d00;
@@ -271,10 +308,6 @@ ul {
     .v-tabs-items .v-window-item {
       padding: 2rem 0;
     }
-    .v-card > *:last-child:not(.v-btn):not(.v-chip) {
-      border-bottom-left-radius: 50%;
-      border-bottom-right-radius: 50%;
-    }
   }
 }
 
@@ -283,17 +316,7 @@ ul {
   .packages {
     padding: 2rem 0;
     .v-card {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      max-width: 90vw;
-      margin: 0 auto 2rem auto;
-      padding-bottom: 2rem;
       position: relative;
-      .v-image {
-        max-height: 200px;
-        max-width: 350px;
-      }
       .v-responsive__content {
         display: flex;
         flex-direction: column;
@@ -301,98 +324,14 @@ ul {
         justify-content: center;
         margin: auto;
         min-width: 100%;
-        .v-card__title {
-          font-size: 2rem;
-          font-weight: 700;
-        }
       }
-      .v-btn.ticket-type {
+      .v-btn {
         align-self: center;
         background-color: #fff;
         border: 1px solid #ff6d00;
-        border-radius: 1rem;
-        padding-right: 1rem;
-        padding-left: 1rem;
         position: relative;
         top: -1.25rem;
-        min-width: 100px;
       }
-      ul {
-        padding: 0 0 1rem 0;
-        li {
-          margin: 0.5rem 0;
-        }
-      }
-      .v-card__actions {
-        margin-top: auto;
-        .v-btn {
-          padding: 1.5rem;
-        }
-      }
-    }
-  }
-}
-
-// speakers section
-
-#speakers {
-  padding: 2rem 1.5rem;
-  .speakers-list {
-    background: transparent;
-    padding: 2rem 0;
-    .v-card {
-      background: transparent;
-      margin: 2rem 0;
-      .v-image {
-        border-radius: 0.5rem;
-        margin: 0 auto;
-        max-height: 200px;
-        max-width: 350px;
-      }
-      .v-card__title {
-        padding-top: 0.25rem;
-      }
-      .v-card__title,
-      .v-card__subtitle {
-        margin-left: 1rem;
-      }
-    }
-  }
-}
-
-// sponsors section
-
-#sponsors {
-  padding: 4rem 1.5rem;
-  .regular-sponsors,
-  .top-sponsors {
-    margin: 2rem 0;
-    padding: 2rem;
-
-    h4 {
-      font-size: 1.25rem;
-      margin-bottom: 2rem;
-    }
-
-    & > section {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      justify-items: center;
-
-      .v-btn {
-        margin: 2rem 0;
-        max-width: min-content;
-      }
-    }
-  }
-  .top-sponsors {
-    padding-bottom: 6rem;
-  }
-  .sponsor-apply {
-    padding: 0 2rem;
-    h4 {
-      font-size: 1.67rem;
-      margin-bottom: 1rem;
     }
   }
 }
@@ -400,60 +339,21 @@ ul {
 // blog section
 
 #blog {
-  padding: 6rem 1.5rem 4rem;
   .location {
     position: relative;
-    .v-image {
-      max-width: 90vw;
-      max-height: 300px;
-      margin: 0 auto;
-    }
     .v-card {
-      margin: 0 auto;
       position: relative;
-      top: -4rem;
-      width: 70vw;
-
-      .v-card__title {
-        font-size: 2rem;
-        margin-bottom: 1rem;
-      }
-
-      .v-card__subtitle {
-        color: #ff6d00;
-        font-size: 1.5rem;
-      }
-
-      .v-card__text {
-        padding: 0.25rem 1rem;
-      }
-
-      .v-card__text:last-child {
-        padding-bottom: 1rem;
-        margin: 2rem 0;
-      }
-    }
-  }
-  .blog-posts {
-    padding: 4rem 0 0;
-    .v-card {
-      max-width: 90vw;
-      margin: 0 auto 4rem auto;
-      .v-image {
-        max-height: 200px;
-        max-width: 350px;
-        margin: 0 auto;
-      }
+      top: -7rem;
     }
   }
 }
 
 // pages
 
-#about-page > section:first-child,
-#speakers-page > section:first-child,
-#rsvp-page > section:first-child,
-#contact-page > section:first-child {
+#about-page > .container:first-child,
+#speakers-page > .container:first-child,
+#rsvp-page > .container:first-child,
+#contact-page > .container:first-child {
   align-items: center;
   background: #2962ff; // blue accent-4
   background-image: linear-gradient(
@@ -498,10 +398,6 @@ ul {
       width: 60%;
       min-height: 600px;
     }
-  }
-
-  main > .container {
-    padding: 4rem 3rem;
   }
 
   // event details section
@@ -552,74 +448,15 @@ ul {
     }
   }
 
-  // prices section
-
-  #prices {
-    padding: 4rem 3rem;
-    .packages {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-
-  // speakers section
-
-  #speakers {
-    padding: 2rem 3rem;
-    .speakers-list {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      .v-card {
-        .v-image {
-          margin: 0 auto;
-        }
-      }
-    }
-  }
-
-  // sponsors section
-
-  #sponsors {
-    padding: 4rem 3rem;
-    .regular-sponsors,
-    .top-sponsors {
-      margin: 2rem 0;
-
-      h4 {
-        font-size: 1.25rem;
-        margin-bottom: 2rem;
-      }
-
-      & > section {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 4rem 0;
-        justify-items: center;
-      }
-    }
-    .sponsor-apply {
-      h4 {
-        font-size: 1.67rem;
-        margin-bottom: 1rem;
-      }
-    }
-  }
-
   // blog section
 
   #blog {
-    padding: 4rem 3rem;
     .location {
       max-height: 350px;
       .v-card {
-        width: 25vw;
         top: -270px;
         left: 20vw;
       }
-    }
-    .blog-posts {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
     }
   }
 }
