@@ -220,6 +220,10 @@ html,
   box-sizing: border-box;
 }
 
+.v-application .v-card__title {
+  word-break: keep-all;
+}
+
 html,
 body {
   min-height: 100vh;
@@ -258,7 +262,7 @@ ul {
 #information {
   position: relative;
 
-  & > section {
+  & > .container {
     border-top-left-radius: 10rem;
     border-bottom-left-radius: 10rem;
     position: relative;
@@ -282,39 +286,8 @@ ul {
   }
 }
 
-// day schedule section
-
-#day-schedule {
-  padding: 4rem 1.5rem;
-  .tabs-container {
-    background: #fafafa;
-    .v-tabs-bar {
-      background: #fafafa;
-      padding-top: 2rem;
-    }
-    .v-tab {
-      clip-path: polygon(12.5% 0%, 100% 0%, 87.5% 100%, 0% 100%);
-    }
-    .v-tab--active {
-      background: #ff6d00;
-      h4,
-      p {
-        color: #fff;
-      }
-    }
-    .v-tabs-items {
-      background: #fafafa;
-    }
-    .v-tabs-items .v-window-item {
-      padding: 2rem 0;
-    }
-  }
-}
-
 #prices {
-  padding: 4rem 1.5rem;
   .packages {
-    padding: 2rem 0;
     .v-card {
       position: relative;
       .v-responsive__content {
@@ -326,7 +299,6 @@ ul {
         min-width: 100%;
       }
       .v-btn {
-        align-self: center;
         background-color: #fff;
         border: 1px solid #ff6d00;
         position: relative;
@@ -353,8 +325,8 @@ ul {
 #about-page > .container:first-child,
 #speakers-page > .container:first-child,
 #rsvp-page > .container:first-child,
-#contact-page > .container:first-child {
-  align-items: center;
+#contact-page > .container:first-child,
+#blog-page > .container:first-child {
   background: #2962ff; // blue accent-4
   background-image: linear-gradient(
       to top right,
@@ -364,22 +336,11 @@ ul {
     url('/img/event-details-1.jpg');
   background-size: cover;
   background-position: center center;
-  display: flex;
-  flex-direction: column;
-  padding: 4rem 0;
   .content-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     min-height: 200px;
     width: fit-content;
     h1 {
       border-bottom: 0.25rem solid #fff;
-      color: #fff;
-      font-size: 3rem;
-      font-weight: 900;
-      padding-bottom: 1rem;
-      text-align: center;
     }
   }
 }
@@ -422,32 +383,6 @@ ul {
       }
     }
   }
-
-  // day list section
-
-  #day-schedule {
-    padding: 4rem 3rem;
-    .tabs-container {
-      .v-tabs-bar {
-        padding: 2rem;
-      }
-      .v-tabs--vertical > .v-tabs-bar .v-tabs-bar__content {
-        flex-direction: row;
-      }
-      .v-tab {
-        clip-path: polygon(12.5% 0%, 100% 0%, 87.5% 100%, 0% 100%);
-        padding: 4rem;
-        margin: 1rem auto;
-        h4 {
-          font-size: 2rem;
-        }
-      }
-      .v-tabs-items .v-window-item {
-        padding: 2rem 4rem;
-      }
-    }
-  }
-
   // blog section
 
   #blog {

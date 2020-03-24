@@ -4,10 +4,10 @@
       <v-col>
         <main id="speakers-page">
           <!-- Main Section -->
-          <v-container fluid>
-            <v-container class="content-container">
+          <v-container class="d-flex flex-column align-center py-12" fluid>
+            <v-container class="content-container d-flex flex-column justify-center">
               <h1
-                :class="{'display-3 font-weight-bold': $breakpoint.mdAndUp, 'display-1 font-weight-bold': $breakpoint.smAndDown}"
+                :class="{'display-3 font-weight-bold white--text text-center pb-3': $breakpoint.mdAndUp, 'display-1 font-weight-bold white--text text-center pb-3': $breakpoint.smAndDown}"
               >Speakers</h1>
             </v-container>
           </v-container>

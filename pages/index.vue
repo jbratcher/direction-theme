@@ -34,37 +34,37 @@
 
           <!-- Information Section -->
           <v-container id="information" class="mb-12 pr-0" fluid>
-            <section
-              class="elevation-10 d-flex flex-column flex-md-row justify-space-evenly ml-6 mb-6"
+            <v-container
+              class="elevation-10 d-flex flex-column flex-md-row justify-space-evenly ml-auto mr-0 mb-6 pl-12"
             >
               <p
-                :class="{'display-2 font-weight-regular ml-12 align-self-center': $breakpoint.mdAndUp, 'display-1 font-weight-regular mt-6 pt-12 align-self-center': $breakpoint.smAndDown}"
+                :class="{'display-2 font-weight-regular ml-12 pr-12 align-self-center': $breakpoint.mdAndUp, 'display-1 font-weight-regular mt-6 pt-12 align-self-center': $breakpoint.smAndDown}"
               >
                 We will be
                 <br />seeing you soon!
               </p>
-              <section class="d-flex flex-wrap pa-12" v-intersect="onIntersect">
+              <v-container class="d-flex flex-wrap justify-center pa-12" v-intersect="onIntersect">
                 <section class="d-flex flex-column pa-6">
                   <p
-                    class="display-1 font-weight-bold orange--text accent-4 animated-counter"
+                    class="display-2 font-weight-bold orange--text accent-4 animated-counter text-center"
                     data-target="2793"
                   >0</p>
-                  <p class="text-uppercase">Attendees</p>
+                  <p class="headline font-weight-bold text-uppercase">Attendees</p>
                 </section>
                 <section class="d-flex flex-column pa-6">
-                  <p class="display-1 font-weight-bold" data-target="33">33</p>
-                  <p class="text-uppercase">Tech Talks</p>
+                  <p class="display-2 font-weight-bold text-center" data-target="33">33</p>
+                  <p class="headline font-weight-bold text-uppercase">Tech Talks</p>
                 </section>
                 <section class="d-flex flex-column pa-6">
-                  <p class="display-1 font-weight-bold" data-target="3">3</p>
-                  <p class="text-uppercase">Days</p>
+                  <p class="display-2 font-weight-bold text-center" data-target="3">3</p>
+                  <p class="headline font-weight-bold text-uppercase">Days</p>
                 </section>
-              </section>
-            </section>
+              </v-container>
+            </v-container>
           </v-container>
 
           <!-- Benefits Section -->
-          <v-container id="event-details" class="my-12">
+          <v-container id="event-details" class="py-12 px-9">
             <v-row>
               <v-col>
                 <section
@@ -113,7 +113,7 @@
           </v-container>
 
           <!-- Rsvp Section -->
-          <v-container id="rsvp">
+          <v-container id="rsvp" class="py-12 px-9">
             <v-row class="px-3">
               <v-col class="col-12 col-md-6 mb-12">
                 <p>Hurry, this event is almost sold out!</p>
@@ -203,7 +203,7 @@
           </v-container>
 
           <!-- Day Schedule Section -->
-          <v-container id="day-schedule">
+          <v-container id="day-schedule" class="py-12 px-9">
             <v-container>
               <h2 class="display-2 font-weight-bold mb-6">Day Schedule</h2>
               <v-container class="bl-3-orange-accent-4 pt-0 pl-9 pb-3">
@@ -215,13 +215,25 @@
             </v-container>
 
             <v-container class="tabs-container">
-              <v-tabs v-model="tab" left vertical hide-slider>
+              <v-tabs
+                v-model="tab"
+                class="mb-6"
+                background-color="#fafafa"
+                color="orange accent-4"
+                :centered="$breakpoint.mdAndUp"
+                grow
+                :height="$breakpoint.mdAndUp ? 'fit-content' : '15rem'"
+                slider-color="orange accent-4"
+                :vertical="$breakpoint.smAndDown"
+              >
                 <v-tab
                   v-for="(day, i) in days"
                   :key="`${day.datetime}${i}`"
-                  class="d-flex flex-column pa-12"
+                  class="d-flex flex-column py-6"
                 >
-                  <h4>{{ day.title }}</h4>
+                  <h4
+                    :class="{'display-1 font-weight-bold mb-3': $breakpoint.mdAndUp, 'headline font-weight-bold mb-3': $breakpoint.smAndDown}"
+                  >{{ day.title }}</h4>
                   <p>{{ day.datetime }}</p>
                 </v-tab>
               </v-tabs>
@@ -265,7 +277,7 @@
           </v-container>
 
           <!-- Prices Section -->
-          <v-container id="prices">
+          <v-container id="prices" class="py-12 px-9">
             <v-container>
               <h2
                 :class="{'display-2 font-weight-bold mb-6': $breakpoint.mdAndUp, 'display-1 font-weight-bold mb-3': $breakpoint.smAndDown}"
@@ -277,7 +289,7 @@
                 <p>Ut ut lobortis augue. Phasellus venenatis metus non metus congue, eget fermentum ipsum porttitor.</p>
               </v-container>
             </v-container>
-            <v-container class="packages">
+            <v-container class="packages py-12">
               <v-row>
                 <v-col v-for="(pkg, i) in packages" :key="`${pkg}${i}`" class="col-12 col-md-4">
                   <!-- package is a reserved keyword -->
@@ -298,7 +310,7 @@
                       <v-icon class="white--text" size="64px">{{ pkg.icon }}</v-icon>
                       <v-card-title class="display-1 font-weight-bold">{{ pkg.price }}</v-card-title>
                     </v-img>
-                    <v-btn :name="pkg.name" rounded text>Early Bird</v-btn>
+                    <v-btn class="align-self-center" :name="pkg.name" rounded text>Early Bird</v-btn>
                     <ul class="d-flex flex-column align-center mb-12 pl-0">
                       <li
                         v-for="(feature, i) in pkg.features"

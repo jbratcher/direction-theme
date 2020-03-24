@@ -4,17 +4,19 @@
       <v-col>
         <main id="contact-page">
           <!-- Main Section -->
-          <v-container fluid>
-            <v-container class="content-container">
+          <v-container class="d-flex flex-column align-center py-12" fluid>
+            <v-container class="content-container d-flex flex-column justify-center">
               <h1
-                :class="{'display-3 font-weight-bold': $breakpoint.mdAndUp, 'display-1 font-weight-bold': $breakpoint.smAndDown}"
+                :class="{'display-3 font-weight-bold white--text text-center pb-3': $breakpoint.mdAndUp, 'display-1 font-weight-bold white--text text-center pb-3': $breakpoint.smAndDown}"
               >Contact</h1>
             </v-container>
           </v-container>
 
           <v-container>
             <v-row>
-              <v-col class="col-12 col-md-6 mx-auto">
+              <v-col
+                :class="{'col-12 col-md-6 mx-auto': $breakpoint.mdAndUp, 'col-12 col-md-6 mx-auto px-12': $breakpoint.smAndDown}"
+              >
                 <h2
                   :class="{'display-2': $breakpoint.mdAndUp, 'display-1': $breakpoint.smAndDown}"
                 >Have a question?</h2>
