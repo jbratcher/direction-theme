@@ -19,10 +19,10 @@
         text
       >{{ formattedAppTitle }}</v-btn>
       <v-spacer class="hidden-md-and-up" />
-      <v-app-bar-nav-icon class="hidden-md-and-up" @click.stop="drawer = !drawer" />
+      <v-app-bar-nav-icon class="hidden-md-and-up" @click.stop="drawer = !drawer" x-large />
       <MenuLinks
         :general-links="generalLinks"
-        list-class="hidden-sm-and-down d-md-flex mx-auto py-0"
+        list-class="hidden-sm-and-down d-md-flex align-center mx-auto py-0"
       />
       <v-btn
         class="flex-0 align-self-center hidden-sm-and-down elevation-10"
@@ -42,7 +42,7 @@
       fixed
       right
     >
-      <MenuLinks :general-links="generalLinks" list-class="mobile" />
+      <MenuLinks :general-links="generalLinks" list-class />
       <v-btn
         class="flex-0 align-self-center elevation-10 mt-12"
         color="primary"

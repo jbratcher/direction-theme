@@ -21,8 +21,9 @@
 
     <v-menu open-on-hover offset-x>
       <template v-slot:activator="{ on }">
-        <v-btn class="more-button" v-on="on" text>
-          <v-icon class="mr-1">mdi-briefcase</v-icon>More
+        <v-btn v-on="on" text>
+          <v-icon class="mr-1" color="grey darken-1">mdi-briefcase</v-icon>
+          <v-list-item-title>More</v-list-item-title>
         </v-btn>
       </template>
 
@@ -75,31 +76,4 @@ export default {
 </script>
 
 <style lang="scss">
-.mobile {
-  flex-direction: column;
-  margin: 0.5rem auto 1rem;
-}
-
-.mobile.v-list .v-list-item {
-  margin: 1rem 0;
-}
-
-.more-button {
-  margin: 1rem auto 0 0;
-
-  .v-btn__content {
-    font-size: 1.33rem;
-    font-weight: 700;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .more-button {
-    margin: auto;
-    .v-btn__content {
-      font-size: 0.875rem;
-      font-weight: 700;
-    }
-  }
-}
 </style>

@@ -32,7 +32,7 @@
                   :key="`${speaker.name}${i}`"
                   class="col-12 col-md-4"
                 >
-                  <v-card class="my-12" color="transparent" flat>
+                  <v-card class="my-6" color="transparent" flat>
                     <v-img
                       class="align-end mx-auto white--text"
                       gradient="to top right, rgba(0,0,0,.5), rgba(0,0,0,.5)"

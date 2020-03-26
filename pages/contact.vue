@@ -15,7 +15,7 @@
           <v-container>
             <v-row>
               <v-col
-                :class="{'col-12 col-md-6 mx-auto': $breakpoint.mdAndUp, 'col-12 col-md-6 mx-auto px-12': $breakpoint.smAndDown}"
+                :class="{'col-9 col-md-6 mx-auto': $breakpoint.mdAndUp, 'col-12 col-md-6 mx-auto px-12': $breakpoint.smAndDown}"
               >
                 <h2
                   :class="{'display-2': $breakpoint.mdAndUp, 'display-1': $breakpoint.smAndDown}"

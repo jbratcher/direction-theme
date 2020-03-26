@@ -58,7 +58,7 @@
           </v-container>
 
           <!-- Day Schedule Section -->
-          <v-container id="day-schedule">
+          <v-container id="day-schedule" class="py-12 px-9">
             <v-container>
               <h2 class="display-2 font-weight-bold mb-6">Day Schedule</h2>
               <v-container class="bl-3-orange-accent-4 pt-0 pl-9 pb-3">
@@ -70,13 +70,25 @@
             </v-container>
 
             <v-container class="tabs-container">
-              <v-tabs v-model="tab" left vertical hide-slider>
+              <v-tabs
+                v-model="tab"
+                class="mb-6"
+                background-color="#fafafa"
+                color="orange accent-4"
+                :centered="$breakpoint.mdAndUp"
+                grow
+                :height="$breakpoint.mdAndUp ? 'fit-content' : '15rem'"
+                slider-color="orange accent-4"
+                :vertical="$breakpoint.smAndDown"
+              >
                 <v-tab
                   v-for="(day, i) in days"
                   :key="`${day.datetime}${i}`"
-                  class="d-flex flex-column pa-12"
+                  class="d-flex flex-column py-6"
                 >
-                  <h4>{{ day.title }}</h4>
+                  <h4
+                    :class="{'display-1 font-weight-bold mb-3': $breakpoint.mdAndUp, 'headline font-weight-bold mb-3': $breakpoint.smAndDown}"
+                  >{{ day.title }}</h4>
                   <p>{{ day.datetime }}</p>
                 </v-tab>
               </v-tabs>
@@ -139,7 +151,7 @@
                   :key="`${speaker.name}${i}`"
                   class="col-12 col-md-4"
                 >
-                  <v-card class="my-12" color="transparent" flat>
+                  <v-card class="my-6" color="transparent" flat>
                     <v-img
                       class="align-end mx-auto white--text"
                       gradient="to top right, rgba(0,0,0,.5), rgba(0,0,0,.5)"
